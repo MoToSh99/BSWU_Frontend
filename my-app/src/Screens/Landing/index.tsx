@@ -14,42 +14,43 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     return (
 
           <div className={classes.page}>
-            <Typography align="center" variant="h2" component="h2">
-              Happy<br/> 
-              Tweet
-            </Typography>
-            <Typography align="center" variant="subtitle1" component="h2">
-                Enter your Twitter username:
-            </Typography>
-            
-        
-            <TextField
-                className={classes.textField}
-                id="filled-basic"
-                label="Twitter Username"
-                variant="filled"
-                InputProps={{
-                disableUnderline: true,
-                endAdornment: (
-                    <InputAdornment position="end">
-                    <TwitterIcon />
-                    </InputAdornment>
-                ),
+            <div className={classes.titleContainer}>
+              <Typography align="center" variant="h2" component="h2">
+                Happy<br/> 
+                Tweet
+              </Typography>
+            </div>
+            <div className={classes.inputContainer}>
+              <Typography align="center" variant="subtitle1" component="h2">
+                  Enter your Twitter username:
+              </Typography>
+              <TextField
+                  className={classes.textField}
+                  id="filled-basic"
+                  label="Twitter Username"
+                  variant="filled"
+                  InputProps={{
+                    disableUnderline: true,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                      <TwitterIcon />
+                      </InputAdornment>
+                  ),
                 }}
-            />
-            
-            <Button
-                className={classes.button}
-                variant="contained"
-                color="primary"
-                size="large">
-                  Start your journey
-            </Button>
-            
-           
-            <Typography align="center" variant="subtitle1" component="h2">
-                Made with ❤️ by DTM
-            </Typography>
+                />
+              <Button
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  size="large">
+                    Start your journey
+              </Button>
+            </div>
+            <div className={classes.footerContainer}>
+              <Typography align="center" variant="subtitle1" component="h2">
+                  Made with ❤️ by DTM
+              </Typography>
+            </div>
         </div>
     )
 }
@@ -73,6 +74,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       justifyItems: "center"
     },
     button: {
+        width: "100%",
         borderRadius: 20,
         textTransform: "unset"
     }
