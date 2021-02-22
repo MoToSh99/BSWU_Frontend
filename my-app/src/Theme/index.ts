@@ -2,18 +2,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 export default createMuiTheme({
     palette: {
-        /* primary: {
-            light: '',
-            main: '',
-            dark: '',
-            contrastText: ''
+        primary: {
+            main: '#45A29E',
+            light: "#FFF",
         },
         secondary: {
             light: '',
-            main: '',
-            dark: '',
-            contrastText: ''
-        },
+            main: '#FFFFFF',
+            
+        }, /*
         error: {
             light: '',
             main: '',
@@ -60,7 +57,11 @@ export default createMuiTheme({
         },
 
     },
+    
+
     overrides: {
 
     }
+
 })
+
