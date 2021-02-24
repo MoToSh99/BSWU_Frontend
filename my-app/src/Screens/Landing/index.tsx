@@ -1,8 +1,34 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import {Container, Toolbar, Typography, TextField, Button, InputAdornment } from '@material-ui/core';
+import { Typography, TextField, Button, InputAdornment } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
+
+const useStyles = makeStyles<Theme, any>((theme) => ({
+  textField: {
+      width: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto',            
+      paddingBottom: 0,
+      marginTop: 0,
+      fontWeight: 500,
+      background: "white",
+      borderRadius: 15,
+      marginBottom: 10,
+  },
+  page: {
+    padding: 15,
+    display: "flex",
+    flexDirection: "column",
+    justifyItems: "center"
+  },
+  button: {
+      width: "100%",
+      borderRadius: 20,
+      textTransform: "unset"
+  }
+}));
 
 export interface LandingScreenProps {
 
@@ -10,7 +36,24 @@ export interface LandingScreenProps {
 
 const LandingScreen: FC<LandingScreenProps> = (props) => {
     const classes = useStyles({});
+    const history = useHistory();
+    
+    const getUserinfo = (usr: string) => {
+        fetch(`https://datascripttwitter.herokuapp.com/userinfo?username=${usr}`)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              history.push({pathname: "/confirm",
+                state: { memberDetail: result}})
+            },
+            (error) => {
+              console.log(error)
+            }
+          )
+    }
 
+    const [username, setUsername] = useState("")
+    
     return (
 
           <div className={classes.page}>
@@ -29,22 +72,28 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   id="filled-basic"
                   label="Twitter Username"
                   variant="filled"
+                  onChange={(e) => {setUsername(e.target.value)}}
                   InputProps={{
                     disableUnderline: true,
                     endAdornment: (
                       <InputAdornment position="end">
-                      <TwitterIcon />
+                        <TwitterIcon />
                       </InputAdornment>
                   ),
                 }}
                 />
+    
+  
               <Button
                   className={classes.button}
                   variant="contained"
                   color="primary"
-                  size="large">
+                  size="large"
+                  onClick={() => { getUserinfo(username) }}
+                  >
                     Start your journey
               </Button>
+
             </div>
             <div className={classes.footerContainer}>
               <Typography align="center" variant="subtitle1" component="h2">
@@ -55,29 +104,6 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     )
 }
 
-const useStyles = makeStyles<Theme, any>((theme) => ({
-    textField: {
-        width: '100%',
-        marginLeft: 'auto',
-        marginRight: 'auto',            
-        paddingBottom: 0,
-        marginTop: 0,
-        fontWeight: 500,
-        background: "white",
-        borderRadius: 15,
-        marginBottom: 10,
-    },
-    page: {
-      padding: 15,
-      display: "flex",
-      flexDirection: "column",
-      justifyItems: "center"
-    },
-    button: {
-        width: "100%",
-        borderRadius: 20,
-        textTransform: "unset"
-    }
-}));
+
 
 export default LandingScreen;

@@ -7,9 +7,6 @@ import Boot from './Boot';
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 
-
-
-
 const App: React.FC = () => {
   Boot().then(() => {
 
@@ -25,3 +22,4 @@ const App: React.FC = () => {
 }
 
 export default App;
+
