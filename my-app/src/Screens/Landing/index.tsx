@@ -4,6 +4,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, TextField, Button, InputAdornment } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
+import MainButton from '../../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   textField: {
@@ -15,18 +16,20 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       fontWeight: 500,
       background: "white",
       borderRadius: 15,
-      marginBottom: 10,
+      marginBottom: 100,
   },
   page: {
-    padding: 15,
+    height: "100vh",
+    padding: 30,
     display: "flex",
     flexDirection: "column",
-    justifyItems: "center"
+    justifyContent: "space-between",
   },
-  button: {
-      width: "100%",
-      borderRadius: 20,
-      textTransform: "unset"
+  inputContainer: {
+    
+  },
+  text: {
+    marginBottom: 15,
   }
 }));
 
@@ -55,7 +58,6 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const [username, setUsername] = useState("")
     
     return (
-
           <div className={classes.page}>
             <div className={classes.titleContainer}>
               <Typography align="center" variant="h2" component="h2">
@@ -64,7 +66,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               </Typography>
             </div>
             <div className={classes.inputContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <Typography className={classes.text} align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
@@ -83,17 +85,11 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 }}
                 />
     
-  
-              <Button
-                  className={classes.button}
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  onClick={() => { getUserinfo(username) }}
-                  >
-                    Start your journey
-              </Button>
-
+              <MainButton
+                color="primary"
+                text="Start your journey"
+                onClick={() => { getUserinfo(username) }}
+              />
             </div>
             <div className={classes.footerContainer}>
               <Typography align="center" variant="subtitle1" component="h2">
