@@ -54,6 +54,14 @@ const Confirm: FC<ConfirmProps> = (props) => {
     const history = useHistory();
     const location = useLocation();
     const userinfo : User = location.state.memberDetail
+
+    const input = document.getElementById("yesButton");
+    document.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        input?.click();
+      }
+    });
     
     return (
       <div className={classes.page}>
