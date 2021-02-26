@@ -20,12 +20,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 export interface LoadingProps {
 }
 
+
 const Loading: FC<LoadingProps> = (props) => {
     const classes = useStyles({});
     const history = useHistory();
     const location = useLocation();
     const userinfo : User = location.state.memberDetail
-
+ 
     const getUserinfo = (usr: string) => {
         fetch(`https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=500`)
           .then(res => res.json())
