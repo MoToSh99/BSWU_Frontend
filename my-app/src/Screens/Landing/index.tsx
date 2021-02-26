@@ -4,6 +4,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, TextField, Button, InputAdornment } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
+import MainButton from '../../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   textField: {
@@ -26,12 +27,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   inputContainer: {
     
-  },
-  button: {
-      width: "100%",
-      borderRadius: 40,
-      textTransform: "unset",
-      height: 65
   },
   text: {
     marginBottom: 15,
@@ -90,17 +85,11 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 }}
                 />
     
-  
-              <Button
-                  className={classes.button}
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  onClick={() => { getUserinfo(username) }}
-                  >
-                    Start your journey
-              </Button>
-
+              <MainButton
+                color="primary"
+                text="Start your journey"
+                onClick={() => { getUserinfo(username) }}
+              />
             </div>
             <div className={classes.footerContainer}>
               <Typography align="center" variant="subtitle1" component="h2">
