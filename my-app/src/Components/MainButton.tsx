@@ -4,9 +4,9 @@ import React, { FC } from "react"
 const useStyles = makeStyles<Theme, any>((theme) => ({
   button: {
       width: "100%",
+			height: 50,
       borderRadius: 40,
       textTransform: "unset",
-      height: 65
   },
 }));
 

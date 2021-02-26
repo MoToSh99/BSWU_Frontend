@@ -4,6 +4,7 @@ import { Typography, Button } from '@material-ui/core';
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import { User } from '../Models';
+import MainButton from '../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -86,6 +87,24 @@ const Confirm: FC<ConfirmProps> = (props) => {
           </Typography>
         </div>
         <div className={classes.inputContainer}>
+          <MainButton
+            color="primary"
+            text="Yes"
+            onClick={() => {
+              history.push({pathname: "/loading",
+                state: { memberDetail: userinfo}
+              })
+            }}
+          />
+          <MainButton
+            color="secondary"
+            text="No, let me try again"
+            onClick={() => {
+              history.push({
+                pathname: "/"
+              })
+            }}
+          />
           <Button
               id="yesButton"
               className={classes.button}
