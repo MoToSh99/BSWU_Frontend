@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core';
 import { useLocation, useHistory } from "react-router-dom";
@@ -24,7 +24,26 @@ const Loading: FC<LoadingProps> = (props) => {
     const classes = useStyles({});
     const history = useHistory();
     const location = useLocation();
-    const userinfo : User  = location.state.memberDetail
+    const userinfo : User = location.state.memberDetail
+
+    const getUserinfo = (usr: string) => {
+        fetch(`https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=500`)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              history.push({pathname: "/loading",
+                state: { memberDetail: result}})
+                console.log(result)
+            },
+            (error) => {
+              console.log(error)
+            }
+          )
+    }
+
+    useEffect(() => { 
+        getUserinfo(userinfo.username);
+    });
     
     return (
           <div className={classes.page}>

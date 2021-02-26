@@ -36,23 +36,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
     const classes = useStyles({});
     const history = useHistory();
     const location = useLocation();
-    const userinfo : User  = location.state.memberDetail
-
-    const getUserinfo = (usr: string) => {
-      fetch(`https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=1000`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            history.push({pathname: "/loading",
-              state: { memberDetail: result}})
-              console.log(result)
-              
-          },
-          (error) => {
-            console.log(error)
-          }
-        )
-  }
+    const userinfo : User = location.state.memberDetail
 
   return (
     <div className={classes.page}>
@@ -80,7 +64,11 @@ const Confirm: FC<ConfirmProps> = (props) => {
         <Button
             className={classes.button}
             variant="contained"
-            onClick={(e) => {getUserinfo(userinfo.username)}}
+            onClick={() => {
+              history.push({pathname: "/loading",
+                state: { memberDetail: userinfo}
+              })
+            }}
             color="primary"
             size="large">
               Yes
@@ -89,7 +77,9 @@ const Confirm: FC<ConfirmProps> = (props) => {
             className={classes.secondaryButton}
             variant="contained"
             onClick={() => {
-              history.push({pathname: "/"})
+              history.push({
+                pathname: "/"
+              })
             }}
             color="secondary"
             size="large">
