@@ -15,18 +15,26 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       fontWeight: 500,
       background: "white",
       borderRadius: 15,
-      marginBottom: 10,
+      marginBottom: 100,
   },
   page: {
-    padding: 15,
+    height: "100vh",
+    padding: 30,
     display: "flex",
     flexDirection: "column",
-    justifyItems: "center"
+    justifyContent: "space-between",
+  },
+  inputContainer: {
+    
   },
   button: {
       width: "100%",
-      borderRadius: 20,
-      textTransform: "unset"
+      borderRadius: 40,
+      textTransform: "unset",
+      height: 65
+  },
+  text: {
+    marginBottom: 15,
   }
 }));
 
@@ -55,7 +63,6 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const [username, setUsername] = useState("")
     
     return (
-
           <div className={classes.page}>
             <div className={classes.titleContainer}>
               <Typography align="center" variant="h2" component="h2">
@@ -64,7 +71,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               </Typography>
             </div>
             <div className={classes.inputContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <Typography className={classes.text} align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
