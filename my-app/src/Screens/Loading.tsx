@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import image1 from '../Images/Saly-7.png'
-import image2 from '../Images/Saly-10.png'
-import image3 from '../Images/Saly-14.png'
-import image4 from '../Images/Saly-31.png'
-import logo from '../Images/loading.gif'
+import image1 from "../Images/Saly-7.png";
+import image2 from "../Images/Saly-10.png";
+import image3 from "../Images/Saly-14.png";
+import image4 from "../Images/Saly-31.png";
+import logo from "../Images/loading.gif";
 import {
   Typography,
   Paper,
@@ -20,12 +20,18 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Carousel from "react-material-ui-carousel";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
+  page: {
+    padding: 30,
+    display: "flex",
+    flexDirection: "column",
+    justifyItems: "center",
+  },
   header: {
     marginTop: 30,
     marginBottom: 60,
   },
   slideshow: {
-    marginBottom: 300,
+    marginBottom: 200,
   },
   root: {
     flexGrow: 1,
@@ -55,7 +61,6 @@ const Loading: FC<LoadingProps> = (props) => {
   const location = useLocation();
   const userinfo: User = location.state.memberDetail;
 
-
   const getUserinfo = (usr: string) => {
     fetch(
       `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=500`
@@ -64,7 +69,10 @@ const Loading: FC<LoadingProps> = (props) => {
       .then(
         (result) => {
           console.log(result);
-
+          history.push({
+            pathname: "/overall",
+            state: { memberDetail: result },
+          });
         },
         (error) => {
           console.log(error);
@@ -73,26 +81,36 @@ const Loading: FC<LoadingProps> = (props) => {
   };
 
   useEffect(() => {
-    console.log(userinfo)
+    console.log(userinfo);
     getUserinfo(userinfo.username);
   });
 
   function Slideshow(props) {
     var items = [
       {
-        description: "Wow! You have posted " + userinfo.statuses_count + " Tweets since you created your account! Are you OK?",
+        description:
+          "Wow! You have posted " +
+          userinfo.statuses_count +
+          " Tweets since you created your account! Are you OK?",
         image: image1,
       },
       {
-        description: "You have " + userinfo.friends_count + " friends on Twitter! Hopefully you have some in real life too.",
+        description:
+          "You have " +
+          userinfo.friends_count +
+          " friends on Twitter! Hopefully you have some in real life too.",
         image: image2,
       },
       {
-        description: userinfo.verified ? "Your account is verified! I guess you're a pretty big thing, huh" : "Looks like your account isn't verified. Are you not famous enough?",
+        description: userinfo.verified
+          ? "Your account is verified! I guess you're a pretty big thing, huh"
+          : "Looks like your account isn't verified. Are you not famous enough?",
         image: image3,
       },
       {
-        description: userinfo.geo_enabled ? "You have geo-tagged some of your Tweets! You're one of the very few people to have done that. Congrats!" :  "You haven't chosen to geo-tagged any of your Tweets. Don't worry, pretty much no one else has neither.",
+        description: userinfo.geo_enabled
+          ? "You have geo-tagged some of your Tweets! You're one of the very few people to have done that. Congrats!"
+          : "You haven't chosen to geo-tagged any of your Tweets. Don't worry, pretty much no one else has neither.",
         image: image4,
       },
     ];
@@ -126,7 +144,11 @@ const Loading: FC<LoadingProps> = (props) => {
               </Grid>
               <Grid item>
                 <ButtonBase className={classes.image}>
-                  <img className={classes.img} alt="imageoffiguer" src={props.item.image}/>
+                  <img
+                    className={classes.img}
+                    alt="imageoffiguer"
+                    src={props.item.image}
+                  />
                 </ButtonBase>
               </Grid>
             </Grid>
@@ -143,12 +165,12 @@ const Loading: FC<LoadingProps> = (props) => {
           Getting things ready...
         </Typography>
       </div>
-        <div className={classes.slideshow}>
-          <Slideshow />
-        </div>
-        <Box display="flex" justifyContent="center" alignItems="flex-end">
-          <CircularProgress size={200} color="primary" />
-        </Box>
+      <div className={classes.slideshow}>
+        <Slideshow />
+      </div>
+      <Box display="flex" justifyContent="center" alignItems="flex-end">
+        <CircularProgress size={200} color="primary" />
+      </Box>
     </div>
   );
 };
