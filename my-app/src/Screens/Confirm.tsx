@@ -13,24 +13,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         flexDirection: "column",
         justifyItems: "center"
     },
-    button: {
-        width: "100%",
-        height: "30%",
-        marginTop: 93,
-        borderRadius: 30,
-        textTransform: "unset",
-        fontWeight: "bold"
-    },
-    secondaryButton: {
-      width: "100%",
-      height: "30%",
-      marginTop: 15,
-      borderRadius: 30,
-      textTransform: "unset",
-      backgroundColor: "#C5C6C7",
-      fontWeight: "bold",
-      color: "white"
-    },
     avatar: {
       display: "block",
       marginLeft: "auto",
@@ -44,7 +26,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     titleContainer: {
       marginTop: 30
+    },
+    inputContainer: {
+      marginTop: 90,
     }
+    
 }));
     
 export interface ConfirmProps {
@@ -105,31 +91,6 @@ const Confirm: FC<ConfirmProps> = (props) => {
               })
             }}
           />
-          <Button
-              id="yesButton"
-              className={classes.button}
-              variant="contained"
-              onClick={() => {
-                history.push({pathname: "/loading",
-                  state: { memberDetail: userinfo}
-                })
-              }}
-              color="primary"
-              size="large">
-                Yes
-          </Button>
-          <Button
-              className={classes.secondaryButton}
-              variant="contained"
-              onClick={() => {
-                history.push({
-                  pathname: "/"
-                })
-              }}
-              color="secondary"
-              size="large">
-                No, let me try again
-          </Button>
         </div>
       </div>
       )

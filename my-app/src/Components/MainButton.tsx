@@ -7,6 +7,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 			height: 50,
       borderRadius: 40,
       textTransform: "unset",
+			fontWeight: "bold",
+			marginBottom: 15
   },
 }));
 
