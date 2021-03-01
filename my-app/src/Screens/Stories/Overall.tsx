@@ -3,7 +3,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
-import { User } from '../../Models';
+import { User, UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -30,14 +30,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 }));
     
 export interface OverallProps {
+  user : UserDetail
 }
 
-const Overall: FC<OverallProps> = (props) => {
+const Overall: FC<OverallProps> = ({user}) => {
     const classes = useStyles({});
-    const history = useHistory();
-    const location = useLocation();
-    const userinfo : User = location.state.memberDetail
-
     const [progress, setProgress] = React.useState(0.0);
 
     React.useEffect(() => {
@@ -68,32 +65,22 @@ const Overall: FC<OverallProps> = (props) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h2" component="div">{`5.6`}</Typography>
+              <Typography variant="h2" component="div">{user.overallscore}</Typography>
             </Box>
           </Box>
         </div>
         <div>
-          <CelebrityScores
-            firstUrl="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg"
-            firstUser="@obama"
-            firstScore={3.8}
-            secondUrl="https://pbs.twimg.com/profile_images/1364491704817098753/V22-Luf7_400x400.jpg"
-            secondUser="@elonmusk"
-            secondScore={6.3}
-            thirdUrl="https://pbs.twimg.com/profile_images/766652495858896897/LjrJJB9a_400x400.jpg"
-            thirdUser="@trumpjr"
-            thirdScore={7.3}
-            />
+          <CelebrityScores user={user}/>
         </div>
         <div className={classes.infoText}>
           <Typography align="center" variant="h6" component="h6">
-              Based on 3200 Tweets
+              Based on {user.tweetsamount} Tweets
           </Typography>
           <Typography align="center" variant="h6" component="h6">
-              Gathered between January 30th and today
+              Gathered between {user.tweetstart} and today
           </Typography>
           <Typography align="center" variant="h6" component="h6">
-              Matching on 9500 words
+              Matching on {user.wordsmatched} words
           </Typography>
         </div>
       </div>

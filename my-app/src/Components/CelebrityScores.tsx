@@ -1,5 +1,6 @@
 import { Box, Avatar, Typography, makeStyles, Theme } from "@material-ui/core"
 import React, { FC } from "react"
+import {UserDetail} from '../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     avatarsBox: {
@@ -26,38 +27,27 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 }));
 
 export type CelebrityScoresProps = {
-    firstUrl: string,
-    firstUser: string,
-    firstScore: number,
-    
-    secondUrl: string,
-    secondUser: string,
-    secondScore: number,
-    
-    thirdUrl: string,
-    thirdUser: string,
-    thirdScore: number;
+    user : UserDetail
 }
 
-const CelebrityScores: FC<CelebrityScoresProps> = (props
-) => {
+const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
 	const classes = useStyles({})
 	return (
 		<Box className={classes.avatarsBox}>
             <Box>
-                <Avatar alt="Remy Sharp" src={props.firstUrl} className={classes.avatar}/>
-                <Typography className={classes.usernames} variant="subtitle1">{props.firstUser}</Typography>
-                <Typography variant="subtitle1">{props.firstScore}</Typography>
+                <Avatar alt="Remy Sharp" src={user.celebrityscore[0].pic } className={classes.avatar}/>
+                <Typography className={classes.usernames} variant="subtitle1">@{user.celebrityscore[0].username}</Typography>
+                <Typography variant="subtitle1">{user.celebrityscore[0].score}</Typography>
             </Box>
             <Box>
-                <Avatar alt="Remy Sharp" src={props.secondUrl} className={classes.middleAvatar}/>
-                <Typography className={classes.usernames} variant="subtitle1">{props.secondUser}</Typography>
-                <Typography variant="subtitle1">{props.secondScore}</Typography>
+                <Avatar alt="Remy Sharp" src={user.celebrityscore[1].pic} className={classes.middleAvatar}/>
+                <Typography className={classes.usernames} variant="subtitle1">@{user.celebrityscore[1].username}</Typography>
+                <Typography variant="subtitle1">{user.celebrityscore[1].score}</Typography>
             </Box>
             <Box>
-                <Avatar alt="Remy Sharp" src={props.thirdUrl} className={classes.avatar}/>
-                <Typography className={classes.usernames} variant="subtitle1">{props.thirdUser}</Typography>
-                <Typography variant="subtitle1">{props.thirdScore}</Typography>
+                <Avatar alt="Remy Sharp" src={user.celebrityscore[2].pic} className={classes.avatar}/>
+                <Typography className={classes.usernames} variant="subtitle1">@{user.celebrityscore[2].username}</Typography>
+                <Typography variant="subtitle1">{user.celebrityscore[2].score}</Typography>
             </Box>
           </Box>
 	)

@@ -15,18 +15,18 @@ const Story = () => {
     const user : UserDetail = location.state.memberDetail
 
     const stories = [
-        {content: (props) => <Overall />},
-        {content: (props) => <EvolvedHapiness />},
+        {content: () => <Overall user={user} />},
+        {content: () => <EvolvedHapiness />},
+        {content: () => <Happiest user={user} />},
         {
-            content: (props) => (
+            content: () => (
                 <div style={{ background: 'pink', padding: 20 }}>
                     <h1 style={{ marginTop: '100%', marginBottom: 0 }}>ddd</h1>
                     <h1 style={{ marginTop: 5 }}>A custom title can go here.</h1>
-                    <Button onClick={console.log(user.tweets.happiest.id)}>Hej med dig</Button>
+                    <Button onClick={console.log(user.celebrityscore[0].pic)}>Hej med dig</Button>
                 </div>
             ),
         },
-        {content: () => <Happiest user={user} />}
     ];
 
     return (
