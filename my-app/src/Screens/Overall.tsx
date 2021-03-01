@@ -1,31 +1,32 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
-import { User } from '../../Models';
-import CelebrityScores from '../../Components/CelebrityScores';
+import Avatar from '@material-ui/core/Avatar';
+import { User } from '../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
         padding: 30,
         display: "flex",
         flexDirection: "column",
-        textAlign: "center",
+        justifyItems: "center",
         backgroundColor: theme.palette.background.default
+    },
+    avatar: {
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: 46,
+      width: 40,
+      height: 40
     },
     titleContainer: {
       marginTop: 30
     },
     gauge: {
       color: "#66FCF1"
-    },
-    gaugeBox: {
-      position: "relative",
-      marginTop: 53
-    },
-    infoText: {
-      marginTop: 43
     }
 }));
     
@@ -37,14 +38,6 @@ const Overall: FC<OverallProps> = (props) => {
     const history = useHistory();
     const location = useLocation();
     const userinfo : User = location.state.memberDetail
-
-    const [progress, setProgress] = React.useState(0.0);
-
-    React.useEffect(() => {
-      setTimeout(function() {
-        setProgress(5.6);
-      }, 100);
-    });
     
     return (
       <div className={classes.page}>
@@ -57,8 +50,8 @@ const Overall: FC<OverallProps> = (props) => {
           </Typography>
         </div>
         <div>
-          <Box className={classes.gaugeBox}>
-            <CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={190} thickness={2.5} />
+          <Box position="relative" display="inline-flex">
+            <CircularProgress className={classes.gauge} variant="determinate" value={progress} size={175} thickness={2.8} />
             <Box
               top={0}
               left={0}
@@ -68,22 +61,14 @@ const Overall: FC<OverallProps> = (props) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h2" component="div">{`5.6`}</Typography>
+              <Typography variant="h3" component="div">{`3.6`}</Typography>
             </Box>
           </Box>
         </div>
-        <div>
-          <CelebrityScores
-            firstUrl="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg"
-            firstUser="@obama"
-            firstScore={3.8}
-            secondUrl="https://pbs.twimg.com/profile_images/1364491704817098753/V22-Luf7_400x400.jpg"
-            secondUser="@elonmusk"
-            secondScore={6.3}
-            thirdUrl="https://pbs.twimg.com/profile_images/766652495858896897/LjrJJB9a_400x400.jpg"
-            thirdUser="@trumpjr"
-            thirdScore={7.3}
-            />
+        <div className={classes.avatars}>
+            <Avatar alt="Remy Sharp" src="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg" className={classes.firstAvatar}/>
+            <Avatar alt="Remy Sharp" src="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg" className={classes.secondAvatar}/>
+            <Avatar alt="Remy Sharp" src="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg" className={classes.thirdAvatar}/>
         </div>
         <div className={classes.infoText}>
           <Typography align="center" variant="h6" component="h6">
