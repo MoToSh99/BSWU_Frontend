@@ -4,7 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
-import { User } from '../../Models';
+import { User } from '../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -38,14 +38,6 @@ const Overall: FC<OverallProps> = (props) => {
     const history = useHistory();
     const location = useLocation();
     const userinfo : User = location.state.memberDetail
-
-    const [progress, setProgress] = React.useState(0);
-
-    React.useEffect(() => {
-      setTimeout(function() {
-        setProgress(3*10);
-      }, 5000);
-    });
     
     return (
       <div className={classes.page}>
@@ -59,7 +51,7 @@ const Overall: FC<OverallProps> = (props) => {
         </div>
         <div>
           <Box position="relative" display="inline-flex">
-            <CircularProgress className={classes.gauge} variant="determinate" value={5.6 * 10} size={175} thickness={2.8} />
+            <CircularProgress className={classes.gauge} variant="determinate" value={progress} size={175} thickness={2.8} />
             <Box
               top={0}
               left={0}
@@ -69,7 +61,7 @@ const Overall: FC<OverallProps> = (props) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h3" component="div">{`5.6`}</Typography>
+              <Typography variant="h3" component="div">{`3.6`}</Typography>
             </Box>
           </Box>
         </div>
