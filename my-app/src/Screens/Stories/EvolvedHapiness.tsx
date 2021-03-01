@@ -25,9 +25,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     width: 40,
     height: 40
   },
-  titleContainer: {
-    marginTop: 30
-  }
 }));
 
 export type OwnChartProps = {
