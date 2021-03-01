@@ -36,7 +36,8 @@ export default createMuiTheme({
             fontSize: 34
         },
         h5: {
-            fontSize: 24
+            fontSize: 24,
+            color: "white"
         },
         h6: {
             fontSize: 20
