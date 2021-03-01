@@ -3,7 +3,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
-import { User } from '../Models';
+import { User } from '../../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {

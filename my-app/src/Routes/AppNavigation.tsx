@@ -4,7 +4,6 @@ import { LinearProgress } from '@material-ui/core';
 import Page404 from '../Screens/Page404';
 import Confirm from '../Screens/Confirm';
 import Loading from '../Screens/Loading';
-import Overall from '../Screens/Overall'
 import lazyImport from '../lazy-import';
 import Story from '../Screens/Story';
 
