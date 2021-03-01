@@ -70,7 +70,7 @@ const Loading: FC<LoadingProps> = (props) => {
         (result) => {
           console.log(result);
           history.push({
-            pathname: "/overall",
+            pathname: "/story",
             state: { memberDetail: result },
           });
         },
@@ -120,7 +120,7 @@ const Loading: FC<LoadingProps> = (props) => {
         navButtonsAlwaysInvisible={true}
         indicators={false}
         animation="slide"
-        interval={10000}
+        interval={5000}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />

@@ -10,7 +10,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         padding: 30,
         display: "flex",
         flexDirection: "column",
-        justifyItems: "center"
+        justifyItems: "center",
+        backgroundColor: theme.palette.background.default
     },
     avatar: {
       display: "block",
