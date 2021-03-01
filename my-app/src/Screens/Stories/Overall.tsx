@@ -4,7 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
-import { User } from '../Models';
+import { User } from '../../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
