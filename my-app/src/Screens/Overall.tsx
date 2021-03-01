@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
+import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import { User } from '../Models';
@@ -23,6 +24,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     titleContainer: {
       marginTop: 30
+    },
+    gauge: {
+      color: "#66FCF1"
     }
 }));
     
@@ -44,6 +48,22 @@ const Overall: FC<OverallProps> = (props) => {
           <Typography className={classes.overallSubtext} align="center" variant="subtitle1">
             on a scale from 1 to 9
           </Typography>
+        </div>
+        <div>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress className={classes.gauge} variant="determinate" value={5.6 * 10} size={175} thickness={2.8} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center">
+              <Typography variant="h3" component="div">{`5.6`}</Typography>
+            </Box>
+          </Box>
         </div>
         <div className={classes.avatars}>
             <Avatar alt="Remy Sharp" src="https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg" className={classes.firstAvatar}/>
