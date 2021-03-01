@@ -19,11 +19,13 @@
     "easy-peasy": "^5.0.1",
     "frappe-charts": "^1.5.7",
     "nivo": "^0.7.0",
+    "plotly.js": "^1.58.4",
     "react": "^17.0.1",
     "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.1",
     "react-insta-stories": "^2.1.2",
     "react-material-ui-carousel": "^2.2.0",
+    "react-plotly.js": "^2.5.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "typeface-poppins": "^1.1.13",
@@ -56,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-plotly.js": "^2.2.4"
   }
 }
