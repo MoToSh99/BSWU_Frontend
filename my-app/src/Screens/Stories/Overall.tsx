@@ -14,9 +14,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         textAlign: "center",
         backgroundColor: theme.palette.background.default
     },
-    titleContainer: {
-      marginTop: 30
-    },
     gauge: {
       color: "#66FCF1"
     },
