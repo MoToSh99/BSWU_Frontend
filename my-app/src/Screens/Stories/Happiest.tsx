@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
-import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { UserDetail } from '../../Models';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -19,6 +19,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     
 export interface HappiestProps {
     user : UserDetail
+    embed : TwitterTweetEmbed
 }
 
 const Happiest: FC<HappiestProps> = ({user}) => {
@@ -32,9 +33,7 @@ const Happiest: FC<HappiestProps> = ({user}) => {
             Your happiest Tweet
           </Typography>
         </div>
-        <TwitterTweetEmbed
-        tweetId={user.tweets.happiest.id}
-        />
+        <TwitterTweetEmbed tweetId={user.tweets.happiest.id}/>
 
       </div>
       )

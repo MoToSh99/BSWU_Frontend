@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { useLocation, useHistory } from "react-router-dom";
 import { User, UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     infoText: {
       marginTop: 43
+    },
+    hidden :{
+      hidden: "true"
     }
 }));
     

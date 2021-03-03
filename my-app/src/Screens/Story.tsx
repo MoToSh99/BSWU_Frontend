@@ -5,6 +5,7 @@ import Overall from './Stories/Overall'
 import EvolvedHapiness from './Stories/EvolvedHapiness'
 import Happiest from './Stories/Happiest'
 import Stories from '../Components/Stories'
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 export type Page = {
     object : React.FC,
@@ -18,10 +19,11 @@ const Story = () => {
     const user : UserDetail = location.state.memberDetail
 
 
+
     const stories = [
        {object : <Overall user={user} />, overlay : false},
        {object : <EvolvedHapiness/>, overlay : true},
-       {object : <Happiest user={user} />, overlay : true},
+       {object : <Happiest user={user} />, overlay : false},
     ];
 
     return (

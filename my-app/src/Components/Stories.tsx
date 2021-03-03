@@ -47,7 +47,7 @@ const Stories = (stories) => {
     if (up) {
       if (page === stories["stories"].length - 1) {
         history.push({
-          pathname: "/",
+          pathname: "/done",
         });
       } else {
         setProgress(progress + 100 / stories["stories"].length);

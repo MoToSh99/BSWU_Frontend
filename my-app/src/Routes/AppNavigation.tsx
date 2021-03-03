@@ -6,6 +6,7 @@ import Confirm from '../Screens/Confirm';
 import Loading from '../Screens/Loading';
 import lazyImport from '../lazy-import';
 import Story from '../Screens/Story';
+import Done from '../Screens/Done';
 
 
 const Landing = lazyImport('../Screens/Landing');
@@ -20,6 +21,7 @@ const Appnavigation: FC = () => {
                     <Route path='/confirm' exact component={Confirm} />
                     <Route path='/loading' exact component={Loading} />
                     <Route path='/story' exact component={Story} />
+                    <Route path='/done' exact component={Done} />
                     <Route path='/*' exact component={Page404} />
                 </Switch>
             </Suspense>

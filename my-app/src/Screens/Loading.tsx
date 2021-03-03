@@ -63,12 +63,13 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const getUserinfo = (usr: string) => {
     fetch(
-      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=50`
+      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=600`
     )
       .then((res) => res.json())
       .then(
         (result) => {
           console.log(result);
+
           history.push({
             pathname: "/story",
             state: { memberDetail: result },

@@ -90,7 +90,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = (props) => {
   return (
     <div className={classes.page}>
       <OwnChart data="hej" />
-    </div>
+    </div> 
   )
 }
 
