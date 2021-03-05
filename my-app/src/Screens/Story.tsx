@@ -5,7 +5,7 @@ import Overall from './Stories/Overall'
 import EvolvedHapiness from './Stories/EvolvedHapiness'
 import Happiest from './Stories/Happiest'
 import Stories from '../Components/Stories'
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import TopFive from './Stories/TopFive'
 
 export type Page = {
     object : React.FC,
@@ -24,6 +24,7 @@ const Story = () => {
        {object : <Overall user={user} />, overlay : false},
        {object : <EvolvedHapiness/>, overlay : true},
        {object : <Happiest user={user} />, overlay : false},
+       {object : <TopFive user={user} />, overlay : false},
     ];
 
     return (

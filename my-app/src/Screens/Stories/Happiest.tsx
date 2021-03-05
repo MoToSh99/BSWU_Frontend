@@ -19,12 +19,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     
 export interface HappiestProps {
     user : UserDetail
-    embed : TwitterTweetEmbed
 }
 
 const Happiest: FC<HappiestProps> = ({user}) => {
     const classes = useStyles({});
-    
+
     
     return (
       <div className={classes.page}>
