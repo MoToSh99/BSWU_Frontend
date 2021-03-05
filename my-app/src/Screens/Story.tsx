@@ -4,8 +4,10 @@ import { UserDetail } from '../Models';
 import Overall from './Stories/Overall'
 import EvolvedHapiness from './Stories/EvolvedHapiness'
 import Happiest from './Stories/Happiest'
+import Unhappiest from './Stories/Unhappiest'
 import Stories from '../Components/Stories'
 import TopFive from './Stories/TopFive'
+
 
 export type Page = {
     object : React.FC,
@@ -24,6 +26,7 @@ const Story = () => {
        {object : <Overall user={user} />, overlay : false},
        {object : <EvolvedHapiness/>, overlay : true},
        {object : <Happiest user={user} />, overlay : false},
+       {object : <Unhappiest user={user} />, overlay : false},
        {object : <TopFive user={user} />, overlay : false},
     ];
 
