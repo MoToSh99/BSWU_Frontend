@@ -2,10 +2,8 @@ import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useLocation, useHistory } from "react-router-dom";
-import { User, UserDetail} from '../../Models';
+import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
-import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -40,7 +38,7 @@ const Overall: FC<OverallProps> = ({user}) => {
 
     React.useEffect(() => {
       setTimeout(function() {
-        setProgress(5.6);
+        setProgress(user.overallscore);
       }, 100);
     });
     

@@ -25,18 +25,18 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     }
 }));
     
-export interface HappiestProps {
+export interface UnhappiestProps {
     user : UserDetail
     embed : TwitterTweetEmbed
 }
 
-const Happiest: FC<HappiestProps> = ({user}) => {
+const Unhappiest: FC<UnhappiestProps> = ({user}) => {
     const classes = useStyles({});
     const [progress, setProgress] = React.useState(0.0);
 
     React.useEffect(() => {
       setTimeout(function() {
-        setProgress(user.tweets.happiest.score);
+        setProgress(user.tweets.saddest.score);
       }, 100);
     });
     
@@ -44,10 +44,10 @@ const Happiest: FC<HappiestProps> = ({user}) => {
       <div className={classes.page}>
         <div className={classes.titleContainer}>
           <Typography className={classes.overallText} align="center" variant="h5" component="h5">
-            Your happiest Tweet
+            Your unhappiest Tweet
           </Typography>
         </div>
-        <TwitterTweetEmbed tweetId={user.tweets.happiest.id}/>
+        <TwitterTweetEmbed tweetId={user.tweets.saddest.id}/>
         <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
         <div>
           <Box className={classes.gaugeBox}>
@@ -61,7 +61,7 @@ const Happiest: FC<HappiestProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h5" component="div">{user.tweets.happiest.score}</Typography>
+              <Typography variant="h5" component="div">{user.tweets.saddest.score}</Typography>
             </Box>
           </Box>
         </div>
@@ -69,4 +69,4 @@ const Happiest: FC<HappiestProps> = ({user}) => {
       )
 }
 
-export default Happiest;
+export default Unhappiest;
