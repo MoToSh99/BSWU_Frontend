@@ -42,8 +42,6 @@ const Stories = (stories) => {
   const location = useLocation();
 
   const onProgressChange = (up: Boolean) => {
-    console.log(progress);
-    console.log(page);
     if (up) {
       if (page === stories["stories"].length - 1) {
         history.push({
