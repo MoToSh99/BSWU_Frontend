@@ -27,7 +27,7 @@ const Story = () => {
     ];
 
     return (
-        <Stories stories={stories}/>
+        <Stories stories={stories} user={user}/>
     );
 };
 

@@ -4,6 +4,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import EvolvedHapiness from "../Screens/Stories/EvolvedHapiness";
 import { Button } from "@material-ui/core";
 import { useLocation, useHistory } from "react-router-dom";
+import { UserDetail } from "../Models";
 
 const useStyles = makeStyles({
   page: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Stories = (stories) => {
+const Stories = (stories, user : UserDetail) => {
   const history = useHistory();
   const location = useLocation();
 
@@ -48,6 +49,7 @@ const Stories = (stories) => {
       if (page === stories["stories"].length - 1) {
         history.push({
           pathname: "/done",
+          state: { memberDetail: user },
         });
       } else {
         setProgress(progress + 100 / stories["stories"].length);
