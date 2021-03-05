@@ -27,11 +27,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     
 export interface HappiestProps {
     user : UserDetail
-    embed : TwitterTweetEmbed
 }
 
 const Happiest: FC<HappiestProps> = ({user}) => {
     const classes = useStyles({});
+
     const [progress, setProgress] = React.useState(0.0);
 
     React.useEffect(() => {

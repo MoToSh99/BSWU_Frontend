@@ -6,6 +6,8 @@ import EvolvedHapiness from './Stories/EvolvedHapiness'
 import Happiest from './Stories/Happiest'
 import Unhappiest from './Stories/Unhappiest'
 import Stories from '../Components/Stories'
+import TopFive from './Stories/TopFive'
+
 
 export type Page = {
     object : React.FC,
@@ -25,10 +27,11 @@ const Story = () => {
        {object : <EvolvedHapiness/>, overlay : true},
        {object : <Happiest user={user} />, overlay : false},
        {object : <Unhappiest user={user} />, overlay : false},
+       {object : <TopFive user={user} />, overlay : false},
     ];
 
     return (
-        <Stories stories={stories}/>
+        <Stories stories={stories} user={user}/>
     );
 };
 
