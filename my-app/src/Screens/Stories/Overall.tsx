@@ -20,8 +20,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       position: "relative",
       marginTop: 53
     },
+    celebritiesText: {
+      marginTop: 41
+    },
     infoText: {
-      marginTop: 43
+      marginTop: 25
     },
     hidden :{
       hidden: "true"
@@ -69,6 +72,9 @@ const Overall: FC<OverallProps> = ({user}) => {
           </Box>
         </div>
         <div>
+          <Typography className={classes.celebritiesText} align="center" variant="h5">
+            Celebrities with scores<br/>close to your own
+          </Typography>
           <CelebrityScores user={user}/>
         </div>
         <div className={classes.infoText}>
