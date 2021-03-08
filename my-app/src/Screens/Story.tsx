@@ -7,6 +7,7 @@ import Happiest from './Stories/Happiest'
 import Unhappiest from './Stories/Unhappiest'
 import Stories from '../Components/Stories'
 import TopFive from './Stories/TopFive'
+import WeekdayScores from './Stories/WeekdayScores'
 
 
 export type Page = {
@@ -23,11 +24,12 @@ const Story = () => {
 
 
     const stories = [
-       {object : <Overall user={user} />, overlay : true},
+       {object : <Overall user={user} />, overlay : false},
        {object : <EvolvedHapiness/>, overlay : true},
        {object : <Happiest user={user} />, overlay : false},
        {object : <Unhappiest user={user} />, overlay : false},
        {object : <TopFive user={user} />, overlay : false},
+       {object : <WeekdayScores user={user} />, overlay : false},
     ];
 
     return (
