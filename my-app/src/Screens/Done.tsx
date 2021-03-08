@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { useHistory, useLocation} from "react-router-dom";
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import FinishCard from '../Components/FinishCard';
 import { UserDetail } from '../Models';
 import MainButton from '../Components/MainButton';
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
@@ -20,6 +22,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
 }));
 
+
+
 export interface DoneScreenProps {
   user : UserDetail
 }
@@ -27,6 +31,13 @@ export interface DoneScreenProps {
 const Done: FC<DoneScreenProps> = ({user}) => {
     const classes = useStyles({});
     const history = useHistory();
+    const componentRef = useRef();
+
+    const ComponentToPrint = React.forwardRef((props, ref) => (
+      <div ref={ref}><FinishCard user={user}></FinishCard></div>
+    ));
+    
+
 
     
     return (
@@ -39,9 +50,9 @@ const Done: FC<DoneScreenProps> = ({user}) => {
                 Share your score on social media {user.overallscore}
               </Typography>
             </div>
-            <FinishCard user={user}></FinishCard>
+          <ComponentToPrint ref={componentRef} />
             <div className={classes.buttonContainer}>
-              <MainButton color="primary" text="Share" onClick={()=>{console.log("share")}}/>
+              <MainButton onClick={() => exportComponentAsPNG(componentRef)} color="primary" text="Share"/>
               <MainButton color="secondary" text="Try another username" onClick={() => history.push("/")}/>
             </div>
         </div>

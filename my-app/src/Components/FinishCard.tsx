@@ -43,11 +43,12 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
 		<Paper className={classes.paper}>
 			<div className={classes.top}>
 				<div className={classes.avatarContainer}>
-					<Avatar alt="Remy Sharp" className={classes.avatar}/>
-					<Typography className={classes.usernames} variant="subtitle1">{user.userinfo.username}</Typography>
+					<Avatar alt="Remy Sharp" src={user.userinfo.profile_image_url} className={classes.avatar}/>
+					<Typography className={classes.usernames} variant="subtitle1">@{user.userinfo.username}</Typography>
 				</div>
 				<Box className={classes.gaugeBox}>
-            <CircularProgress className={classes.gauge} variant="determinate" value={58} size={100} thickness={2.5} />
+            
+			<Box><CircularProgress className={classes.gauge} variant="determinate" value={58} size={100} thickness={2.5} /></Box>
             <Box
               top={0}
               left={0}

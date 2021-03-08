@@ -33,7 +33,7 @@ const Story = () => {
        {object : <TopFive user={user} />, overlay : false},
        {object : <Compare user={user} />, overlay : false},
        {object : <WeekdayScores user={user} />, overlay : false},
-       {object : <Done user={user} />, overlay : false},
+       {object : <Done user={user} />, overlay : true},
     ];
 
     return (
