@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation} from "react-router-dom";
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import FinishCard from '../Components/FinishCard';
@@ -10,7 +10,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
       width: '100%',
       fontWeight: 500,
-      padding: 40
   },
   page: {
     height: "100vh",
@@ -19,9 +18,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  buttonContainer: {
-    marginTop: 15
-  }
 }));
 
 export interface DoneScreenProps {
@@ -31,6 +27,7 @@ export interface DoneScreenProps {
 const Done: FC<DoneScreenProps> = ({user}) => {
     const classes = useStyles({});
     const history = useHistory();
+
     
     return (
           <div className={classes.page}>
@@ -39,7 +36,7 @@ const Done: FC<DoneScreenProps> = ({user}) => {
                 All done!
               </Typography>
               <Typography align="center" variant="h5" component="h5">
-                Share your score on social media
+                Share your score on social media {user.overallscore}
               </Typography>
             </div>
             <FinishCard user={user}></FinishCard>

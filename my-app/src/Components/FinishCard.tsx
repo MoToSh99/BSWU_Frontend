@@ -4,7 +4,7 @@ import { UserDetail } from '../Models'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
 	paper: {
-		borderRadius: 40 
+		borderRadius: 20
 	},
 	top: {
 		display: "flex",
@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 }));
 
 export type FinishCardProps = {
-	user?: UserDetail
+	user: UserDetail
 }
 
 const FinishCard: FC<FinishCardProps> = ({ user }) => {
@@ -44,7 +44,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
 			<div className={classes.top}>
 				<div className={classes.avatarContainer}>
 					<Avatar alt="Remy Sharp" className={classes.avatar}/>
-					<Typography className={classes.usernames} variant="subtitle1">@username</Typography>
+					<Typography className={classes.usernames} variant="subtitle1">{user.userinfo.username}</Typography>
 				</div>
 				<Box className={classes.gaugeBox}>
             <CircularProgress className={classes.gauge} variant="determinate" value={58} size={100} thickness={2.5} />
@@ -57,13 +57,13 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h6" component="div">{5.86}</Typography>
+              <Typography variant="h6" component="div">{user.overallscore}</Typography>
           	</Box>
 					</Box>
 			</div>
 			<div className={classes.bottom}>
-				<Typography>Happiest word: bicycle</Typography>
-				<Typography>Unhappiest word: military</Typography>
+				<Typography>Happiest word: {user.topfivewords.top[0]}</Typography>
+				<Typography>Unhappiest word: {user.topfivewords.bottom[0]}</Typography>
 				<Typography className={classes.logo} variant="subtitle1">HappyTweet</Typography>
 			</div>
 		</Paper>
