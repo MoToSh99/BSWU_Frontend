@@ -20,7 +20,7 @@ export type UserDetail = {
   tweetsamount: number;
   tweetstart: string;
   userinfo: User;
-  weekscores: number[];
+  weekscores: WeekScores[];
   wordsmatched: number;
 }
 
@@ -47,5 +47,7 @@ export type HappiestOrSaddest = {
   id: string;
   score: number;
 }
-
-
+export type WeekScores = {
+  Day: string;
+  Score: number;
+}
