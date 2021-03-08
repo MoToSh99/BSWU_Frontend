@@ -58,6 +58,9 @@ const Stories = (stories, user : UserDetail) => {
     } else {
       if (page === 0) {
         setProgress(progress);
+      } else if (page === stories["stories"].length - 1) {
+        setHidden(false);
+        setPage(page - 1);
       } else {
         setProgress(progress - 100 / (stories["stories"].length - 1));
         setPage(page - 1);
