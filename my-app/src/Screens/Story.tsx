@@ -23,7 +23,7 @@ const Story = () => {
 
 
     const stories = [
-       {object : <Overall user={user} />, overlay : false},
+       {object : <Overall user={user} />, overlay : true},
        {object : <EvolvedHapiness/>, overlay : true},
        {object : <Happiest user={user} />, overlay : false},
        {object : <Unhappiest user={user} />, overlay : false},
