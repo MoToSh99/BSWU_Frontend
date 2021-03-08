@@ -7,6 +7,7 @@ import Happiest from './Stories/Happiest'
 import Unhappiest from './Stories/Unhappiest'
 import Stories from '../Components/Stories'
 import TopFive from './Stories/TopFive'
+import Compare from './Stories/Compare';
 import WeekdayScores from './Stories/WeekdayScores'
 
 
@@ -29,6 +30,7 @@ const Story = () => {
        {object : <Happiest user={user} />, overlay : false},
        {object : <Unhappiest user={user} />, overlay : false},
        {object : <TopFive user={user} />, overlay : false},
+       {object : <Compare user={user} />, overlay : false},
        {object : <WeekdayScores user={user} />, overlay : false},
     ];
 

@@ -22,6 +22,14 @@ export type UserDetail = {
   userinfo: User;
   weekscores: number[];
   wordsmatched: number;
+  danishuserscore: Comparison 
+}
+
+export type Comparison = {
+  danishoverall: number,
+  percent: number,
+  usersamount: number,
+  usersless: number
 }
 
 export type Alltweets = {
