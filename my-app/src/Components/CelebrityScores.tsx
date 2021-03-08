@@ -55,61 +55,61 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
 
 	return (
 		<Box className={classes.avatarsBox}>
-            <Box>
-              <ClickAwayListener onClickAway={() => handleTooltipClose(1)}>
-              <Tooltip
-                PopperProps={{
-                  disablePortal: true,
-                }}
-                onClose={() => handleTooltipClose(1)}
-                open={open1}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener
-                title={"@" + user.celebrityscore[0].username} 
-                arrow>
-                  <Avatar onClick={() => handleTooltipOpen(1)} alt="Remy Sharp" src={user.celebrityscore[0].pic} className={classes.avatar}/>
-                </Tooltip>
-              </ClickAwayListener>
-              <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
-            </Box>
-            <Box>
-            <ClickAwayListener onClickAway={() => handleTooltipClose(2)}>
-              <Tooltip
-                PopperProps={{
-                  disablePortal: true,
-                }}
-                onClose={() => handleTooltipClose(2)}
-                open={open2}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener
-                title={"@" + user.celebrityscore[1].username} 
-                arrow>
-                  <Avatar onClick={() => handleTooltipOpen(2)} alt="Remy Sharp" src={user.celebrityscore[1].pic} className={classes.middleAvatar}/>
-                </Tooltip>
-              </ClickAwayListener>
-              <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[1].score}</Typography>
-            </Box>
-            <Box>
-            <ClickAwayListener onClickAway={() => handleTooltipClose(3)}>
-              <Tooltip
-                PopperProps={{
-                  disablePortal: true,
-                }}
-                onClose={() => handleTooltipClose(3)}
-                open={open3}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener
-                title={"@" + user.celebrityscore[2].username} 
-                arrow>
-                  <Avatar onClick={() => handleTooltipOpen(3)} alt="Remy Sharp" src={user.celebrityscore[2].pic} className={classes.avatar}/>
-                </Tooltip>
-              </ClickAwayListener>
-              <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
-            </Box>
-          </Box>
+      <Box>
+        <ClickAwayListener onClickAway={() => handleTooltipClose(1)}>
+        <Tooltip
+          PopperProps={{
+            disablePortal: true,
+          }}
+          onClose={() => handleTooltipClose(1)}
+          open={open1}
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          title={"@" + user.celebrityscore[0].username} 
+          arrow>
+            <Avatar onClick={() => handleTooltipOpen(1)} alt="Remy Sharp" src={user.celebrityscore[0].pic} className={classes.avatar}/>
+          </Tooltip>
+        </ClickAwayListener>
+        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
+      </Box>
+      <Box>
+      <ClickAwayListener onClickAway={() => handleTooltipClose(2)}>
+        <Tooltip
+          PopperProps={{
+            disablePortal: true,
+          }}
+          onClose={() => handleTooltipClose(2)}
+          open={open2}
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          title={"@" + user.celebrityscore[1].username} 
+          arrow>
+            <Avatar onClick={() => handleTooltipOpen(2)} alt="Remy Sharp" src={user.celebrityscore[1].pic} className={classes.middleAvatar}/>
+          </Tooltip>
+        </ClickAwayListener>
+        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[1].score}</Typography>
+      </Box>
+      <Box>
+      <ClickAwayListener onClickAway={() => handleTooltipClose(3)}>
+        <Tooltip
+          PopperProps={{
+            disablePortal: true,
+          }}
+          onClose={() => handleTooltipClose(3)}
+          open={open3}
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          title={"@" + user.celebrityscore[2].username} 
+          arrow>
+            <Avatar onClick={() => handleTooltipOpen(3)} alt="Remy Sharp" src={user.celebrityscore[2].pic} className={classes.avatar}/>
+          </Tooltip>
+        </ClickAwayListener>
+        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
+      </Box>
+    </Box>
 	)
 }
 
