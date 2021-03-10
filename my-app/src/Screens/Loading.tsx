@@ -63,7 +63,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const getUserinfo = (usr: string) => {
     fetch(
-      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=600`
+      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=300`
     )
       .then((res) => res.json())
       .then(
