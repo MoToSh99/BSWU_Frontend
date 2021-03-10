@@ -28,6 +28,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     hidden :{
       hidden: "true"
+    },
+    value : {
+      color: "#66FCF1"
     }
 }));
     
@@ -79,13 +82,13 @@ const Overall: FC<OverallProps> = ({user}) => {
         </div>
         <div className={classes.infoText}>
           <Typography align="center" variant="h6" component="h6">
-              Based on {user.tweetsamount} Tweets
+              Based on <span className={classes.value}>{user.tweetsamount}</span> Tweets
           </Typography>
           <Typography align="center" variant="h6" component="h6">
-              Gathered between {user.tweetstart} and today
+              Gathered between <span className={classes.value}>{user.tweetstart}</span> and today
           </Typography>
           <Typography align="center" variant="h6" component="h6">
-              Matching on {user.wordsmatched} words
+              Matching on <span className={classes.value}>{user.wordsmatched}</span> words
           </Typography>
         </div>
       </div>
