@@ -80,7 +80,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const getUserinfoTest2 = (usr: string) => {
-    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=1000`)
+    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=100`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -100,12 +100,15 @@ const Loading: FC<LoadingProps> = (props) => {
       .then((res) => res.json())
       .then(
         (result) => {
+          if (result["Error"]) getUserinfoTest12(usr)
+          else{
           console.log(result);
 
           history.push({
             pathname: "/story",
             state: { memberDetail: result },
           });
+        }
         },
         (error) => {
           console.log(error);
