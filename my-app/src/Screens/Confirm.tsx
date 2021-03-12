@@ -75,6 +75,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
         <div className={classes.inputContainer}>
           <MainButton
             color="primary"
+            bold={true}
             text="Yes"
             onClick={() => {
               history.push({pathname: "/loading",
@@ -84,6 +85,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
           />
           <MainButton
             color="secondary"
+            bold={false}
             text="No, let me try again"
             onClick={() => {
               history.push({

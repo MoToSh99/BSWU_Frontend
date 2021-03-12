@@ -15,21 +15,33 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       marginTop: 0,
       fontWeight: 500,
       background: "white",
-      borderRadius: 15,
-      marginBottom: 100,
+      borderRadius: 15
   },
   page: {
-    height: "100vh",
+    height: "100%",
     padding: 30,
+    paddingBottom: 70,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  inputContainer: {
-    
+    justifyContent: "space-between"
   },
   text: {
-    marginBottom: 15,
+    marginBottom: 100,
+  },
+  errorTextHidden: {
+    color: "red",
+    textAlign: "center",
+    marginBottom: 90,
+    visibility: "hidden"
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    marginBottom: 90,
+    visibility: "visible"
+  },
+  footerContainer: {
+    marginTop: "120px"
   }
 }));
 
@@ -51,11 +63,13 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
             },
             (error) => {
               console.log(error)
+              setError(true)
             }
           )
     }
 
     const [username, setUsername] = useState("")
+    const [error, setError] = useState(false)
     
     return (
           <div className={classes.page}>
@@ -70,11 +84,15 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   Enter your Twitter username:
               </Typography>
               <TextField
+                  error={error}
                   className={classes.textField}
                   id="filled-basic"
                   label="Twitter Username"
                   variant="filled"
-                  onChange={(e) => {setUsername(e.target.value)}}
+                  onChange={(e) => {
+                    setUsername(e.target.value)
+                    setError(false)
+                  }}
                   InputProps={{
                     disableUnderline: true,
                     endAdornment: (
@@ -84,15 +102,18 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   ),
                 }}
                 />
-    
+              {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
               <MainButton
                 color="primary"
+                bold={true}
                 text="Start your journey"
-                onClick={() => { getUserinfo(username) }}
+                onClick={() => { 
+                  getUserinfo(username) 
+                }}
               />
             </div>
             <div className={classes.footerContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
                   Made with ❤️ by DTM
               </Typography>
             </div>

@@ -28,6 +28,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 },
 button: {
     margin: 20,
+    textTransform: "none"
 },
 }));
 

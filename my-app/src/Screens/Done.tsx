@@ -52,8 +52,8 @@ const Done: FC<DoneScreenProps> = ({user}) => {
             </div>
           <ComponentToPrint ref={componentRef} />
             <div className={classes.buttonContainer}>
-              <MainButton onClick={() => exportComponentAsPNG(componentRef)} color="primary" text="Share"/>
-              <MainButton color="secondary" text="Try another username" onClick={() => history.push("/")}/>
+              <MainButton onClick={() => exportComponentAsPNG(componentRef)} color="primary" bold={true} text="Share"/>
+              <MainButton color="secondary" bold={false} text="Try another username" onClick={() => history.push("/")}/>
             </div>
         </div>
     )
