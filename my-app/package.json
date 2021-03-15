@@ -21,6 +21,7 @@
     "nivo": "^0.7.0",
     "plotly.js": "^1.58.4",
     "react": "^17.0.1",
+    "react-animations": "^1.0.0",
     "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.1",
     "react-fade-in": "^2.0.1",
@@ -63,6 +64,7 @@
   },
   "devDependencies": {
     "@types/react-plotly.js": "^2.2.4",
+    "@types/styled-components": "^5.1.9",
     "case-sensitive-paths-webpack-plugin": "^2.3.0"
   }
 }

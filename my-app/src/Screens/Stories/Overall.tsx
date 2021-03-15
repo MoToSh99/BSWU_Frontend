@@ -5,7 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
-import { tada } from 'react-animations';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -44,12 +43,6 @@ const Overall: FC<OverallProps> = ({user}) => {
     const classes = useStyles({});
     const [progress, setProgress] = React.useState(0.0);
 
-    const tadaAnimation = keyframes`${tada}`;
-
-    const Tada = styled.div`
-    animation: 1s ${tadaAnimation};
-    `;
-
     React.useEffect(() => {
         setProgress(user.overallscore);
     });
@@ -75,7 +68,7 @@ const Overall: FC<OverallProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Tada><Typography variant="h4" component="div">{user.overallscore}</Typography></Tada>
+              <Typography variant="h4" component="div">{user.overallscore}</Typography>
             </Box>
           </Box>
         </div>
