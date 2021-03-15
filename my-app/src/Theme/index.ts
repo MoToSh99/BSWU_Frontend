@@ -27,26 +27,31 @@ export default createMuiTheme({
             fontSize: 96
         },
         h2: {
-            fontSize: 60
+            fontSize: 60,
+            color: "white",
         },
         h3: {
             fontSize: 48
         },
         h4: {
-            fontSize: 34
+            fontSize: 34,
+            color: "white",
         },
         h5: {
             fontSize: 24,
             color: "white"
         },
         h6: {
-            fontSize: 20
+            fontSize: 20,
+            color: "white",
         },
         subtitle1: {
-            fontSize: 16
+            fontSize: 16,
+            color: "white",
         },
         subtitle2: {
-            fontSize: 14
+            fontSize: 14,
+            color: "white",
         },
         body1: {
             fontSize: 16
