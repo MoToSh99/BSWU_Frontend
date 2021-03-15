@@ -7,8 +7,8 @@
     "@material-ui/icons": "^4.11.2",
     "@nivo/core": "^0.67.0",
     "@nivo/line": "^0.32.0",
-    "@types/node": "^12.20.4",
-    "@types/react": "^16.14.4",
+    "@types/node": "^12.20.5",
+    "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.11",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
@@ -16,8 +16,8 @@
     "clsx": "^1.1.1",
     "customize-cra": "^0.9.1",
     "dayjs": "^1.10.4",
-    "easy-peasy": "^5.0.1",
-    "frappe-charts": "^1.5.7",
+    "easy-peasy": "^5.0.3",
+    "frappe-charts": "^1.5.8",
     "nivo": "^0.7.0",
     "plotly.js": "^1.58.4",
     "react": "^17.0.1",
@@ -26,13 +26,13 @@
     "react-dom": "^17.0.1",
     "react-fade-in": "^2.0.1",
     "react-insta-stories": "^2.1.2",
-    "react-material-ui-carousel": "^2.2.0",
+    "react-material-ui-carousel": "^2.2.1",
     "react-plotly.js": "^2.5.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-twitter-embed": "^3.0.3",
     "typeface-poppins": "^1.1.13",
-    "typescript": "^3.7.7",
+    "typescript": "^3.9.9",
     "universal-cookie": "^4.0.4",
     "webpack-bundle-analyzer": "^3.9.0"
   },
@@ -65,6 +65,6 @@
   "devDependencies": {
     "@types/react-plotly.js": "^2.2.4",
     "@types/styled-components": "^5.1.9",
-    "case-sensitive-paths-webpack-plugin": "^2.3.0"
+    "case-sensitive-paths-webpack-plugin": "^2.4.0"
   }
 }
