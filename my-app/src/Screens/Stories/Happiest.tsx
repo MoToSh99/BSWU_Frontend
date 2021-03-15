@@ -45,15 +45,10 @@ const Happiest: FC<HappiestProps> = ({user}) => {
       setTimeout(function() {
         setShow(true);
       }, 300);
+      setTimeout(function() {
+        setProgress(user.tweets.happiest.score);
+      }, 500);
     }
-
-    React.useEffect(() => {
-      if (loaded) {
-        setTimeout(function() {
-          setProgress(user.tweets.happiest.score);
-        }, 200);
-      }
-    });
     
     return (
       <div className={classes.page}>
