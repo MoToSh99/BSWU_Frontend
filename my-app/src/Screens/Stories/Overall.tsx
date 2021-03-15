@@ -7,13 +7,6 @@ import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
 import { tada } from 'react-animations';
 
-const tadaAnimation = keyframes`${tada}`;
-
-const Tada = styled.div`
-  animation: 1s ${tadaAnimation};
-`;
-
-
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
         padding: 30,
@@ -51,10 +44,14 @@ const Overall: FC<OverallProps> = ({user}) => {
     const classes = useStyles({});
     const [progress, setProgress] = React.useState(0.0);
 
+    const tadaAnimation = keyframes`${tada}`;
+
+    const Tada = styled.div`
+    animation: 1s ${tadaAnimation};
+    `;
+
     React.useEffect(() => {
-      setTimeout(function() {
         setProgress(user.overallscore);
-      }, 100);
     });
     return (
       <div className={classes.page}>

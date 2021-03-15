@@ -24,10 +24,9 @@ const defaultOptions2 = {
 };
 
 
+export type LoadingInfoProps = {
 
-  export type LoadingInfoProps = {
-
-  }
+}
 
 const LoadingInfo: FC<LoadingInfoProps> = () => {
 
@@ -37,9 +36,6 @@ const [loading2, setLoading2] = React.useState(true)
 
   React.useEffect(() => {
     setTimeout(() => {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(json => {
           setLoading(false);
           setLoading2(true);
           setTimeout(() => {
@@ -47,9 +43,8 @@ const [loading2, setLoading2] = React.useState(true)
           }, 1500);
           setTimeout(() => {
             setDone(true);
-          }, 15000);
-        });
-    }, 2000);
+          }, 4000);
+        }, 2000);
 	});
 
 

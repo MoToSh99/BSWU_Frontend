@@ -205,7 +205,9 @@ const Loading: FC<LoadingProps> = (props) => {
       <div className={classes.slideshow}>
         <Slideshow />
       </div>
-      <LoadingInfo></LoadingInfo>
+      <Box display="flex" justifyContent="center" alignItems="flex-end">
+        <CircularProgress size={200} color="primary" />
+      </Box>
     </div>
   );
 };
