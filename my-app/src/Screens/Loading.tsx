@@ -4,8 +4,15 @@ import image1 from "../Images/Saly-7.png";
 import image2 from "../Images/Saly-10.png";
 import image3 from "../Images/Saly-14.png";
 import image4 from "../Images/Saly-31.png";
+import Lottie from "react-lottie";
 import logo from "../Images/loading.gif";
 import LoadingInfo from "../Components/Loading/LoadingInfo"
+import * as twitterbird from "../Images/Twitter.json";
+import * as friends from "../Images/friends.json";
+import * as verified from "../Images/verified.json";
+import * as geolocalization from "../Images/geolocalization.json";
+import * as development from "../Images/web-development.json";
+
 import {
   Typography,
   Paper,
@@ -20,6 +27,7 @@ import { User } from "../Models";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Carousel from "react-material-ui-carousel";
 
+
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
     padding: 30,
@@ -32,12 +40,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginBottom: 60,
   },
   slideshow: {
-    marginBottom: 150,
+    marginBottom: 180,
   },
   root: {
     flexGrow: 1,
   },
   paper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyItems: "center",
     padding: theme.spacing(2),
     margin: "auto",
     maxWidth: 500,
@@ -54,6 +65,50 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
 }));
 
+const defaultOptions = {
+  loop: false,
+  autoplay: true,
+  animationData: twitterbird.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const geolocalizationA = {
+  loop: false,
+  autoplay: true,
+  animationData: geolocalization.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const friendsA = {
+  loop: false,
+  autoplay: true,
+  animationData: friends.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const verifiedA = {
+  loop: true,
+  autoplay: true,
+  animationData: verified.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const developmentA = {
+  loop: true,
+  autoplay: true,
+  animationData: development.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
 export interface LoadingProps {}
 
 const sleep = (milliseconds : number) => {
@@ -81,7 +136,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const getUserinfoTest2 = (usr: string) => {
-    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=200`)
+    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=2000`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -129,26 +184,26 @@ const Loading: FC<LoadingProps> = (props) => {
           "Wow! You have posted " +
           userinfo.statuses_count +
           " Tweets since you created your account. Are you OK?",
-        image: image1,
+        image: <Lottie options={defaultOptions} height={120} width={120} />,
       },
       {
         description:
           "You have " +
           userinfo.friends_count +
           " friends on Twitter! Hopefully you have some in real life too.",
-        image: image2,
+        image: <Lottie options={friendsA} height={120} width={120} />
       },
       {
         description: userinfo.verified
           ? "Your account is verified! I guess you're a pretty big thing, huh?"
           : "Looks like your account isn't verified. Are you not famous enough?",
-        image: image3,
+        image: <Lottie options={verifiedA} height={120} width={120} />
       },
       {
         description: userinfo.geo_enabled
           ? "You have geo-tagged some of your Tweets! You're one of the very few people to have done that. Congrats!"
           : "You haven't chosen to geo-tag any of your Tweets. Don't worry, you're not exactly missing out.",
-        image: image4,
+        image: <Lottie options={geolocalizationA} height={120} width={120} />
       },
     ];
 
@@ -156,7 +211,7 @@ const Loading: FC<LoadingProps> = (props) => {
       <Carousel
         navButtonsAlwaysInvisible={true}
         indicators={false}
-        animation="slide"
+        animation="fade"
         interval={5000}
       >
         {items.map((item, i) => (
@@ -169,24 +224,18 @@ const Loading: FC<LoadingProps> = (props) => {
   function Item(props) {
     return (
       <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
+        <Paper className={classes.paper} elevation={3}>
+          <Grid container spacing={5} direction="column" alignItems="center" justify="center">
             <Grid item xs={12} sm container>
               <Grid item xs container spacing={2}>
                 <Grid item xs>
-                  <Typography variant="body2" gutterBottom>
+                  <Typography variant="body1" gutterBottom>
                     {props.item.description}
                   </Typography>
                 </Grid>
               </Grid>
               <Grid item>
-                <ButtonBase className={classes.image}>
-                  <img
-                    className={classes.img}
-                    alt="imageoffiguer"
-                    src={props.item.image}
-                  />
-                </ButtonBase>
+               {props.item.image}
               </Grid>
             </Grid>
           </Grid>
@@ -206,7 +255,7 @@ const Loading: FC<LoadingProps> = (props) => {
         <Slideshow />
       </div>
       <Box display="flex" justifyContent="center" alignItems="flex-end">
-        <CircularProgress size={200} color="primary" />
+        <Lottie options={developmentA} />
       </Box>
     </div>
   );
