@@ -1,11 +1,18 @@
-import { Avatar, Box, CircularProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core'
+import { Avatar, Box, CircularProgress, makeStyles, Paper, Theme, Typography, Grid } from '@material-ui/core'
 import React, { FC } from 'react'
 import { UserDetail } from '../Models'
+import dk from '../Images/dk.png'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
-	paper: {
-		borderRadius: 20
-	},
+	root: {
+		flexGrow: 1,
+	  },
+	  paper: {
+		padding: theme.spacing(2),
+		textAlign: 'center',
+		color: theme.palette.text.secondary,
+		backgroundColor: "#25335A",
+	  },
 	top: {
 		display: "flex",
 		flexDirection: "row",
@@ -25,11 +32,39 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	},
 	avatar: {
 		width: 90,
-		height: 90
+		height: 90,
+		border: "2px solid white"
 	},
 	logo: {
-		marginTop: 10
-	}
+		marginTop: 10,
+	},
+	username: {
+		color: "black"
+	},
+	img: {
+		width: 30
+	},
+	red: {
+		color: "red"
+	},
+	green: {
+		color: "lightgreen"
+	},
+	blueText: {
+		color: "#66FCF1",
+		fontSize: 28,
+		marginTop: 5,
+		marginBottom: 5,
+
+	},
+	avatar: {
+		display: "block",
+		marginLeft: "auto",
+		marginRight: "auto",
+		marginTop: 46,
+		width: 60,
+		height: 60
+	  },
 
 }));
 
@@ -40,15 +75,31 @@ export type FinishCardProps = {
 const FinishCard: FC<FinishCardProps> = ({ user }) => {
 	const classes = useStyles({})
 	return (
-		<Paper className={classes.paper}>
-			<div className={classes.top}>
-				<div className={classes.avatarContainer}>
-					<Avatar alt="Remy Sharp" src={user.userinfo.profile_image_url} className={classes.avatar}/>
-					<Typography className={classes.usernames} variant="subtitle1">@{user.userinfo.username}</Typography>
-				</div>
-				<Box className={classes.gaugeBox}>
-            
-			<Box><CircularProgress className={classes.gauge} variant="determinate" value={58} size={100} thickness={2.5} /></Box>
+		<div className={classes.root}>
+<Paper className={classes.paper}>
+<Grid container spacing={0}>
+<Grid item xs={6}>
+          <Paper className={classes.paper}>
+			  
+		  <div className={classes.top}>
+                <div className={classes.avatarContainer}>
+                    <Avatar alt="Remy Sharp" src={user.userinfo.profile_image_url} className={classes.avatar}/>
+                    <Typography variant="h6" className={classes.usernames}>@{user.userinfo.username}</Typography>
+                </div>
+			</div>
+			<Typography variant="subtitle2" component="div">You are among the</Typography>
+			<Typography className={classes.blueText}>{user.danishuserscore.percent}%</Typography>
+			<Typography variant="subtitle2" component="div">happiest people in</Typography>
+			<img className={classes.img} src={dk} alt="Denmark" />
+		  </Paper>
+        </Grid>
+        <Grid item xs={6} >
+          <Paper className={classes.paper}>
+		  <Typography variant="h6" component="div">My hapiness score</Typography>
+		  <Box className={classes.gaugeBox}>
+            <Box>
+				<CircularProgress className={classes.gauge} variant="determinate" value={58} size={100} thickness={2.5} />
+			</Box>
             <Box
               top={0}
               left={0}
@@ -59,15 +110,19 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
               alignItems="center"
               justifyContent="center">
               <Typography variant="h6" component="div">{user.overallscore}</Typography>
-          	</Box>
-					</Box>
-			</div>
-			<div className={classes.bottom}>
-				<Typography>Happiest word: {user.topfivewords.top[0]}</Typography>
-				<Typography>Unhappiest word: {user.topfivewords.bottom[0]}</Typography>
-				<Typography className={classes.logo} variant="subtitle1">HappyTweet</Typography>
-			</div>
+            </Box>
+			</Box>
+			<Typography variant="subtitle1" component="div">Happiest word:</Typography>
+			<Typography className={classes.green} component="div">{user.topfivewords.top[0]}</Typography>
+			<Typography variant="subtitle1" component="div">Unhappiest word: </Typography>
+			<Typography className={classes.red} component="div">{user.topfivewords.bottom[0]}</Typography>
+
+		  </Paper>
+        </Grid>
+		</Grid>
+		<Typography variant="subtitle1" className={classes.logo}>HappyTweet</Typography>
 		</Paper>
+		</div>
 	)
 }
 
