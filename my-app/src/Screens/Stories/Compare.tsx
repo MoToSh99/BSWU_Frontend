@@ -4,6 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail } from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
+import FadeIn from 'react-fade-in';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
 	page: {
@@ -53,11 +54,14 @@ const Compare: FC<CompareProps> = ({ user }) => {
 	const [progress, setProgress] = React.useState(0.0);
 	const [denmark, setDenmark] = React.useState(0.0)
 
+	const [fade, setFade] = React.useState(false);
+
 	React.useEffect(() => {
 		setTimeout(function () {
 			setProgress(user.overallscore);
 			setDenmark(user.danishuserscore.danishoverall);
 		}, 100);
+		setFade(true);
 	});
 
 	return (
@@ -65,15 +69,16 @@ const Compare: FC<CompareProps> = ({ user }) => {
 			<div className={classes.titleContainer}>
 				<Typography className={classes.overallText} align="center" variant="h5" component="h5">
 					Your happiness compared
-          </Typography>
-				<Typography className={classes.overallSubtext} align="center" variant="h5">
-					with others
-          </Typography>
+				</Typography>
+						<Typography className={classes.overallSubtext} align="center" variant="h5">
+							with others
+				</Typography>
 			</div>
+			<FadeIn delay={300} visible={fade}>
 			<div className={classes.gaugesContainer}>
 				<div>
 					<Box className={classes.gaugeBox}>
-						<CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={120} thickness={2.5} />
+						<CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={100} thickness={2.5} />
 						<Box
 							top={0}
 							left={0}
@@ -90,7 +95,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 				<div>
 					<Box className={classes.gaugeBox}>
-						<CircularProgress className={classes.gauge} variant="determinate" value={denmark * 10} size={120} thickness={2.5} />
+						<CircularProgress className={classes.gauge} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
 						<Box
 							top={0}
 							left={0}
@@ -107,17 +112,18 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="h6" component="div">You are among the</Typography>
-				<p className={classes.blueText}>{user.danishuserscore.percent}%</p>
-				<Typography variant="h6" component="div">happiest people in Denmark</Typography>
+				<Typography variant="subtitle1" component="div">You are among the</Typography>
+				<Typography variant="subtitle1" className={classes.blueText}>{user.danishuserscore.percent}%</Typography>
+				<Typography variant="subtitle1" component="div">happiest people in Denmark</Typography>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="h6" component="div">From out dataset of {user.danishuserscore.usersamount}</Typography>
-				<Typography variant="h6" component="div">users from Denmark</Typography>
-				<p className={classes.blueText}>{user.danishuserscore.usersless}</p>
-				<Typography variant="h6" component="div">have a higher hapiness</Typography>
-				<Typography variant="h6" component="div">score than you</Typography>
+				<Typography variant="subtitle1" component="div">From out dataset of {user.danishuserscore.usersamount}</Typography>
+				<Typography variant="subtitle1" component="div">users from Denmark</Typography>
+				<Typography variant="subtitle1" className={classes.blueText}>{user.danishuserscore.usersless}</Typography>
+				<Typography variant="subtitle1" component="div">have a higher hapiness</Typography>
+				<Typography variant="subtitle1" component="div">score than you</Typography>
 			</div>
+			</FadeIn>
 		</div>
 	)
 }

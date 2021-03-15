@@ -34,20 +34,13 @@ const Happiest: FC<HappiestProps> = ({user}) => {
     const classes = useStyles({});
 
     const [progress, setProgress] = React.useState(0.0);
-    const [loaded, setLoaded] = React.useState(false);
-    const [show, setShow] = React.useState(false);
+    const [fade, setFade] = React.useState(false);
 
     const onTweetLoaded = () => {
-      setLoaded(true);
-    }
-
-    const onFadeDone = () => {
+      setFade(true);
       setTimeout(function() {
-        setShow(true);
-      }, 300);
-      setTimeout(function() {
-        setProgress(user.tweets.happiest.score);
-      }, 500);
+        setProgress(user.tweets.saddest.score);
+      }, 600);
     }
     
     return (
@@ -57,12 +50,10 @@ const Happiest: FC<HappiestProps> = ({user}) => {
             Your happiest Tweet
           </Typography>
         </div>
+        <FadeIn delay={200} visible={fade}>
         <div style={{height: 370, overflow: "scroll"}}>
-        <FadeIn visible={loaded} onComplete={onFadeDone}>
           <TwitterTweetEmbed tweetId={user.tweets.happiest.id} options={{cards: "hidden", align: "center", conversation: "none"}} onLoad={onTweetLoaded}/>
-        </FadeIn>
         </div>
-        <FadeIn visible={show}>
           <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
           <div>
             <Box className={classes.gaugeBox}>
