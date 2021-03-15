@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Zoom } from '@material-ui/core';
 import { UserDetail } from '../../Models';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import CircularProgress from '@material-ui/core/CircularProgress';
