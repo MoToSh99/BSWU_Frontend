@@ -33,7 +33,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     justifyItems: "center",
   },
   header: {
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 40,
   },
   slideshow: {
@@ -290,7 +290,7 @@ const Loading: FC<LoadingProps> = (props) => {
         ) : (
           <h1>Done</h1>
         )}
-        <Lottie options={developmentA} />
+        <Lottie options={developmentA} height={240} width={240} />
       </Box>
     </div>
   );
