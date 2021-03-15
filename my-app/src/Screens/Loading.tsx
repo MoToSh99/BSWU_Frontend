@@ -31,7 +31,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginBottom: 60,
   },
   slideshow: {
-    marginBottom: 200,
+    marginBottom: 150,
   },
   root: {
     flexGrow: 1,
@@ -205,7 +205,7 @@ const Loading: FC<LoadingProps> = (props) => {
         <Slideshow />
       </div>
       <Box display="flex" justifyContent="center" alignItems="flex-end">
-        <CircularProgress size={200} color="primary" />
+        <CircularProgress size={150} color="primary" />
       </Box>
     </div>
   );
