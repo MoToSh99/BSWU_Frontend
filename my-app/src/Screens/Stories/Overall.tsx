@@ -20,10 +20,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     gaugeBox: {
       position: "relative",
-      marginTop: 53
+      marginTop: 30
     },
     celebritiesText: {
-      marginTop: 41
+      marginTop: 30
     },
     infoText: {
       marginTop: 25
@@ -65,7 +65,7 @@ const Overall: FC<OverallProps> = ({user}) => {
         </div>
         <div>
           <Box className={classes.gaugeBox}>
-            <CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={190} thickness={2.5} />
+            <CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={140} thickness={2.5} />
             <Box
               top={0}
               left={0}
@@ -75,24 +75,24 @@ const Overall: FC<OverallProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Tada><Typography variant="h2" component="div">{user.overallscore}</Typography></Tada>
+              <Tada><Typography variant="h4" component="div">{user.overallscore}</Typography></Tada>
             </Box>
           </Box>
         </div>
         <div>
-          <Typography className={classes.celebritiesText} align="center" variant="h5">
+          <Typography className={classes.celebritiesText} align="center" variant="h6">
             Celebrities with scores<br/>close to your own
           </Typography>
           <CelebrityScores user={user}/>
         </div>
         <div className={classes.infoText}>
-          <Typography align="center" variant="h6" component="h6">
+          <Typography align="center" variant="subtitle1" component="h6">
               Based on <span className={classes.value}>{user.tweetsamount}</span> Tweets
           </Typography>
-          <Typography align="center" variant="h6" component="h6">
+          <Typography align="center" variant="subtitle1" component="h6">
               Gathered between <span className={classes.value}>{user.tweetstart}</span> and today
           </Typography>
-          <Typography align="center" variant="h6" component="h6">
+          <Typography align="center" variant="subtitle1" component="h6">
               Matching on <span className={classes.value}>{user.wordsmatched}</span> words
           </Typography>
         </div>

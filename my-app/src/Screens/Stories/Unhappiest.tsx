@@ -58,9 +58,11 @@ const Unhappiest: FC<UnhappiestProps> = ({user}) => {
             Your unhappiest Tweet
           </Typography>
         </div>
+        <div style={{height: 370, overflow: "scroll"}}>
         <FadeIn visible={loaded} onComplete={onFadeDone}>
-          <TwitterTweetEmbed tweetId={user.tweets.saddest.id} options={{cards: "hidden"}} onLoad={onTweetLoaded}/>
+          <TwitterTweetEmbed tweetId={user.tweets.saddest.id} options={{cards: "hidden", align: "center", conversation: "none"}} onLoad={onTweetLoaded}/>
         </FadeIn>
+        </div>
         <FadeIn visible={show}>
           <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
           <div>
