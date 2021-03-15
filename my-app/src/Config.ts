@@ -1,5 +1,5 @@
 
-import DEFAULT_CONFIG from './config.json';
+import DEFAULT_CONFIG from './confige.json';
 let envConfig: Record<string, any> = {};
 let defaultConfig: Record<string, any> = DEFAULT_CONFIG;
 

@@ -32,7 +32,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginBottom: 60,
   },
   slideshow: {
-    marginBottom: 200,
+    marginBottom: 150,
   },
   root: {
     flexGrow: 1,
@@ -81,7 +81,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const getUserinfoTest2 = (usr: string) => {
-    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=100`)
+    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=200`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -128,7 +128,7 @@ const Loading: FC<LoadingProps> = (props) => {
         description:
           "Wow! You have posted " +
           userinfo.statuses_count +
-          " Tweets since you created your account! Are you OK?",
+          " Tweets since you created your account. Are you OK?",
         image: image1,
       },
       {
@@ -140,14 +140,14 @@ const Loading: FC<LoadingProps> = (props) => {
       },
       {
         description: userinfo.verified
-          ? "Your account is verified! I guess you're a pretty big thing, huh"
+          ? "Your account is verified! I guess you're a pretty big thing, huh?"
           : "Looks like your account isn't verified. Are you not famous enough?",
         image: image3,
       },
       {
         description: userinfo.geo_enabled
           ? "You have geo-tagged some of your Tweets! You're one of the very few people to have done that. Congrats!"
-          : "You haven't chosen to geo-tagged any of your Tweets. Don't worry, pretty much no one else has neither.",
+          : "You haven't chosen to geo-tag any of your Tweets. Don't worry, you're not exactly missing out.",
         image: image4,
       },
     ];
