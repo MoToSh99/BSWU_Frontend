@@ -23,6 +23,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     gaugeBox: {
       position: "relative",
       marginTop: 25
+    },
+    loadingText: {
+      marginTop: 50
     }
 }));
     
@@ -35,9 +38,11 @@ const Happiest: FC<HappiestProps> = ({user}) => {
 
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
+    const [display, setDisplay] = React.useState("block");
 
     const onTweetLoaded = () => {
       setFade(true);
+      setDisplay("none");
       setTimeout(function() {
         setProgress(user.tweets.happiest.score);
       }, 600);
@@ -50,9 +55,10 @@ const Happiest: FC<HappiestProps> = ({user}) => {
             Your happiest Tweet
           </Typography>
         </div>
+        <Typography className={classes.loadingText} variant="h4" style={{display: display}}>Loading Tweet...</Typography>
         <FadeIn delay={200} visible={fade}>
         <div style={{height: 370, overflow: "scroll"}}>
-          <TwitterTweetEmbed tweetId={user.tweets.happiest.id} options={{cards: "hidden", align: "center", conversation: "none"}} onLoad={onTweetLoaded}/>
+          <TwitterTweetEmbed tweetId={user.tweets.happiest.id} options={{cards: "hidden", align: "center", conversation: "none"}} placeholder="Loading" onLoad={onTweetLoaded}/>
         </div>
           <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
           <div>

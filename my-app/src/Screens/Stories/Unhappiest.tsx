@@ -23,6 +23,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     gaugeBox: {
       position: "relative",
       marginTop: 25
+    },
+    loadingText: {
+      marginTop: 50
     }
 }));
     
@@ -36,9 +39,11 @@ const Unhappiest: FC<UnhappiestProps> = ({user}) => {
 
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
+    const [display, setDisplay] = React.useState("block");
 
     const onTweetLoaded = () => {
       setFade(true);
+      setDisplay("none");
       setTimeout(function() {
         setProgress(user.tweets.saddest.score);
       }, 600);
@@ -51,6 +56,7 @@ const Unhappiest: FC<UnhappiestProps> = ({user}) => {
             Your unhappiest Tweet
           </Typography>
         </div>
+        <Typography className={classes.loadingText} variant="h4" style={{display: display}}>Loading Tweet...</Typography>
         <FadeIn delay={200} visible={fade}>
         <div style={{height: 370, overflow: "scroll"}}>
           <TwitterTweetEmbed tweetId={user.tweets.saddest.id} options={{cards: "hidden", align: "center", conversation: "none"}} onLoad={onTweetLoaded}/>
