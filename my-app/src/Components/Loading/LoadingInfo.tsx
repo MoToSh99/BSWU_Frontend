@@ -4,6 +4,7 @@ import Lottie from "react-lottie";
 import "bootstrap/dist/css/bootstrap.css";
 import * as legoData from "./legoloading.json";
 import * as doneData from "./doneloading.json";
+import { Typography } from '@material-ui/core';
 
 const defaultOptions = {
   loop: true,
@@ -57,7 +58,9 @@ const [loading2, setLoading2] = React.useState(true)
         {!done ? (
           <FadeIn>
             <div className="d-flex justify-content-center align-items-center">
-              <h1>Fetching Twitter data</h1>
+            <Typography align="center" variant="h5" component="h5">
+            Fetching Twitter data
+            </Typography>
               {loading ? (
                 <Lottie options={defaultOptions} height={120} width={120} />
               ) : (
@@ -65,7 +68,9 @@ const [loading2, setLoading2] = React.useState(true)
               )}
             </div>
             <div className="d-flex justify-content-center align-items-center">
-              <h1>Doing fancy calulations</h1>
+            <Typography align="center" variant="h5" component="h5">
+            Doing fancy calulations
+            </Typography>
               {loading2 ? (
                 <Lottie options={defaultOptions} height={120} width={120} />
               ) : (
