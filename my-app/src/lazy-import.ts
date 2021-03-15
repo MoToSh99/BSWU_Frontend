@@ -8,8 +8,11 @@ import { lazy } from 'react';
  * 
  * @param fileName 
  */
+// eslint-disable-next-line
 const lazyImport = (fileName: string) => {
+    // eslint-disable-next-line
     let updatedFileName = fileName.replace(/[^\w]*/, '');
+    // eslint-disable-next-line
     return lazy(() => (import(`./${updatedFileName}`)))
 }
 
