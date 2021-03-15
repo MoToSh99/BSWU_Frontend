@@ -11,18 +11,20 @@ import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } fro
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
       width: '100%',
-      fontWeight: 500,
+      fontWeight: 500
   },
   page: {
-    height: "100vh",
     padding: 30,
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
+    flexDirection: "column"
   },
+  shareCard: {
+    marginTop: 50
+  },
+  buttonContainer: {
+    marginTop: 50
+  }
 }));
-
-
 
 export interface DoneScreenProps {
   user : UserDetail
@@ -36,10 +38,7 @@ const Done: FC<DoneScreenProps> = ({user}) => {
     const ComponentToPrint = React.forwardRef((props, ref) => (
       <div ref={ref}><FinishCard user={user}></FinishCard></div>
     ));
-    
-
-
-    
+  
     return (
           <div className={classes.page}>
             <div className={classes.titleContainer}>
@@ -50,7 +49,9 @@ const Done: FC<DoneScreenProps> = ({user}) => {
                 Share your score on social media
               </Typography>
             </div>
-          <ComponentToPrint ref={componentRef} />
+            <div className={classes.shareCard}>
+              <ComponentToPrint ref={componentRef}/>
+            </div>
             <div className={classes.buttonContainer}>
               <MainButton onClick={() => exportComponentAsPNG(componentRef)} color="primary" bold={true} text="Share"/>
               <MainButton color="secondary" bold={false} text="Try another username" onClick={() => history.push("/")}/>
@@ -58,7 +59,5 @@ const Done: FC<DoneScreenProps> = ({user}) => {
         </div>
     )
 }
-
-
 
 export default Done;
