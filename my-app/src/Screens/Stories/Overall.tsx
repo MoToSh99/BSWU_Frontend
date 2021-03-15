@@ -4,6 +4,15 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
+import styled, { keyframes } from 'styled-components';
+import { tada } from 'react-animations';
+
+const tadaAnimation = keyframes`${tada}`;
+
+const Tada = styled.div`
+  animation: 1s ${tadaAnimation};
+`;
+
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -47,7 +56,6 @@ const Overall: FC<OverallProps> = ({user}) => {
         setProgress(user.overallscore);
       }, 100);
     });
-    
     return (
       <div className={classes.page}>
         <div className={classes.titleContainer}>
@@ -70,7 +78,7 @@ const Overall: FC<OverallProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h2" component="div">{user.overallscore}</Typography>
+              <Tada><Typography variant="h2" component="div">{user.overallscore}</Typography></Tada>
             </Box>
           </Box>
         </div>

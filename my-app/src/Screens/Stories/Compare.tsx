@@ -108,7 +108,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 			</div>
 			<div className={classes.infoText}>
 				<Typography variant="h6" component="div">You are among the</Typography>
-				<p className={classes.blueText}>{user.danishuserscore.percent} %</p>
+				<p className={classes.blueText}>{user.danishuserscore.percent}%</p>
 				<Typography variant="h6" component="div">happiest people in Denmark</Typography>
 			</div>
 			<div className={classes.infoText}>

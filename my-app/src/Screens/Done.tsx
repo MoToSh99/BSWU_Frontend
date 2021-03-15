@@ -47,7 +47,7 @@ const Done: FC<DoneScreenProps> = ({user}) => {
                 All done!
               </Typography>
               <Typography align="center" variant="h5" component="h5">
-                Share your score on social media {user.overallscore}
+                Share your score on social media
               </Typography>
             </div>
           <ComponentToPrint ref={componentRef} />

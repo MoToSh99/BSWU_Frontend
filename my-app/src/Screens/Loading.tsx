@@ -5,6 +5,7 @@ import image2 from "../Images/Saly-10.png";
 import image3 from "../Images/Saly-14.png";
 import image4 from "../Images/Saly-31.png";
 import logo from "../Images/loading.gif";
+import LoadingInfo from "../Components/Loading/LoadingInfo"
 import {
   Typography,
   Paper,
@@ -204,9 +205,7 @@ const Loading: FC<LoadingProps> = (props) => {
       <div className={classes.slideshow}>
         <Slideshow />
       </div>
-      <Box display="flex" justifyContent="center" alignItems="flex-end">
-        <CircularProgress size={150} color="primary" />
-      </Box>
+      <LoadingInfo></LoadingInfo>
     </div>
   );
 };
