@@ -4,6 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
+import {useSpring, animated} from 'react-spring'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -47,7 +48,7 @@ const Overall: FC<OverallProps> = ({user}) => {
         setProgress(user.overallscore);
       }, 100);
     });
-    
+    const props = useSpring({ config: { duration: 2000, precision: 0.01},  number: user.overallscore, from: { number: 0 } })
     return (
       <div className={classes.page}>
         <div className={classes.titleContainer}>
@@ -70,7 +71,7 @@ const Overall: FC<OverallProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h2" component="div">{user.overallscore}</Typography>
+              <Typography variant="h2" component="div"><animated.span>{props.number}</animated.span></Typography>
             </Box>
           </Box>
         </div>

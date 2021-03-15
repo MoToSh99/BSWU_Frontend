@@ -1,7 +1,12 @@
 {
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "bootstrap": "^4.6.0",
     "react-component-export-image": "^1.0.5",
-    "react-share-button": "^0.0.4"
+    "react-fade-in": "^2.0.1",
+    "react-loading": "^2.0.3",
+    "react-lottie": "^1.2.3",
+    "react-share-button": "^0.0.4",
+    "react-spring": "^8.0.27"
   }
 }
