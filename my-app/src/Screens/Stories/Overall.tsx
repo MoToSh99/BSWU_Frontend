@@ -6,6 +6,7 @@ import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
 import { tada } from 'react-animations';
+import FadeIn from 'react-fade-in';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -43,6 +44,7 @@ export interface OverallProps {
 const Overall: FC<OverallProps> = ({user}) => {
     const classes = useStyles({});
     const [progress, setProgress] = React.useState(0.0);
+    const [fade, setFade] = React.useState(false);
 
     const tadaAnimation = keyframes`${tada}`;
 
@@ -52,7 +54,11 @@ const Overall: FC<OverallProps> = ({user}) => {
 
     React.useEffect(() => {
         setProgress(user.overallscore);
+        setTimeout(function () {
+          setFade(true);
+        }, 100);
     });
+
     return (
       <div className={classes.page}>
         <div className={classes.titleContainer}>
@@ -79,6 +85,7 @@ const Overall: FC<OverallProps> = ({user}) => {
             </Box>
           </Box>
         </div>
+        <FadeIn delay={600} visible={fade}>
         <div>
           <Typography className={classes.celebritiesText} align="center" variant="h6">
             Celebrities with scores<br/>close to your own
@@ -96,6 +103,7 @@ const Overall: FC<OverallProps> = ({user}) => {
               Matching on <span className={classes.value}>{user.wordsmatched}</span> words
           </Typography>
         </div>
+        </FadeIn>
       </div>
       )
 }

@@ -39,7 +39,7 @@ const Happiest: FC<HappiestProps> = ({user}) => {
     const onTweetLoaded = () => {
       setFade(true);
       setTimeout(function() {
-        setProgress(user.tweets.saddest.score);
+        setProgress(user.tweets.happiest.score);
       }, 600);
     }
     
