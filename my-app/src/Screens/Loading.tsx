@@ -55,25 +55,60 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 
 export interface LoadingProps {}
 
+const sleep = (milliseconds : number) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 const Loading: FC<LoadingProps> = (props) => {
   const classes = useStyles({});
   const history = useHistory();
   const location = useLocation();
   const userinfo: User = location.state.memberDetail;
 
+
+  const getUserinfoTest12 = (usr: string) => {
+    fetch(`https://datascripttwitter.herokuapp.com/checkusername?username=${usr}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          (result["Userdata"]) ? getUserinfo(usr) : getUserinfoTest12(usr)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+
+  const getUserinfoTest2 = (usr: string) => {
+    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=100`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result)
+          getUserinfoTest12(usr)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+
   const getUserinfo = (usr: string) => {
     fetch(
-      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}&count=300`
+      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}`
     )
       .then((res) => res.json())
       .then(
         (result) => {
+          if (result["Error"]) getUserinfoTest12(usr)
+          else{
           console.log(result);
 
           history.push({
             pathname: "/story",
             state: { memberDetail: result },
           });
+        }
         },
         (error) => {
           console.log(error);
@@ -83,7 +118,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   useEffect(() => {
     console.log(userinfo);
-    getUserinfo(userinfo.username);
+    getUserinfoTest2(userinfo.username);
   });
 
   function Slideshow(props) {
