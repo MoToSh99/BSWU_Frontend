@@ -27,40 +27,39 @@ import Carousel from "react-material-ui-carousel";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
-    padding: 30,
     display: "flex",
     flexDirection: "column",
     justifyItems: "center",
+    alignItems: "center",
+    padding: "30px",
+    margin: "auto",
+    width: "100%",
+    height: "100vh",
+    border: "4px solid green",
   },
-  header: {
-    marginTop: 10,
-    marginBottom: 40,
+  center: {
+    margin: "auto",
   },
   slideshow: {
-    marginBottom: 40,
   },
-  root: {
-    flexGrow: 1,
+  header: {
+    marginBottom: "30px"
   },
   paper: {
     display: "flex",
     flexDirection: "column",
-    justifyItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
     padding: theme.spacing(2),
-    margin: "auto",
     maxWidth: 500,
-    height: 150
+    height: 190,
+    borderRadius: "20px",
+    boxShadow: "white"
+
   },
-  image: {
-    width: 128,
-    height: 100,
-  },
-  img: {
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
-  },
+  root: {
+    borderRadius: "20px"
+  }
 }));
 
 const defaultOptions = {
@@ -264,34 +263,31 @@ const Loading: FC<LoadingProps> = (props) => {
 
   return (
     <div className={classes.page}>
+      <div className={classes.center} >
       <div className={classes.header}>
-        <Typography align="center" variant="h5" component="h5">
-          Getting things ready...
-        </Typography>
-      </div>
-      <div className={classes.slideshow}>
-        <Slideshow />
-      </div>
-      <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center">
       {!done ? (
           <FadeIn>
             <div className="d-flex justify-content-center align-items-center">
             <Typography align="center" variant="h5" component="h5">
             Fetching Twitter data
             </Typography>
-              {loading ? (
-                <Lottie options={defaultOptions} height={120} width={120} />
-              ) : (
-                <Lottie options={defaultOptions2} height={120} width={120} />
-              )}
             </div>
           </FadeIn>
           
         ) : (
           <h1>Done</h1>
         )}
-        <Lottie options={developmentA} height={240} width={240} />
-      </Box>
+      </div>
+      <div className={classes.slideshow}>
+        <Slideshow />
+      </div>
+      {loading ? (
+                <Lottie options={defaultOptions} height={120} width={120} />
+              ) : (
+                <Lottie options={defaultOptions2} height={120} width={120} />
+              )}
+      </div>
+
     </div>
   );
 };
