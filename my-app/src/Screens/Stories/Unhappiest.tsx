@@ -24,8 +24,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       position: "relative",
       marginTop: 25
     },
-    loadingText: {
-      marginTop: 50
+    spinner: {
+      marginTop: 80,
+      alignItems: "center"
     }
 }));
     
@@ -56,7 +57,9 @@ const Unhappiest: FC<UnhappiestProps> = ({user}) => {
             Your unhappiest Tweet
           </Typography>
         </div>
-        <Typography className={classes.loadingText} variant="h4" style={{display: display}}>Loading Tweet...</Typography>
+        <div className={classes.spinner} style={{display: display}}>
+          <CircularProgress size={100}/>
+        </div>
         <FadeIn delay={200} visible={fade}>
         <div style={{height: 370, overflow: "scroll"}}>
           <TwitterTweetEmbed tweetId={user.tweets.saddest.id} options={{cards: "hidden", align: "center", conversation: "none"}} onLoad={onTweetLoaded}/>
