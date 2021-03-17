@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
+import FadeIn from 'react-fade-in';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
