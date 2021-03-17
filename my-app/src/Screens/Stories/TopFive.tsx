@@ -5,6 +5,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { UserDetail } from "../../Models";
+import FadeIn from "react-fade-in";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -71,10 +72,13 @@ const TopFive: FC<TopFiveProps> = ({ user }) => {
           Top 5 happiest and unhappiest words
         </Typography>
       </div>
-
       <div className={classes.buttonGroup}>
+      <FadeIn >
         <div className={classes.buttons}>{top}</div>
+      </FadeIn>
+      <FadeIn delay={300}>
         <div className={classes.buttons}>{bottom}</div>
+      </FadeIn>
       </div>
     </div>
   );
