@@ -27,7 +27,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 14
+    marginTop: 15
   },
   middleWeekday: {
     position: "relative",
@@ -36,7 +36,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginRight: 25
   },
   scoreLabel: {
-      marginBottom: 20
+      marginBottom: 30
+  },
+  weekdayText: {
+    marginTop: 5
   }
 }));
 
@@ -55,9 +58,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
 
   return (
     <div className={classes.page}>
-        <div className={classes.titleContainer}>
+        <div>
             <Typography
-            className={classes.overallText}
             align="center"
             variant="h5"
             component="h5"
@@ -81,7 +83,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     <Typography variant="h4" component="div">{user.weekscores[0].Score}</Typography>
                 </Box>
             </Box>
-            <Typography variant="h5">{user.weekscores[0].Day}</Typography>
+            <Typography className={classes.weekdayText} variant="h5">{user.weekscores[0].Day}</Typography>
           </div>
           <Box className={classes.weekdaysBox}>
             <Box className={classes.gaugeBox}>
@@ -97,7 +99,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[1].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[1].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[1].Day}</Typography>
             </Box>
             <Box className={classes.middleWeekday}>
                 <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
@@ -112,7 +114,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[2].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[2].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[2].Day}</Typography>
             </Box>
             <Box className={classes.gaugeBox}>
                 <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
@@ -127,7 +129,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[3].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[3].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[3].Day}</Typography>
             </Box>
           </Box>
           <Box className={classes.weekdaysBox}>
@@ -144,7 +146,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[4].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[4].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[4].Day}</Typography>
             </Box>
             <Box className={classes.middleWeekday}>
                 <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
@@ -159,7 +161,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[5].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[5].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[5].Day}</Typography>
             </Box>
             <Box className={classes.gaugeBox}>
                 <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
@@ -174,7 +176,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                     justifyContent="center">
                     <Typography className={classes.scoreLabel} variant="h5" component="div">{user.weekscores[6].Score}</Typography>
                 </Box>
-                <Typography variant="subtitle1">{user.weekscores[6].Day}</Typography>
+                <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[6].Day}</Typography>
             </Box>
           </Box>
         </FadeIn>
