@@ -12,11 +12,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     padding: 30,
     display: "flex",
     flexDirection: "column",
-    justifyItems: "center",
     backgroundColor: theme.palette.background.default,
-  },
-  titleContainer: {
-    marginTop: 30,
   },
   buttonGroup: {
       display: "flex",
@@ -26,11 +22,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   buttons: {
     display: "flex",
     flexDirection: "column",
-},
-button: {
-    margin: 20,
-    textTransform: "none"
-},
+  },
+  button: {
+      margin: 20,
+      textTransform: "none"
+  },
 }));
 
 export interface TopFiveProps {
@@ -62,9 +58,8 @@ const TopFive: FC<TopFiveProps> = ({ user }) => {
 
   return (
     <div className={classes.page}>
-      <div className={classes.titleContainer}>
+      <div>
         <Typography
-          className={classes.overallText}
           align="center"
           variant="h5"
           component="h5"

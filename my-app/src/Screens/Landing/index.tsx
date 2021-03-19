@@ -7,41 +7,38 @@ import './index.css';
 import MainButton from '../../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
-  textField: {
-      width: '100%',
-      marginLeft: 'auto',
-      marginRight: 'auto',            
-      paddingBottom: 0,
-      marginTop: 0,
-      fontWeight: 500,
-      background: "white",
-      borderRadius: 15
-  },
   page: {
     height: "100%",
     padding: 30,
-    paddingBottom: 70,
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
+    flexDirection: "column"
   },
-  text: {
-    marginBottom: 100,
+  textField: {
+    width: '100%',     
+    fontWeight: 500,
+    background: "white",
+    borderRadius: 15,
+    marginTop: 150
   },
   errorTextHidden: {
     color: "red",
     textAlign: "center",
-    marginBottom: 90,
     visibility: "hidden"
   },
   errorText: {
     color: "red",
     textAlign: "center",
-    marginBottom: 90,
     visibility: "visible"
   },
+  button: {
+    marginTop: 20
+  },
   footerContainer: {
-    marginTop: "120px"
+    position: "absolute",
+    width: "100%",
+    bottom: 0,
+    left: "50%",
+    marginLeft: "-50%"
   }
 }));
 
@@ -73,14 +70,14 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     
     return (
           <div className={classes.page}>
-            <div className={classes.titleContainer}>
+            <div>
               <Typography align="center" variant="h2" component="h2">
                 Happy<br/> 
                 Tweet
               </Typography>
             </div>
             <div className={classes.inputContainer}>
-              <Typography className={classes.text} align="center" variant="subtitle1" component="h2">
+              <Typography align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
@@ -103,14 +100,16 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 }}
                 />
               {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
-              <MainButton
-                color="primary"
-                bold={true}
-                text="Start your journey"
-                onClick={() => { 
-                  getUserinfo(username) 
-                }}
-              />
+              <div className={classes.button}>
+                <MainButton
+                  color="primary"
+                  bold={true}
+                  text="Start your journey"
+                  onClick={() => { 
+                    getUserinfo(username) 
+                  }}
+                />
+              </div>
             </div>
             <div className={classes.footerContainer}>
               <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">

@@ -3,7 +3,6 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail } from '../../Models';
-import CelebrityScores from '../../Components/CelebrityScores';
 import FadeIn from 'react-fade-in';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -19,16 +18,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	},
 	gaugeBox: {
 		position: "relative",
-		marginTop: 53
-	},
-	celebritiesText: {
-		marginTop: 41
+		marginTop: 30
 	},
 	infoText: {
 		marginTop: 25
-	},
-	hidden: {
-		hidden: "true"
 	},
 	gaugesContainer: {
 		display: "flex",
@@ -38,10 +31,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	},
 	blueText: {
 		color: "#66FCF1",
-		fontSize: 36,
-		marginTop: 5,
-		marginBottom: 5,
-
+		fontSize: 36
 	}
 }));
 
@@ -66,11 +56,11 @@ const Compare: FC<CompareProps> = ({ user }) => {
 
 	return (
 		<div className={classes.page}>
-			<div className={classes.titleContainer}>
-				<Typography className={classes.overallText} align="center" variant="h5" component="h5">
+			<div>
+				<Typography align="center" variant="h5" component="h5">
 					Your happiness compared
 				</Typography>
-						<Typography className={classes.overallSubtext} align="center" variant="h5">
+						<Typography align="center" variant="h5">
 							with others
 				</Typography>
 			</div>
