@@ -6,6 +6,7 @@ import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
 import FadeIn from 'react-fade-in';
+import Overlay from '../../Components/Overlay';
 
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -35,34 +36,17 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     value : {
       color: "#66FCF1"
     },
-    overlay: {
-      display: "flex",
-      top: 0,
-      position: "absolute",
-      width: window.innerWidth,
-      height: window.innerHeight,
-    },
-    button: {
-      width: window.innerWidth / 2,
-      height: window.innerHeight,
-      backgroundColor: "Transparent",
-      border: "none",
-      outline: "none",
-    },
     abs1: {
       zIndex: 1,
       position: "relative",
-      //border: "1px dashed #900",
-      //backgroundColor: "#f00"
     }
 }));
     
 export interface OverallProps {
   user : UserDetail,
-  onProgressChange: Function
 }
 
-const Overall: FC<OverallProps> = ({user, onProgressChange}) => {
+const Overall: FC<OverallProps> = ({user}) => {
     const classes = useStyles({});
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
@@ -119,16 +103,6 @@ const Overall: FC<OverallProps> = ({user, onProgressChange}) => {
           </Typography>
         </div>
         </FadeIn>
-        <div className={classes.overlay}>
-        <div
-          onClick={() => onProgressChange(false)}
-          className={classes.button}
-        />
-        <div
-          onClick={() => onProgressChange(true)}
-          className={classes.button}
-        />
-      </div>
       </div>
       )
 }

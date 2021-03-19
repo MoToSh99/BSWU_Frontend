@@ -32,7 +32,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     
 export interface UnhappiestProps {
     user : UserDetail
-    embed : TwitterTweetEmbed
 }
 
 const Unhappiest: FC<UnhappiestProps> = ({user}) => {

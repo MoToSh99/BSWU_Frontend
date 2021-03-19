@@ -11,6 +11,7 @@ import Done from "../Screens/Done";
 import Overall from "../Screens/Stories/Overall";
 import Happiest from "../Screens/Stories/Happiest";
 import Unhappiest from "../Screens/Stories/Unhappiest";
+import Overlay from "./Overlay";
 
 
 const useStyles = makeStyles({
@@ -40,12 +41,6 @@ const useStyles = makeStyles({
     position: "absolute",
     width: window.innerWidth,
     height: window.innerHeight,
-  },
-  applyZIndex: {
-    zIndex: 1,
-  },
-  applyZ0Index: {
-    zIndex: 0,
   },
 });
 
@@ -81,14 +76,14 @@ const Stories = () => {
   };
 
 const stories = [
-    {object : <Overall user={user} onProgressChange={onProgressChange} />, overlay : false},
-    {object : <EvolvedHapiness/>, overlay : true},
-    {object : <Happiest user={user} />, overlay : false},
-    {object : <Unhappiest user={user} />, overlay : false},
-    {object : <TopFive user={user} />, overlay : false},
-    {object : <Compare user={user} />, overlay : false},
-    {object : <WeekdayScores user={user} />, overlay : false},
-    {object : <Done user={user} />, overlay : true},
+    {object : <Overall user={user} />},
+    {object : <EvolvedHapiness/>,},
+    {object : <Happiest user={user} />},
+    {object : <Unhappiest user={user} />},
+    {object : <TopFive user={user} />},
+    {object : <Compare user={user} />},
+    {object : <WeekdayScores user={user} />},
+    {object : <Done user={user} />}
  ];
 
 
@@ -108,6 +103,7 @@ const stories = [
         />
         {stories[page].object}
       </div>
+      <Overlay onProgressChange={onProgressChange}/>
     </>
   );
 };
