@@ -7,19 +7,18 @@ import './index.css';
 import MainButton from '../../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
-  textField: {
-    width: '100%',     
-    fontWeight: 500,
-    background: "white",
-    borderRadius: 15,
-    marginTop: "40%",
-    marginBottom: "20%"
-  },
   page: {
     height: "100%",
     padding: 30,
     display: "flex",
     flexDirection: "column"
+  },
+  textField: {
+    width: '100%',     
+    fontWeight: 500,
+    background: "white",
+    borderRadius: 15,
+    marginTop: 150
   },
   errorTextHidden: {
     color: "red",
@@ -30,6 +29,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     color: "red",
     textAlign: "center",
     visibility: "visible"
+  },
+  button: {
+    marginTop: 20
   },
   footerContainer: {
     position: "absolute",
@@ -98,14 +100,16 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 }}
                 />
               {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
-              <MainButton
-                color="primary"
-                bold={true}
-                text="Start your journey"
-                onClick={() => { 
-                  getUserinfo(username) 
-                }}
-              />
+              <div className={classes.button}>
+                <MainButton
+                  color="primary"
+                  bold={true}
+                  text="Start your journey"
+                  onClick={() => { 
+                    getUserinfo(username) 
+                  }}
+                />
+              </div>
             </div>
             <div className={classes.footerContainer}>
               <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
