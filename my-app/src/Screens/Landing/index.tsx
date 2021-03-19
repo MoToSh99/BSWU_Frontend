@@ -8,43 +8,33 @@ import MainButton from '../../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   textField: {
-      width: '100%',
-      marginLeft: 'auto',
-      marginRight: 'auto',            
-      paddingBottom: 0,
-      marginTop: 0,
-      fontWeight: 500,
-      background: "white",
-      borderRadius: 15
+    width: '100%',     
+    fontWeight: 500,
+    background: "white",
+    borderRadius: 15,
+    marginTop: "40%",
+    marginBottom: "20%"
   },
   page: {
     height: "100%",
     padding: 30,
-    paddingBottom: 70,
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  text: {
-    marginBottom: 100,
+    flexDirection: "column"
   },
   errorTextHidden: {
     color: "red",
     textAlign: "center",
-    marginBottom: 90,
     visibility: "hidden"
   },
   errorText: {
     color: "red",
     textAlign: "center",
-    marginBottom: 90,
     visibility: "visible"
   },
   footerContainer: {
     position: "absolute",
     width: "100%",
     bottom: 0,
-    right: "25%",
     left: "50%",
     marginLeft: "-50%"
   }
@@ -78,14 +68,14 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     
     return (
           <div className={classes.page}>
-            <div className={classes.titleContainer}>
+            <div>
               <Typography align="center" variant="h2" component="h2">
                 Happy<br/> 
                 Tweet
               </Typography>
             </div>
             <div className={classes.inputContainer}>
-              <Typography className={classes.text} align="center" variant="subtitle1" component="h2">
+              <Typography align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
