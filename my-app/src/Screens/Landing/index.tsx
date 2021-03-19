@@ -41,7 +41,12 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     visibility: "visible"
   },
   footerContainer: {
-    marginTop: "120px"
+    position: "absolute",
+    width: "100%",
+    bottom: 0,
+    right: "25%",
+    left: "50%",
+    marginLeft: "-50%"
   }
 }));
 
