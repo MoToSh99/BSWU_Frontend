@@ -24,20 +24,8 @@ const Story = () => {
     const user : UserDetail = location.state.memberDetail
 
 
-
-    const stories = [
-       {object : <Overall user={user} />, overlay : false},
-       {object : <EvolvedHapiness/>, overlay : true},
-       {object : <Happiest user={user} />, overlay : false},
-       {object : <Unhappiest user={user} />, overlay : false},
-       {object : <TopFive user={user} />, overlay : false},
-       {object : <Compare user={user} />, overlay : false},
-       {object : <WeekdayScores user={user} />, overlay : false},
-       {object : <Done user={user} />, overlay : true},
-    ];
-
     return (
-        <Stories stories={stories} user={user}/>
+        <Stories user={user}/>
     );
 };
 
