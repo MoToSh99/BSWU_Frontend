@@ -3,6 +3,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserDetail } from "../Models";
+import EvolvedHapiness from '../Screens/Stories/EvolvedHapiness'
+import Compare from '../Screens/Stories/Compare';
+import WeekdayScores from '../Screens/Stories/WeekdayScores'
+import TopFive from "../Screens/Stories/TopFive";
+import Done from "../Screens/Done";
+import Overall from "../Screens/Stories/Overall";
+import Happiest from "../Screens/Stories/Happiest";
+import Unhappiest from "../Screens/Stories/Unhappiest";
+import Overlay from "./Overlay";
+
 
 const useStyles = makeStyles({
   page: {
@@ -32,41 +42,51 @@ const useStyles = makeStyles({
     width: window.innerWidth,
     height: window.innerHeight,
   },
-  applyZIndex: {
-    zIndex: 1,
-  },
-  applyZ0Index: {
-    zIndex: 0,
-  },
 });
 
-const Stories = (stories, user : UserDetail) => {
+const Stories = () => {
   const history = useHistory();
   const location = useLocation();
+  const user : UserDetail = location.state.memberDetail
+
+  const storiesAmount = 8
 
   const onProgressChange = (up: Boolean) => {
     if (up) {
-      if (page === stories["stories"].length - 2 ) {
+      if (page === storiesAmount - 2 ) {
         setHidden(true);
         setPage(page + 1);
-      } else if (page === stories["stories"].length - 1) {
+      } else if (page === storiesAmount - 1) {
 
       } else {
-        setProgress(progress + 100 / (stories["stories"].length - 1));
+        setProgress(progress + 100 / (storiesAmount - 1));
         setPage(page + 1);
       }
     } else {
       if (page === 0) {
         setProgress(progress);
-      } else if (page === stories["stories"].length - 1) {
+      } else if (page === storiesAmount - 1) {
         setHidden(false);
         setPage(page - 1);
       } else {
-        setProgress(progress - 100 / (stories["stories"].length - 1));
+        setProgress(progress - 100 / (storiesAmount - 1));
         setPage(page - 1);
       }
     }
   };
+
+const stories = [
+    {object : <Overall user={user} />},
+    {object : <EvolvedHapiness/>,},
+    {object : <Happiest user={user} />},
+    {object : <Unhappiest user={user} />},
+    {object : <TopFive user={user} />},
+    {object : <Compare user={user} />},
+    {object : <WeekdayScores user={user} />},
+    {object : <Done user={user} />}
+ ];
+
+
 
   const classes = useStyles();
 
@@ -81,22 +101,9 @@ const Stories = (stories, user : UserDetail) => {
           value={progress}
           className={hidden ? classes.hidden : classes.bar}
         />
-
-
-        <div className={(stories["stories"][page].overlay) ? classes.applyZIndex : classes.applyZ0Index}>
-          {stories["stories"][page].object}
-        </div>
+        {stories[page].object}
       </div>
-      <div className={classes.overlay}>
-        <div
-          onClick={() => onProgressChange(false)}
-          className={classes.button}
-        />
-        <div
-          onClick={() => onProgressChange(true)}
-          className={classes.button}
-        />
-      </div>
+      <Overlay onProgressChange={onProgressChange}/>
     </>
   );
 };

@@ -34,8 +34,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     padding: "30px",
     margin: "auto",
     width: "100%",
-    height: "100vh",
-    border: "4px solid green",
+    height: "100vh"
   },
   center: {
     margin: "auto",

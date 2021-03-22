@@ -6,6 +6,8 @@ import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
 import FadeIn from 'react-fade-in';
+import Overlay from '../../Components/Overlay';
+
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -33,11 +35,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     value : {
       color: "#66FCF1"
+    },
+    abs1: {
+      zIndex: 1,
+      position: "relative",
     }
 }));
     
 export interface OverallProps {
-  user : UserDetail
+  user : UserDetail,
 }
 
 const Overall: FC<OverallProps> = ({user}) => {
@@ -79,7 +85,7 @@ const Overall: FC<OverallProps> = ({user}) => {
           </Box>
         </div>
         <FadeIn delay={600} visible={fade}>
-        <div>
+        <div className={classes.abs1}>
           <Typography className={classes.celebritiesText} align="center" variant="h6">
             Celebrities with scores<br/>close to your own
           </Typography>
