@@ -1,30 +1,16 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 import { useLocation, useHistory } from "react-router-dom";
 import { User } from '../../Models';
 import Plot from 'react-plotly.js';
-
-
-
-
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
     padding: 30,
     display: "flex",
     flexDirection: "column",
-    justifyItems: "center",
     backgroundColor: theme.palette.background.default
-  },
-  avatar: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 46,
-    width: 40,
-    height: 40
-  },
+  }
 }));
 
 export type OwnChartProps = {
@@ -75,7 +61,6 @@ const OwnChart: FC<OwnChartProps> = (
     />
   )
 }
-
 
 export type EvolvedHapinessProps = {
   data: string

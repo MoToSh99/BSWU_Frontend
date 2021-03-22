@@ -28,7 +28,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       marginTop: 30
     },
     infoText: {
-      marginTop: 25
+      marginTop: 20,
     },
     hidden :{
       hidden: "true"
@@ -60,11 +60,11 @@ const Overall: FC<OverallProps> = ({user}) => {
 
     return (
       <div className={classes.page}>
-        <div className={classes.titleContainer}>
-          <Typography className={classes.overallText} align="center" variant="h5" component="h5">
+        <div>
+          <Typography align="center" variant="h5" component="h5">
             Your overall happiness score
           </Typography>
-          <Typography className={classes.overallSubtext} align="center" variant="subtitle1">
+          <Typography align="center" variant="subtitle1">
             on a scale from 1 to 9
           </Typography>
         </div>

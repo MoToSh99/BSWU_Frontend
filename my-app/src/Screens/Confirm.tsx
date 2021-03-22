@@ -8,29 +8,27 @@ import MainButton from '../Components/MainButton';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
-        padding: 30,
-        display: "flex",
-        flexDirection: "column",
-        justifyItems: "center"
+      padding: 30,
+      display: "flex",
+      flexDirection: "column"
+    },
+    titleContainer: {
+      marginTop: 30
     },
     avatar: {
       display: "block",
       marginLeft: "auto",
       marginRight: "auto",
-      marginTop: 46,
+      marginTop: 30,
       width: 140,
       height: 140
     },
     infoText: {
-      marginTop: 33
-    },
-    titleContainer: {
       marginTop: 30
     },
-    inputContainer: {
-      marginTop: 90,
+    buttons: {
+      marginTop: 36
     }
-    
 }));
     
 export interface ConfirmProps {
@@ -72,7 +70,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
               {userinfo.followers_count} followers
           </Typography>
         </div>
-        <div className={classes.inputContainer}>
+        <div className={classes.buttons}>
           <MainButton
             color="primary"
             bold={true}

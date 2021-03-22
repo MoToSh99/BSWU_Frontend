@@ -60,7 +60,7 @@ const Happiest: FC<HappiestProps> = ({user}) => {
           <CircularProgress size={100}/>
         </div>
         <FadeIn delay={200} visible={fade}>
-        <div style={{height: 370, overflow: "scroll"}}>
+        <div style={{maxHeight: 370, overflow: "scroll", marginTop: 10}}>
           <TwitterTweetEmbed tweetId={user.tweets.happiest.id} options={{cards: "hidden", align: "center", conversation: "none"}} placeholder="Loading" onLoad={onTweetLoaded}/>
         </div>
           <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
