@@ -67,6 +67,13 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
 
     const [username, setUsername] = useState("")
     const [error, setError] = useState(false)
+    const [footer, setFooter] = useState(true)
+    
+    const handleFooter = () => {
+      setTimeout(() => {
+        setFooter(true)
+      }, 200);
+    }
     
     return (
           <div className={classes.page}>
@@ -90,6 +97,8 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                     setUsername(e.target.value)
                     setError(false)
                   }}
+                  onFocus={() => {setFooter(false)}}
+                  onBlur={handleFooter}
                   InputProps={{
                     disableUnderline: true,
                     endAdornment: (
@@ -111,11 +120,13 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 />
               </div>
             </div>
-            <div className={classes.footerContainer}>
+            {footer && (
+              <div className={classes.footerContainer}>
               <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
                   Made with ❤️ by DTM
               </Typography>
             </div>
+            )}
         </div>
     )
 }
