@@ -8,8 +8,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
     padding: 30,
     display: "flex",
-    flexDirection: "column",
-    backgroundColor: theme.palette.background.default
+    flexDirection: "column"
   }
 }));
 

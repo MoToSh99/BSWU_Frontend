@@ -13,12 +13,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "column"
   },
+  subtext: {
+    marginTop: 145
+  },
   textField: {
     width: '100%',     
     fontWeight: 500,
     background: "white",
     borderRadius: 15,
-    marginTop: 150
+    marginTop: 20
   },
   errorTextHidden: {
     color: "red",
@@ -31,7 +34,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     visibility: "visible"
   },
   button: {
-    marginTop: 20
+    marginTop: 5,
   },
   footerContainer: {
     position: "absolute",
@@ -84,13 +87,14 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               </Typography>
             </div>
             <div className={classes.inputContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <Typography className={classes.subtext} align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
                   error={error}
                   className={classes.textField}
                   id="filled-basic"
+                  color="secondary"
                   label="Twitter Username"
                   variant="filled"
                   onChange={(e) => {
@@ -112,8 +116,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               <div className={classes.button}>
                 <MainButton
                   color="primary"
-                  bold={true}
-                  text="Start your journey"
+                  text="Start your journey ➤"
                   onClick={() => { 
                     getUserinfo(username) 
                   }}
