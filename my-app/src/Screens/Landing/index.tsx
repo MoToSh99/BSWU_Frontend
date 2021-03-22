@@ -40,7 +40,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   footerContainer: {
     position: "absolute",
     width: "100%",
-    bottom: 0,
+    bottom: 10,
     left: "50%",
     marginLeft: "-50%"
   },
