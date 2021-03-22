@@ -64,7 +64,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
               @{userinfo.username}
           </Typography>
           <Typography align="center" variant="h6" component="h6">
-              {userinfo.location}
+              {userinfo.location ? userinfo.location : "No location"}
           </Typography>
           <Typography align="center" variant="h6" component="h6">
               {userinfo.followers_count} followers
@@ -73,7 +73,6 @@ const Confirm: FC<ConfirmProps> = (props) => {
         <div className={classes.buttons}>
           <MainButton
             color="primary"
-            bold={true}
             text="Yes"
             onClick={() => {
               history.push({pathname: "/loading",

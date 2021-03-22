@@ -10,8 +10,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 		padding: 30,
 		display: "flex",
 		flexDirection: "column",
-		textAlign: "center",
-		backgroundColor: theme.palette.background.default
+		textAlign: "center"
 	},
 	gauge: {
 		color: "#66FCF1"
