@@ -88,7 +88,7 @@ const twitterbirdA = {
 };
 
 const geolocalizationA = {
-  loop: false,
+  loop: true,
   autoplay: true,
   animationData: geolocalization.default,
   rendererSettings: {
@@ -152,7 +152,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=3000`)
+    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=500`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -228,7 +228,7 @@ const Loading: FC<LoadingProps> = (props) => {
         navButtonsAlwaysInvisible={true}
         indicators={false}
         animation="fade"
-        interval={5000}
+        interval={8000}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />

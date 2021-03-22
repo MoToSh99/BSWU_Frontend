@@ -5,6 +5,7 @@ import { Typography, TextField, Button, InputAdornment } from '@material-ui/core
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
 import MainButton from '../../Components/MainButton';
+import { ReactComponent as Logo } from '../../Images/logo.svg';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -39,9 +40,12 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   footerContainer: {
     position: "absolute",
     width: "100%",
-    bottom: 0,
+    bottom: 10,
     left: "50%",
     marginLeft: "-50%"
+  },
+  logo: {
+    marginTop: "20px"
   }
 }));
 
@@ -80,12 +84,8 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     
     return (
           <div className={classes.page}>
-            <div>
-              <Typography align="center" variant="h2" component="h2">
-                Happy<br/> 
-                Tweet
-              </Typography>
-            </div>
+              <Logo className={classes.logo}></Logo>
+          
             <div className={classes.inputContainer}>
               <Typography className={classes.subtext} align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
