@@ -97,6 +97,7 @@ const stories = [
     <>
       <div className={classes.page}>
         <LinearProgress
+          color="secondary"
           variant="determinate"
           value={progress}
           className={hidden ? classes.hidden : classes.bar}
