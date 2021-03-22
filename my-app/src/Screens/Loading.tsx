@@ -139,7 +139,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
 
   const checkUsername = (usr: string) => {
-    fetch(`https://datascripttwitter.herokuapp.com/checkusername?username=${usr}`)
+    fetch(`https://happytweet.azurewebsites.net/checkusername?username=${usr}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -152,7 +152,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`https://datascripttwitter.herokuapp.com/gettwitterdata?username=${usr}&count=200`)
+    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=3000`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -167,7 +167,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const getUserinfo = (usr: string) => {
     fetch(
-      `https://datascripttwitter.herokuapp.com/getdata?username=${usr}`
+      `https://happytweet.azurewebsites.net/getdata?username=${usr}`
     )
       .then((res) => res.json())
       .then(
