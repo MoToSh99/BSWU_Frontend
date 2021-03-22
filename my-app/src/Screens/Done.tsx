@@ -6,6 +6,7 @@ import FinishCard from '../Components/FinishCard';
 import { UserDetail } from '../Models';
 import MainButton from '../Components/MainButton';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import html2canvas from 'html2canvas'
 
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -22,6 +23,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginTop: 50
   },
   buttonContainer: {
+    zIndex: 1,
+    position: "relative",
     marginTop: 50
   }
 }));
@@ -38,7 +41,7 @@ const Done: FC<DoneScreenProps> = ({user}) => {
     const ComponentToPrint = React.forwardRef((props, ref) => (
       <div ref={ref}><FinishCard user={user}></FinishCard></div>
     ));
-  
+
     return (
           <div className={classes.page}>
             <div className={classes.titleContainer}>

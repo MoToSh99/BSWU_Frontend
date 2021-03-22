@@ -18,6 +18,7 @@
     "dayjs": "^1.10.4",
     "easy-peasy": "^5.0.3",
     "frappe-charts": "^1.5.8",
+    "html2canvas": "^1.0.0-rc.7",
     "nivo": "^0.7.0",
     "plotly.js": "^1.58.4",
     "react": "^17.0.1",
