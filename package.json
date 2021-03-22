@@ -2,6 +2,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "bootstrap": "^4.6.0",
+    "html2canvas": "^1.0.0-rc.7",
     "react-animations": "^1.0.0",
     "react-component-export-image": "^1.0.5",
     "react-fade-in": "^2.0.1",
