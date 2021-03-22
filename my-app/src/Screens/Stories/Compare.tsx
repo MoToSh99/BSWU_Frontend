@@ -63,7 +63,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 							with others
 				</Typography>
 			</div>
-			<FadeIn delay={300} visible={fade}>
+			<FadeIn delay={600} visible={fade}>
 			<div className={classes.gaugesContainer}>
 				<div>
 					<Box className={classes.gaugeBox}>

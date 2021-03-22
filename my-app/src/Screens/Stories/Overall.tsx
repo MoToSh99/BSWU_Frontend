@@ -7,6 +7,8 @@ import CelebrityScores from '../../Components/CelebrityScores';
 import styled, { keyframes } from 'styled-components';
 import FadeIn from 'react-fade-in';
 import Overlay from '../../Components/Overlay';
+import Tada from 'react-reveal/Tada';
+
 
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -79,7 +81,9 @@ const Overall: FC<OverallProps> = ({user}) => {
               display="flex"
               alignItems="center"
               justifyContent="center">
-              <Typography variant="h4" component="div">{user.overallscore}</Typography>
+              <Tada>
+                <Typography variant="h4" component="div">{user.overallscore}</Typography>
+              </Tada>
             </Box>
           </Box>
         </div>
