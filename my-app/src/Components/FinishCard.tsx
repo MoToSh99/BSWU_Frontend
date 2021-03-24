@@ -114,7 +114,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="subtitle1" component="div">
-              Hapiness score
+             Happiness score
             </Typography>
             <Box className={classes.gaugeBox}>
               <Box>

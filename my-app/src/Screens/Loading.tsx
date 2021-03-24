@@ -8,6 +8,9 @@ import * as geolocalization from "../Images/geolocalization.json";
 import * as development from "../Images/web-development.json";
 import * as legoData from "../Images/legoloading.json";
 import * as doneData from "../Images/doneloading.json";
+import * as analyze from "../Images/analyze.json";
+import * as press from "../Images/press.json";
+import * as abraham from "../Images/abraham.json";
 import FadeIn from "react-fade-in";
 
 import {
@@ -51,14 +54,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     alignItems: "center",
     padding: theme.spacing(2),
     maxWidth: 500,
-    height: 190,
+    height: 184,
     borderRadius: "20px",
     boxShadow: "white"
 
   },
-  root: {
-    borderRadius: "20px"
-  }
 }));
 
 const defaultOptions = {
@@ -109,6 +109,33 @@ const verifiedA = {
   loop: true,
   autoplay: true,
   animationData: verified.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const analyzeA = {
+  loop: true,
+  autoplay: true,
+  animationData: analyze.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const pressA = {
+  loop: true,
+  autoplay: true,
+  animationData: press.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
+
+const abrahamA = {
+  loop: true,
+  autoplay: true,
+  animationData: abraham.default,
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice"
   }
@@ -196,6 +223,18 @@ const Loading: FC<LoadingProps> = (props) => {
   function Slideshow(props) {
     var items = [
       {
+        description: "Your Tweets are getting analyzed and getting a happiness score between 1-9",
+        image: <Lottie options={analyzeA} height={120} width={120} />
+      },
+      {
+        description: "You can press on the left or right side of the screen to move forward or backward.",
+        image: <Lottie options={pressA} height={120} width={120} />
+      },
+      {
+        description: "Folks are usually about as happy as they make their minds up to be \n - Abraham Lincoln",
+        image: <Lottie options={abrahamA} height={120} width={120} />
+      },
+      {
         description:
           "Wow! You have posted " +
           userinfo.statuses_count +
@@ -215,12 +254,6 @@ const Loading: FC<LoadingProps> = (props) => {
           : "Looks like your account isn't verified. Are you not famous enough?",
         image: <Lottie options={verifiedA} height={120} width={120} />
       },
-      {
-        description: userinfo.geo_enabled
-          ? "You have geo-tagged some of your Tweets! You're one of the very few people to have done that. Congrats!"
-          : "You haven't chosen to geo-tag any of your Tweets. Don't worry, you're not exactly missing out.",
-        image: <Lottie options={geolocalizationA} height={120} width={120} />
-      },
     ];
 
     return (
@@ -239,7 +272,6 @@ const Loading: FC<LoadingProps> = (props) => {
 
   function Item(props) {
     return (
-      <div className={classes.root}>
         <Paper className={classes.paper} elevation={3}>
           <Grid container spacing={5} direction="column" alignItems="center" justify="center">
             <Grid item xs={12} sm container>
@@ -256,7 +288,6 @@ const Loading: FC<LoadingProps> = (props) => {
             </Grid>
           </Grid>
         </Paper>
-      </div>
     );
   }
 
