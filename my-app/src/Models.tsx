@@ -14,6 +14,7 @@ export type User = {
 export type UserDetail = {
   alltweets: Alltweets[];
   celebrityscore: Celebrityscore[];
+  allcelebrities: Celebrityscore[];
   overallscore: number;
   topfivewords: Topfivewords;
   tweets: Tweets;

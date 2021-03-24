@@ -179,7 +179,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=500`)
+    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=100`)
       .then(res => res.json())
       .then(
         (result) => {
