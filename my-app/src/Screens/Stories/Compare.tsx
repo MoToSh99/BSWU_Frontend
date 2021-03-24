@@ -4,6 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail } from '../../Models';
 import FadeIn from 'react-fade-in';
+import { getGaugeColor } from '../../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
 	page: {
@@ -45,6 +46,9 @@ const Compare: FC<CompareProps> = ({ user }) => {
 
 	const [fade, setFade] = React.useState(false);
 
+	const gaugeColor = getGaugeColor(user.overallscore);
+	const denmarkGaugeColor = getGaugeColor(user.danishuserscore.danishoverall)
+
 	React.useEffect(() => {
 		setTimeout(function () {
 			setProgress(user.overallscore);
@@ -67,7 +71,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 			<div className={classes.gaugesContainer}>
 				<div>
 					<Box className={classes.gaugeBox}>
-						<CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={100} thickness={2.5} />
+						<CircularProgress style={{color: gaugeColor}} variant="determinate" value={progress * 10} size={100} thickness={2.5} />
 						<Box
 							top={0}
 							left={0}
@@ -84,7 +88,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 				<div>
 					<Box className={classes.gaugeBox}>
-						<CircularProgress className={classes.gauge} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
+						<CircularProgress style={{color: denmarkGaugeColor}} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
 						<Box
 							top={0}
 							left={0}

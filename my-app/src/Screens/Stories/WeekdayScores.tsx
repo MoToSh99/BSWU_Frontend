@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import { UserDetail } from "../../Models";
 import FadeIn from 'react-fade-in';
+import { getGaugeColor } from '../../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -51,6 +52,14 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
 
   const [fade, setFade] = React.useState(false);
 
+  const firstGaugeColor = getGaugeColor(user.weekscores[0].Score);
+  const secondGaugeColor = getGaugeColor(user.weekscores[1].Score);
+  const thirdGaugeColor = getGaugeColor(user.weekscores[2].Score);
+  const fourthGaugeColor = getGaugeColor(user.weekscores[3].Score);
+  const fifthGaugeColor = getGaugeColor(user.weekscores[4].Score);
+  const sixthGaugeColor = getGaugeColor(user.weekscores[5].Score);
+  const seventhGaugeColor = getGaugeColor(user.weekscores[6].Score);
+
   React.useEffect(() => {
 		setFade(true);
 	});
@@ -69,7 +78,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
         <FadeIn delay={300} visible={fade}>
           <div>
             <Box className={classes.gaugeBox}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={100} thickness={1.5} />
+                <CircularProgress style={{color: firstGaugeColor}} variant="determinate" value={100} size={100} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -86,7 +95,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           </div>
           <Box className={classes.weekdaysBox}>
             <Box className={classes.gaugeBox}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: secondGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -101,7 +110,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[1].Day}</Typography>
             </Box>
             <Box className={classes.middleWeekday}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: thirdGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -116,7 +125,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[2].Day}</Typography>
             </Box>
             <Box className={classes.gaugeBox}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: fourthGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -133,7 +142,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           </Box>
           <Box className={classes.weekdaysBox}>
             <Box className={classes.gaugeBox}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: fifthGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -148,7 +157,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[4].Day}</Typography>
             </Box>
             <Box className={classes.middleWeekday}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: sixthGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}
@@ -163,7 +172,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 <Typography className={classes.weekdayText} variant="subtitle1">{user.weekscores[5].Day}</Typography>
             </Box>
             <Box className={classes.gaugeBox}>
-                <CircularProgress className={classes.gauge} variant="determinate" value={100} size={80} thickness={1.5} />
+                <CircularProgress style={{color: seventhGaugeColor}} variant="determinate" value={100} size={80} thickness={1.5} />
                 <Box
                     top={0}
                     left={0}

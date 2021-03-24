@@ -8,8 +8,7 @@ import styled, { keyframes } from 'styled-components';
 import FadeIn from 'react-fade-in';
 import Overlay from '../../Components/Overlay';
 import Tada from 'react-reveal/Tada';
-
-
+import { getGaugeColor } from '../../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -17,9 +16,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         display: "flex",
         flexDirection: "column",
         textAlign: "center"
-    },
-    gauge: {
-      color: "#66FCF1"
     },
     gaugeBox: {
       position: "relative",
@@ -52,6 +48,8 @@ const Overall: FC<OverallProps> = ({user}) => {
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
 
+    const gaugeColor = getGaugeColor(user.overallscore);
+
     React.useEffect(() => {
         setProgress(user.overallscore);
         setTimeout(function () {
@@ -71,7 +69,7 @@ const Overall: FC<OverallProps> = ({user}) => {
         </div>
         <div>
           <Box className={classes.gaugeBox}>
-            <CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={140} thickness={2.5} />
+            <CircularProgress style={{color: gaugeColor}} variant="determinate" value={progress * 10} size={140} thickness={2.5} />
             <Box
               top={0}
               left={0}

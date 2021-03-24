@@ -12,6 +12,7 @@ import React, { FC } from "react";
 import { UserDetail } from "../Models";
 import dk from "../Images/dk.png";
 import { ReactComponent as Logo } from "../Images/logo.svg";
+import { getGaugeColor } from '../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   root: {
@@ -33,9 +34,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  gauge: {
-    color: "#66FCF1",
   },
   gaugeBox: {
     position: "relative",
@@ -84,6 +82,9 @@ export type FinishCardProps = {
 
 const FinishCard: FC<FinishCardProps> = ({ user }) => {
   const classes = useStyles({});
+
+  const gaugeColor = getGaugeColor(user.overallscore);
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
@@ -119,7 +120,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             <Box className={classes.gaugeBox}>
               <Box>
                 <CircularProgress
-                  className={classes.gauge}
+                  style={{color: gaugeColor}}
                   variant="determinate"
                   value={58}
                   size={90}

@@ -5,6 +5,7 @@ import { UserDetail } from '../../Models';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import FadeIn from 'react-fade-in';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { getGaugeColor } from '../../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -15,9 +16,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
     scoreOfText: {
       marginTop: 30
-    },
-    gauge: {
-      color: "#66FCF1"
     },
     gaugeBox: {
       position: "relative",
@@ -39,6 +37,8 @@ const Happiest: FC<HappiestProps> = ({user}) => {
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
     const [display, setDisplay] = React.useState("block");
+
+    const gaugeColor = getGaugeColor(user.tweets.happiest.score);
 
     const onTweetLoaded = () => {
       setFade(true);
@@ -65,7 +65,7 @@ const Happiest: FC<HappiestProps> = ({user}) => {
           <Typography className={classes.scoreOfText} align="center" variant="h5" component="h5">With a score of</Typography>
           <div>
             <Box className={classes.gaugeBox}>
-              <CircularProgress className={classes.gauge} variant="determinate" value={progress * 10} size={90} thickness={4} />
+              <CircularProgress style={{color: gaugeColor}} variant="determinate" value={progress * 10} size={90} thickness={4} />
               <Box
                 top={0}
                 left={0}

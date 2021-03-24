@@ -6,8 +6,7 @@ import FinishCard from '../Components/FinishCard';
 import { UserDetail } from '../Models';
 import MainButton from '../Components/MainButton';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
-import html2canvas from 'html2canvas'
-
+import html2canvas from 'html2canvas';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
