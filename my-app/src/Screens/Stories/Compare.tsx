@@ -26,7 +26,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	gaugesContainer: {
 		display: "flex",
 		flexDirection: "row",
-		justifyContent: "space-between",
+		justifyContent: "space-evenly",
 		alignItems: "center"
 	},
 	blueText: {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Modal } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
@@ -9,6 +9,8 @@ import FadeIn from 'react-fade-in';
 import Overlay from '../../Components/Overlay';
 import Tada from 'react-reveal/Tada';
 import { getGaugeColor } from '../../Helpers';
+import ModalCeleb from '../../Components/ModalCeleb';
+
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -86,12 +88,16 @@ const Overall: FC<OverallProps> = ({user}) => {
           </Box>
         </div>
         <FadeIn delay={600} visible={fade}>
-        <div className={classes.abs1}>
           <Typography className={classes.celebritiesText} align="center" variant="h6">
             Celebrities with scores<br/>close to your own
           </Typography>
+
+        <div className={classes.abs1}>
           <CelebrityScores user={user}/>
+          <ModalCeleb user={user}/>
         </div>
+
+
         <div className={classes.infoText}>
           <Typography align="center" variant="subtitle1" component="h6">
               Based on <span className={classes.value}>{user.tweetsamount}</span> Tweets
