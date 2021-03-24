@@ -1,15 +1,7 @@
 import React from 'react';
 import { useLocation, useHistory } from "react-router-dom";
 import { UserDetail } from '../Models';
-import Overall from './Stories/Overall'
-import EvolvedHapiness from './Stories/EvolvedHapiness'
-import Happiest from './Stories/Happiest'
-import Unhappiest from './Stories/Unhappiest'
 import Stories from '../Components/Stories'
-import TopFive from './Stories/TopFive'
-import Done from './Done';
-import Compare from './Stories/Compare';
-import WeekdayScores from './Stories/WeekdayScores'
 
 
 export type Page = {
