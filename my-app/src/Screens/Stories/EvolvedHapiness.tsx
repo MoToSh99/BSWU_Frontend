@@ -1,80 +1,69 @@
 import React, { FC } from 'react';
+import Paper from '@material-ui/core/Paper';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useLocation, useHistory } from "react-router-dom";
-import { User } from '../../Models';
-import Plot from 'react-plotly.js';
+import { UserDetail} from '../../Models';
+import { Chart } from 'react-charts'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
     padding: 30,
     display: "flex",
     flexDirection: "column"
+  },
+  chartStyle: {
+    height: "500px",
+    width: "300px",
+    background: 'rgba(0, 27, 45, 0.9)',
+    padding: '.5rem'
   }
 }));
 
-export type OwnChartProps = {
-  data: string
-}
-
-const OwnChart: FC<OwnChartProps> = (
-  data,
-) => {
-  return (
-    <Plot
-      data={[
-        {
-          x: ["jan", "feb", "mar", "jul", "jun"],
-          y: [2, 6, 3, 7, 10],
-          type: 'scatter',
-          mode: 'lines+markers',
-          marker: { color: 'red' },
-        },
-      ]}
-      layout={{
-        width: 320,
-        height: 320,
-        title: {
-          text: 'How your happiness has evolved',
-          font: {
-            color: "white"
-          }
-        },
-        paper_bgcolor: "#1F2833",
-        plot_bgcolor: "#1F2833",
-        margin: {
-          l: 20,
-          r: 20,
-          b: 50,
-          t: 50,
-          pad: 4
-        },
-        xaxis: {
-          color: "white"
-        },
-        yaxis: {
-          color: "white"
-        }
-      }
-      }
-      config={{ displayModeBar: false }}
-    />
-  )
-}
-
 export type EvolvedHapinessProps = {
-  data: string
+  user: UserDetail
 }
 
-const EvolvedHapiness: FC<EvolvedHapinessProps> = (props) => {
+const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const classes = useStyles({});
   const history = useHistory();
   const location = useLocation();
-  const userinfo: User = location.state.memberDetail
+
+  const data = React.useMemo(
+    () => [
+      {
+        label: 'Series 1',
+        data: [[4.2, 1], [5.3, 2], [5.5, 3], [6.0, 4], [4.3, 5]]
+      },
+    ],
+    []
+  )
+ 
+  const axes = React.useMemo(
+    () => [
+      { primary: true, type: 'linear', position: 'top' },
+      { type: 'linear', position: 'left' }
+    ],
+    []
+  )
+
+  var chartOptions = {
+    scales: {
+      xAxes: [{
+          ticks: {
+              beginAtZero:true,
+              min: 0,
+              max: 10    
+          }
+        }]
+     }
+}
 
   return (
     <div className={classes.page}>
-      <OwnChart data="hej" />
-    </div> 
+      <div className={classes.chartStyle}>
+        <Chart data={data} axes={axes} dark options={chartOptions} />
+      </div>
+    </div>
   )
 }
 

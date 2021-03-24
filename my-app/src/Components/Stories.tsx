@@ -77,7 +77,7 @@ const Stories = () => {
 
 const stories = [
     {object : <Overall user={user} />},
-    {object : <EvolvedHapiness/>,},
+    {object : <EvolvedHapiness user={user}/>},
     {object : <Happiest user={user} />},
     {object : <Unhappiest user={user} />},
     {object : <TopFive user={user} />},
