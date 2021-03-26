@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useLocation, useHistory } from "react-router-dom";
 import { UserDetail} from '../../Models';
-import { Chart } from 'react-charts'
+import Chart from "react-apexcharts";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   chartStyle: {
     height: "500px",
-    background: 'rgba(0, 27, 45, 0.9)'
+    background: "transparent"
   }
 }));
 
@@ -26,43 +26,58 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const history = useHistory();
   const location = useLocation();
 
-  const data = React.useMemo(
-    () => [
-      {
-        label: 'Series 1',
-        data: [[4.2, 1], [5.3, 2], [5.5, 3], [6.0, 4], [4.3, 5]]
+  const options = {
+    chart: {
+      toolbar: {
+        show: false
       }
-    ],
-    []
-  )
-
-  const series = React.useMemo(
-    () => ({
-      showPoints: false,
-    }),
-    []
-  );
- 
-  const axes = React.useMemo(
-    () => [
-      { primary: true, 
-        type: 'linear', 
-        position: 'top', 
-        hardMin: 1, 
-        hardMax: 9, 
-        tickValues: 2,
-        tickSizeInner: 1,
-        tickSizeOuter: 10
+    },
+    stroke: {
+      curve: "smooth"
+    },
+    xaxis: {
+      tickAmount: 2,
+      position: "top",
+      min: 1,
+      max: 9,
+      labels: {
+        style: {
+          colors: ["white", "white", "white"],
+          fontSize: '16px'
+        }
+      }
+    },
+    yaxis: {
+      labels: {
+        show: false
+      }
+    },
+    grid: {
+      borderColor: "white",
+      xaxis: {
+        lines: {
+          show: true
+        }
       },
-      { type: 'time', position: 'left' }
-    ],
-    []
-  )
+      yaxis: {
+        lines: {
+          show: false
+        }
+      }
+    }
+  };
+
+  const series = [
+    {
+      name: "series-1",
+      data: [[5.1, 1], [6.1, 2], [4.2, 3], [6.2, 4], [5.4, 5], [5.7, 6], [6.3, 7], [5.1, 8]]
+    }
+  ];
 
   return (
     <div className={classes.page}>
-      <Box className={classes.chartStyle}>
-        <Chart data={data} series={series} axes={axes} dark />
+      <Box>
+        <Chart options={options} series={series} type="line" height="500px"/>
       </Box>
     </div>
   )
