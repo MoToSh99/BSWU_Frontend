@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useLocation, useHistory } from "react-router-dom";
 import { UserDetail} from '../../Models';
@@ -7,15 +7,13 @@ import { Chart } from 'react-charts'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
-    padding: 30,
+    paddingTop: 30,
     display: "flex",
     flexDirection: "column"
   },
   chartStyle: {
     height: "500px",
-    width: "300px",
-    background: 'rgba(0, 27, 45, 0.9)',
-    padding: '.5rem'
+    background: 'rgba(0, 27, 45, 0.9)'
   }
 }));
 
@@ -33,36 +31,39 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       {
         label: 'Series 1',
         data: [[4.2, 1], [5.3, 2], [5.5, 3], [6.0, 4], [4.3, 5]]
-      },
+      }
     ],
     []
   )
+
+  const series = React.useMemo(
+    () => ({
+      showPoints: false,
+    }),
+    []
+  );
  
   const axes = React.useMemo(
     () => [
-      { primary: true, type: 'linear', position: 'top' },
-      { type: 'linear', position: 'left' }
+      { primary: true, 
+        type: 'linear', 
+        position: 'top', 
+        hardMin: 1, 
+        hardMax: 9, 
+        tickValues: 2,
+        tickSizeInner: 1,
+        tickSizeOuter: 10
+      },
+      { type: 'time', position: 'left' }
     ],
     []
   )
 
-  var chartOptions = {
-    scales: {
-      xAxes: [{
-          ticks: {
-              beginAtZero:true,
-              min: 0,
-              max: 10    
-          }
-        }]
-     }
-}
-
   return (
     <div className={classes.page}>
-      <div className={classes.chartStyle}>
-        <Chart data={data} axes={axes} dark options={chartOptions} />
-      </div>
+      <Box className={classes.chartStyle}>
+        <Chart data={data} series={series} axes={axes} dark />
+      </Box>
     </div>
   )
 }
