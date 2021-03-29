@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, Box } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import StyledRating from '@material-ui/lab/Rating';
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import { UserDetail } from '../../Models';
 import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
@@ -32,6 +34,12 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	blueText: {
 		color: "#66FCF1",
 		fontSize: 36
+	},
+	rating: {
+		marginTop: 10
+	},
+	value : {
+		color: "#66FCF1"
 	}
 }));
 
@@ -105,10 +113,16 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="subtitle1" component="div">You are among the</Typography>
-				<Typography variant="subtitle1" className={classes.blueText}>{user.danishuserscore.percent}%</Typography>
-				<Typography variant="subtitle1" component="div">happiest people in Denmark</Typography>
+				<Typography variant="subtitle1" component="div"><span className={classes.value}>{user.danishuserscore.percent / 10}</span> out of 10 Danes are happier than you</Typography>
 			</div>
+			<StyledRating
+				className={classes.rating}
+				defaultValue={(100 - user.danishuserscore.percent) / 10}
+				precision={0.2}
+				size="large"
+				max={10}
+				icon={<AccessibilityIcon fontSize="inherit" />}
+        	/>
 			<div className={classes.infoText}>
 				<Typography variant="subtitle1" component="div">From our dataset of {user.danishuserscore.usersamount}</Typography>
 				<Typography variant="subtitle1" component="div">users from Denmark</Typography>
