@@ -23,7 +23,8 @@ export type UserDetail = {
   userinfo: User;
   weekscores: WeekScores[];
   wordsmatched: number;
-  danishuserscore: Comparison 
+  danishuserscore: Comparison;
+  monthlyaverages: MonthlyAverage[];
 }
 
 export type Comparison = {
@@ -59,4 +60,8 @@ export type HappiestOrSaddest = {
 export type WeekScores = {
   Day: string;
   Score: number;
+}
+export type MonthlyAverage = {
+  x: number;
+  y: number;
 }
