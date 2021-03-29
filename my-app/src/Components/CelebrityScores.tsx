@@ -1,14 +1,16 @@
 import { Box, Avatar, Typography, makeStyles, Theme, Tooltip } from "@material-ui/core"
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 import React, { FC } from "react"
 import {UserDetail} from '../Models';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     avatarsBox: {
         display: "flex",
+        flexGrow: 1,
         flexDirection: "row",
         justifyContent: "center",
-        marginTop: 14
+        marginTop: 14 
       },
       avatar: {
         height: 75,
@@ -23,8 +25,18 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         boxShadow: "0 0 0 1px #000"
       },
       scores: {
-        marginTop: 16
+        marginTop: 16,
+        marginLeft: 30,
+        marginRight: 30
+      },
+      box: {
+        display: "flex",
+        flexGrow: 1,
+        flexDirection: "row",
+        justifyContent: "center",
       }
+      
+
 }));
 
 export type CelebrityScoresProps = {
@@ -54,8 +66,9 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
   };
 
 	return (
+    <>
 		<Box className={classes.avatarsBox}>
-      <Box>
+      
         <ClickAwayListener onClickAway={() => handleTooltipClose(1)}>
         <Tooltip
           PopperProps={{
@@ -71,10 +84,10 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
             <Avatar onClick={() => handleTooltipOpen(1)} alt="Remy Sharp" src={user.celebrityscore[0].pic} className={classes.avatar}/>
           </Tooltip>
         </ClickAwayListener>
-        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
-      </Box>
-      <Box>
+       
+
       <ClickAwayListener onClickAway={() => handleTooltipClose(2)}>
+      
         <Tooltip
           PopperProps={{
             disablePortal: true,
@@ -86,12 +99,12 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
           disableTouchListener
           title={"@" + user.celebrityscore[1].username} 
           arrow>
+            
             <Avatar onClick={() => handleTooltipOpen(2)} alt="Remy Sharp" src={user.celebrityscore[1].pic} className={classes.middleAvatar}/>
           </Tooltip>
         </ClickAwayListener>
-        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[1].score}</Typography>
-      </Box>
-      <Box>
+        
+      
       <ClickAwayListener onClickAway={() => handleTooltipClose(3)}>
         <Tooltip
           PopperProps={{
@@ -107,9 +120,16 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({user}) => {
             <Avatar onClick={() => handleTooltipOpen(3)} alt="Remy Sharp" src={user.celebrityscore[2].pic} className={classes.avatar}/>
           </Tooltip>
         </ClickAwayListener>
-        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
-      </Box>
+       
     </Box>
+     <Box className={classes.box}> 
+     <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
+    
+     <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[1].score}</Typography>
+    
+     <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
+     </Box>
+     </>
 	)
 }
 
