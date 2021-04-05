@@ -166,7 +166,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
 
   const checkUsername = (usr: string) => {
-    fetch(`https://happytweet.azurewebsites.net/checkusername?username=${usr}`)
+    fetch(`http://sharifhome.duckdns.org:5123/checkusername?username=${usr}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -179,7 +179,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`https://happytweet.azurewebsites.net/gettwitterdata?username=${usr}&count=100`)
+    fetch(`http://sharifhome.duckdns.org:5123/gettwitterdata?username=${usr}&count=500`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -194,7 +194,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const getUserinfo = (usr: string) => {
     fetch(
-      `https://happytweet.azurewebsites.net/getdata?username=${usr}`
+      `http://sharifhome.duckdns.org:5123/getdata?username=${usr}`
     )
       .then((res) => res.json())
       .then(

@@ -29,12 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: window.innerWidth - 100,
     },
     button: {
-      background: "none",
+      background: "#45425a",
       border: "none",
-      margin: 0,
-      padding: 0,
+      marginTop: 5,
+      padding: 10,
       cursor: "pointer",
       color: "white",
+      borderRadius: 60
     },
     root: {
       width: "100%",

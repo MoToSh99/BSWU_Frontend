@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Box from '@material-ui/core/Box';
+import { Box, Avatar, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useLocation, useHistory } from "react-router-dom";
 import { UserDetail} from '../../Models';
@@ -7,13 +7,26 @@ import Chart from "react-apexcharts";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
-    paddingTop: 30,
+    paddingTop: 10,
+    paddingLeft: 20,
+    paddingRight: 30,
     display: "flex",
     flexDirection: "column"
   },
   chartStyle: {
-    height: "500px",
-    background: "transparent"
+    zIndex: 0,
+    position: "relative"
+  },
+  avatarBox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginLeft: "12px",
+    marginTop: "20px"
+  },
+  avatar: {
+    width: "25px",
+    height: "25px"
   }
 }));
 
@@ -26,10 +39,17 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const history = useHistory();
   const location = useLocation();
 
+  const data = user.monthlyaverages;
+
   const options = {
     chart: {
       toolbar: {
         show: false
+      },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 800
       }
     },
     stroke: {
@@ -44,13 +64,16 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         style: {
           colors: ["white", "white", "white"],
           fontSize: '16px'
-        }
+        },
       }
     },
     yaxis: {
+      reversed: true,
+      max: data.length,
       labels: {
         show: false
-      }
+      },
+      min: 0
     },
     grid: {
       borderColor: "white",
@@ -62,22 +85,30 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       yaxis: {
         lines: {
           show: false
-        }
-      }
+        },
+      },
     }
   };
 
   const series = [
     {
       name: "series-1",
-      data: [[5.1, 1], [6.1, 2], [4.2, 3], [6.2, 4], [5.4, 5], [5.7, 6], [6.3, 7], [5.1, 8]]
+      data: data
     }
   ];
 
   return (
     <div className={classes.page}>
-      <Box>
-        <Chart options={options} series={series} type="line" height="500px"/>
+      <Typography align="center" variant="h5" component="h5">
+        The evolution of your happiness
+      </Typography>
+      <Box className={classes.avatarBox}>
+        <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_grande.png?v=1571606093" className={classes.avatar}/>
+        <Avatar src="https://hverdagstips.dk/wp-content/uploads/2019/09/smiley-emoji-smilende-ansigt-med-sammenknebne-ojne.png" className={classes.avatar}/>
+        <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
+      </Box>
+      <Box className={classes.chartStyle}>
+        <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
     </div>
   )
