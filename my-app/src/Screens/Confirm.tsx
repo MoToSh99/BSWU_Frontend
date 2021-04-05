@@ -27,6 +27,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       marginTop: 30
     },
     buttons: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       marginTop: 36
     }
 }));

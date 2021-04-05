@@ -20,7 +20,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	},
 	gaugeBox: {
 		position: "relative",
-		marginTop: 30
+		marginTop: 30,
+		padding: 10,
 	},
 	infoText: {
 		marginTop: 25
@@ -28,8 +29,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	gaugesContainer: {
 		display: "flex",
 		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	innerGaugesContainer:{
+		display: "flex",
+		flexDirection: "row",
 		justifyContent: "space-evenly",
-		alignItems: "center"
+		//alignItems: "center",
+		maxWidth:750,
 	},
 	blueText: {
 		color: "#66FCF1",
@@ -77,39 +85,41 @@ const Compare: FC<CompareProps> = ({ user }) => {
 			</div>
 			<FadeIn delay={600} visible={fade}>
 			<div className={classes.gaugesContainer}>
-				<div>
-					<Box className={classes.gaugeBox}>
-						<CircularProgress style={{color: gaugeColor}} variant="determinate" value={progress * 10} size={100} thickness={2.5} />
-						<Box
-							top={0}
-							left={0}
-							bottom={0}
-							right={0}
-							position="absolute"
-							display="flex"
-							alignItems="center"
-							justifyContent="center">
-							<Typography variant="h4" component="div">{user.overallscore}</Typography>
+				<div className={classes.innerGaugesContainer}>
+					<div>
+						<Box className={classes.gaugeBox}>
+							<CircularProgress style={{color: gaugeColor}} variant="determinate" value={progress * 10} size={100} thickness={2.5} />
+							<Box
+								top={0}
+								left={0}
+								bottom={0}
+								right={0}
+								position="absolute"
+								display="flex"
+								alignItems="center"
+								justifyContent="center">
+								<Typography variant="h4" component="div">{user.overallscore}</Typography>
+							</Box>
 						</Box>
-					</Box>
-					<Typography variant="h6" component="div">You</Typography>
-				</div>
-				<div>
-					<Box className={classes.gaugeBox}>
-						<CircularProgress style={{color: denmarkGaugeColor}} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
-						<Box
-							top={0}
-							left={0}
-							bottom={0}
-							right={0}
-							position="absolute"
-							display="flex"
-							alignItems="center"
-							justifyContent="center">
-							<Typography variant="h4" component="div">{user.danishuserscore.danishoverall}</Typography>
+						<Typography variant="h6" component="div">You</Typography>
+					</div>
+					<div>
+						<Box className={classes.gaugeBox}>
+							<CircularProgress style={{color: denmarkGaugeColor}} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
+							<Box
+								top={0}
+								left={0}
+								bottom={0}
+								right={0}
+								position="absolute"
+								display="flex"
+								alignItems="center"
+								justifyContent="center">
+								<Typography variant="h4" component="div">{user.danishuserscore.danishoverall}</Typography>
+							</Box>
 						</Box>
-					</Box>
-					<Typography variant="h6" component="div">Avg. Denmark</Typography>
+						<Typography variant="h6" component="div">Avg. Denmark</Typography>
+					</div>
 				</div>
 			</div>
 			<div className={classes.infoText}>

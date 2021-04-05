@@ -22,7 +22,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     fontWeight: 500,
     background: "white",
     borderRadius: 15,
-    marginTop: 20
+    marginTop: 20,
+    maxWidth: 750
   },
   errorTextHidden: {
     color: "red",
@@ -40,8 +41,20 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   footerContainer: {
     width: "100%",
   },
+  inputContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+  },
   logo: {
-    marginTop: "20px"
+    maxWidth: 750,
   }
 }));
 
@@ -74,7 +87,9 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     
     return (
           <div className={classes.page}>
+            <div className={classes.logoContainer}>
               <Logo className={classes.logo}></Logo>
+            </div>
           
             <div className={classes.inputContainer}>
               <Typography className={classes.subtext} align="center" variant="subtitle1" component="h2">

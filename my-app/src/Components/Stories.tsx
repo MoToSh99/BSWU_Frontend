@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   bar: {
     margin: 20,
-    hidden: "true"
+    hidden: "true",
   },
   hidden: {
     display: "none"

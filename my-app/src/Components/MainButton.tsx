@@ -12,6 +12,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   button: {
 	width: "100%",
+	maxWidth: 750,
 	height: 50,
     borderRadius: 40,
     textTransform: "unset",

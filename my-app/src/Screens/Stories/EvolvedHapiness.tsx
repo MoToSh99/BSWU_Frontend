@@ -13,6 +13,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "column"
   },
+  content: {
+    //display: "flex",
+    //flexDirection: "column",
+    //alignItems: "center",
+    margin: "auto",
+    maxWidth: 900
+  },
   chartStyle: {
     zIndex: 0,
     position: "relative"
@@ -120,6 +127,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
 
   return (
     <div className={classes.page}>
+      <div className={classes.content}>
       <Typography align="center" variant="h5" component="h5">
         The evolution of your happiness
       </Typography>
@@ -137,6 +145,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         </Typography>
         <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
+      </div>
     </div>
   )
 }
