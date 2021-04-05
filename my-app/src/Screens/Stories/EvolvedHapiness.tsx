@@ -80,7 +80,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
     xaxis: {
       tickAmount: 2,
       position: "top",
-      min: 4,
+      min: user.averagesRange[0],
       max: user.averagesRange[1],
       labels: {
         style: {
