@@ -55,7 +55,7 @@ const TopFive: FC<TopFiveProps> = ({ user }) => {
           variant="h5"
           component="h5"
         >
-          Top 5 happiest and unhappiest words
+          Your top 5 happiest and unhappiest words
         </Typography>
       </div>
       <div className={classes.buttonGroup}>
