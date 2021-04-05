@@ -30,7 +30,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 15
+    marginTop: 15,
+    maxWidth: 1000
   },
   middleWeekday: {
     position: "relative",
@@ -43,6 +44,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   weekdayText: {
     marginTop: 5
+  },
+  chart: {
+    margin: "auto",
+    maxWidth: 1000
   }
 }));
 
@@ -162,8 +167,9 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
             </Box>
             <Typography className={classes.weekdayText} variant="h5">{user.highestweekscore.Day}</Typography>
           </div>
-
-        <Chart options={options} series={series} type="bar" height={350}/>
+          <div className={classes.chart}>
+            <Chart options={options} series={series} type="bar" height={350}/>
+          </div>
           
         </FadeIn>
       

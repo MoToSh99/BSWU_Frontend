@@ -62,7 +62,7 @@ const Unhappiest: FC<UnhappiestProps> = ({ user }) => {
         <CircularProgress size={100} />
       </div>
       <FadeIn delay={200} visible={fade}>
-        <div style={{ maxHeight: 370, overflow: "scroll", marginTop: 10 }}>
+        <div style={{ maxHeight: 370, overflow: "auto", marginTop: 10 }}>
           <TwitterTweetEmbed
             tweetId={user.tweets.saddest.id}
             options={{ cards: "hidden", align: "center", conversation: "none" }} onLoad={onTweetLoaded} />
