@@ -71,9 +71,7 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
     setOpen(false);
   };
 
-  var celebs = [];
-
-  celebs = user.allcelebrities.map((a) => 
+  const celebs = user.allcelebrities.map((a) => 
         <ListItem key={a.username} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src={a.pic} />
@@ -108,7 +106,6 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
           />
         </ListItem>
   );
-
 
   return (
     <div>
