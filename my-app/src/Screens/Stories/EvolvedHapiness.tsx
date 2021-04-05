@@ -36,7 +36,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   dateEndText: {
     position: "absolute",
-    marginTop: 560,
     marginLeft: 30,
     zIndex: 1
   }
@@ -133,7 +132,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         <Typography className={classes.dateStartText} variant="subtitle2">
           {tweetendString}
         </Typography>
-        <Typography className={classes.dateEndText} variant="subtitle2">
+        <Typography className={classes.dateEndText} variant="subtitle2" style={{marginTop: window.innerHeight - 255}}>
           {tweetstartString}
         </Typography>
         <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
