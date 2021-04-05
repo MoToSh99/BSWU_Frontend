@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: window.innerHeight / 2,
       overflow: "auto",
       width: window.innerWidth - 100,
+      "&:focus":{
+        outline: "none"
+       }
     },
     button: {
       background: "#45425a",
