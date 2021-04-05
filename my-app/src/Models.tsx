@@ -26,6 +26,7 @@ export type UserDetail = {
   wordsmatched: number;
   danishuserscore: Comparison;
   monthlyaverages: MonthlyAverage[];
+  averagesRange: number[];
 }
 
 export type Comparison = {

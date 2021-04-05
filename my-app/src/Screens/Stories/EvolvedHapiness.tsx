@@ -51,10 +51,14 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const history = useHistory();
   const location = useLocation();
 
+  const shortenMonth = (month: string) => {
+    return month.length > 3 ? month.substring(0, 3) + "." : month
+  }
+
   const tweetstartArray = user.tweetstart.split(" ");
-  const tweetstartString = tweetstartArray[0] + " " + tweetstartArray[2];
+  const tweetstartString = shortenMonth(tweetstartArray[0]) + " " + tweetstartArray[2];
   const tweetendArray = user.tweetend.split(" ");
-  const tweetendString = tweetendArray[0] + " " + tweetendArray[2];
+  const tweetendString = shortenMonth(tweetendArray[0]) + " " + tweetendArray[2];
 
   const data = user.monthlyaverages;
 
@@ -69,17 +73,18 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         speed: 800
       }
     },
+    colors: ["#31a354"],
     stroke: {
       curve: "smooth"
     },
     xaxis: {
       tickAmount: 2,
       position: "top",
-      min: 1,
-      max: 9,
+      min: user.averagesRange[0],
+      max: user.averagesRange[1],
       labels: {
         style: {
-          colors: ["white", "white", "white"],
+          colors: ["white", "white", "white", "white", "white", "white", "white", "white", "white"],
           fontSize: '16px'
         },
       }
@@ -126,10 +131,10 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       </Box>
       <Box className={classes.chartStyle}>
         <Typography className={classes.dateStartText} variant="subtitle2">
-          {tweetstartString}
+          {tweetendString}
         </Typography>
         <Typography className={classes.dateEndText} variant="subtitle2">
-          {tweetendString}
+          {tweetstartString}
         </Typography>
         <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
