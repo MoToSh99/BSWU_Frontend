@@ -113,13 +113,13 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="subtitle1" component="div"><span className={classes.value}>{user.danishuserscore.percent / 10}</span> out of 10 Danes are happier than you</Typography>
+				<Typography variant="subtitle1" component="div"><span className={classes.value}>{(user.danishuserscore.percent / 10)}</span> out of 10 Danes are happier than you</Typography>
 			</div>
 			<StyledRating
 				name="hover-feedback"
 				readOnly={true}
 				className={classes.rating}
-				defaultValue={(100 - user.danishuserscore.percent) / 10}
+				defaultValue={10 - ((100 - user.danishuserscore.percent) / 10)}
 				precision={0.2}
 				size="large"
 				max={10}

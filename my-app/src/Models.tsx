@@ -22,6 +22,8 @@ export type UserDetail = {
   tweetstart: string;
   tweetend: string;
   userinfo: User;
+  highestweekscore: WeekScores;
+  lowestweekscore: WeekScores;
   weekscores: WeekScores[];
   wordsmatched: number;
   danishuserscore: Comparison;
