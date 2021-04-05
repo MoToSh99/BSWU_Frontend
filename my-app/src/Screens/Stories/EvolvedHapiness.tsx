@@ -56,9 +56,9 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   }
 
   const tweetstartArray = user.tweetstart.split(" ");
-  const tweetstartString = shortenMonth(tweetstartArray[0]) + " " + tweetstartArray[2];
+  const tweetstartString = shortenMonth(tweetstartArray[0]) + " '" + tweetstartArray[2].substring(2, 4);
   const tweetendArray = user.tweetend.split(" ");
-  const tweetendString = shortenMonth(tweetendArray[0]) + " " + tweetendArray[2];
+  const tweetendString = shortenMonth(tweetendArray[0]) + " '" + tweetendArray[2].substring(2, 4);
 
   const data = user.monthlyaverages;
 

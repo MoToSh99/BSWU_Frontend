@@ -223,15 +223,15 @@ const Loading: FC<LoadingProps> = (props) => {
   function Slideshow(props) {
     var items = [
       {
-        description: "Your Tweets are getting analyzed and getting a happiness score between 1-9",
+        description: "Your Tweets are getting analyzed and assigned a happiness score between 1 and 9.",
         image: <Lottie options={analyzeA} height={120} width={120} />
       },
       {
-        description: "You can press on the left or right side of the screen to move forward or backward.",
+        description: "You can press on the left or right side of the screen to move forwards and backwards.",
         image: <Lottie options={pressA} height={120} width={120} />
       },
       {
-        description: "Folks are usually about as happy as they make their minds up to be \n - Abraham Lincoln",
+        description: "\"Folks are usually about as happy as they make their minds up to be\" \n - Abraham Lincoln.",
         image: <Lottie options={abrahamA} height={120} width={120} />
       },
       {

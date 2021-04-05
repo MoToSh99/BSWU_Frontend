@@ -58,12 +58,23 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
   const [fade, setFade] = React.useState(false);
 
   const firstGaugeColor = getGaugeColor(user.highestweekscore.Score);
+  const data = [user.weekscores[0].Score,
+                user.weekscores[1].Score,
+                user.weekscores[2].Score,
+                user.weekscores[3].Score,
+                user.weekscores[4].Score,
+                user.weekscores[5].Score,
+                user.weekscores[6].Score];
+  const sortedData = [...data].sort();
+  const sortedColors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
+  const colorArray = ["", "", "", "", "", "", ""];
+  for (var i = 0; i < 7; i++) {
+    colorArray[data.indexOf(sortedData[i])] = sortedColors[i];
+  };
 
   React.useEffect(() => {
 		setFade(true);
 	});
-
-
 
   const options = {
     chart: {
@@ -73,7 +84,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
         show: false,
       }
     },
-    colors: ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"],
+    colors: colorArray,
     plotOptions: {
       bar: {
         columnWidth: '45%',
@@ -118,7 +129,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
   const series = [
     {
       name: "WeekScores",
-      data: [user.weekscores[0].Score,user.weekscores[1].Score,user.weekscores[2].Score,user.weekscores[3].Score,user.weekscores[4].Score,user.weekscores[5].Score,user.weekscores[6].Score]
+      data: data
     }
   ];
 
