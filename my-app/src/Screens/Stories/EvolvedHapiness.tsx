@@ -27,6 +27,18 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   avatar: {
     width: "25px",
     height: "25px"
+  },
+  dateStartText: {
+    position: "absolute",
+    marginTop: 50,
+    marginLeft: 30,
+    zIndex: 1
+  },
+  dateEndText: {
+    position: "absolute",
+    marginTop: 560,
+    marginLeft: 30,
+    zIndex: 1
   }
 }));
 
@@ -38,6 +50,11 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const classes = useStyles({});
   const history = useHistory();
   const location = useLocation();
+
+  const tweetstartArray = user.tweetstart.split(" ");
+  const tweetstartString = tweetstartArray[0] + " " + tweetstartArray[2];
+  const tweetendArray = user.tweetend.split(" ");
+  const tweetendString = tweetendArray[0] + " " + tweetendArray[2];
 
   const data = user.monthlyaverages;
 
@@ -108,6 +125,12 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
       </Box>
       <Box className={classes.chartStyle}>
+        <Typography className={classes.dateStartText} variant="subtitle2">
+          {tweetstartString}
+        </Typography>
+        <Typography className={classes.dateEndText} variant="subtitle2">
+          {tweetendString}
+        </Typography>
         <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
     </div>

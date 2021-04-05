@@ -20,6 +20,7 @@ export type UserDetail = {
   tweets: Tweets;
   tweetsamount: number;
   tweetstart: string;
+  tweetend: string;
   userinfo: User;
   weekscores: WeekScores[];
   wordsmatched: number;
