@@ -1,13 +1,13 @@
-import React, { FC } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
 import {
-  Typography,
   Box,
-  CircularProgress
+  CircularProgress, Typography
 } from "@material-ui/core";
-import { UserDetail } from "../../Models";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import React, { FC } from "react";
+import Chart from "react-apexcharts";
 import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
+import { UserDetail } from "../../Models";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -43,6 +43,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   }
 }));
 
+
+
 export interface WeekdayScoresProps {
   user: UserDetail;
 }
@@ -63,6 +65,63 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
   React.useEffect(() => {
 		setFade(true);
 	});
+
+  const options = {
+    chart: {
+      height: 350,
+      type: 'bar',
+      toolbar: {
+        show: false,
+      }
+    },
+    colors: ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"],
+    plotOptions: {
+      bar: {
+        columnWidth: '45%',
+        distributed: true,
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    legend: {
+      show: false
+    },
+    xaxis: {
+      categories: [
+        user.weekscores[0].Day,
+        user.weekscores[1].Day,
+        user.weekscores[2].Day,
+        user.weekscores[3].Day,
+        user.weekscores[4].Day,
+        user.weekscores[5].Day,
+        user.weekscores[6].Day
+      ],
+      labels: {
+        style: {
+          colors: "white",
+          fontSize: '12px'
+        }
+      }
+    },
+    yaxis: {
+      min: user.weekscores[6].Score - 0.2,
+      max: user.weekscores[0].Score + 0.05,
+      labels: {
+        style: {
+          colors: "white",
+          fontSize: '12px'
+        }
+    }
+  }
+};
+
+  const series = [
+    {
+      name: "WeekScores",
+      data: [user.weekscores[0].Score,user.weekscores[1].Score,user.weekscores[2].Score,user.weekscores[3].Score,user.weekscores[4].Score,user.weekscores[5].Score,user.weekscores[6].Score]
+    }
+  ];
 
   return (
     <div className={classes.page}>
@@ -188,6 +247,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
             </Box>
           </Box>
         </FadeIn>
+        <Chart options={options} series={series} type="bar" height={350}/>
+      
     </div>
   )
 }

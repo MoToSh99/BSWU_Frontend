@@ -108,7 +108,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
       </Box>
       <Box className={classes.chartStyle}>
-        <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
+      <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
     </div>
   )
