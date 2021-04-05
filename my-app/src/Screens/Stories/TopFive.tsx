@@ -14,17 +14,17 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     flexDirection: "column"
   },
   buttonGroup: {
-      display: "flex",
-      justifyContent: "center",
-      margin: 30
+    display: "flex",
+    justifyContent: "center",
+    margin: 30
   },
   buttons: {
     display: "flex",
     flexDirection: "column",
   },
   button: {
-      margin: 20,
-      textTransform: "none"
+    margin: 20,
+    textTransform: "none"
   },
 }));
 
@@ -35,25 +35,17 @@ export interface TopFiveProps {
 const TopFive: FC<TopFiveProps> = ({ user }) => {
   const classes = useStyles({});
 
-  const top = [];
+  const top = user.topfivewords.top.map((word) =>
+    <Button key={word} variant="contained" color="primary" size="large" className={classes.button}>
+      {word}
+    </Button>
+  )
 
-  user.topfivewords.top.forEach((word) => {
-    top.push(
-      <Button variant="contained" color="primary" size="large" className={classes.button}>
-        {word}
-      </Button>
-    );
-  });
-
-  const bottom = [];
-
-  user.topfivewords.bottom.forEach((word) => {
-    bottom.push(
-      <Button variant="contained" color="secondary" size="large" className={classes.button}>
-        {word}
-      </Button>
-    );
-  });
+  const bottom = user.topfivewords.bottom.map((word) =>
+    <Button key={word} variant="contained" color="secondary" size="large" className={classes.button}>
+      {word}
+    </Button>
+  )
 
   return (
     <div className={classes.page}>
@@ -67,12 +59,12 @@ const TopFive: FC<TopFiveProps> = ({ user }) => {
         </Typography>
       </div>
       <div className={classes.buttonGroup}>
-      <FadeIn >
-        <div className={classes.buttons}>{top}</div>
-      </FadeIn>
-      <FadeIn delay={300}>
-        <div className={classes.buttons}>{bottom}</div>
-      </FadeIn>
+        <FadeIn >
+          <div className={classes.buttons}>{top}</div>
+        </FadeIn>
+        <FadeIn delay={300}>
+          <div className={classes.buttons}>{bottom}</div>
+        </FadeIn>
       </div>
     </div>
   );

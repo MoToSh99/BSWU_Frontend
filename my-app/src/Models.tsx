@@ -20,6 +20,7 @@ export type UserDetail = {
   tweets: Tweets;
   tweetsamount: number;
   tweetstart: string;
+  tweetend: string;
   userinfo: User;
   highestweekscore: WeekScores;
   lowestweekscore: WeekScores;
@@ -27,6 +28,7 @@ export type UserDetail = {
   wordsmatched: number;
   danishuserscore: Comparison;
   monthlyaverages: MonthlyAverage[];
+  averagesRange: number[];
 }
 
 export type Comparison = {

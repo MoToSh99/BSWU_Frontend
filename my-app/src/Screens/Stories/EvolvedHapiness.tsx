@@ -27,6 +27,18 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   avatar: {
     width: "25px",
     height: "25px"
+  },
+  dateStartText: {
+    position: "absolute",
+    marginTop: 50,
+    marginLeft: 30,
+    zIndex: 1
+  },
+  dateEndText: {
+    position: "absolute",
+    marginTop: 560,
+    marginLeft: 30,
+    zIndex: 1
   }
 }));
 
@@ -38,6 +50,15 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const classes = useStyles({});
   const history = useHistory();
   const location = useLocation();
+
+  const shortenMonth = (month: string) => {
+    return month.length > 3 ? month.substring(0, 3) + "." : month
+  }
+
+  const tweetstartArray = user.tweetstart.split(" ");
+  const tweetstartString = shortenMonth(tweetstartArray[0]) + " " + tweetstartArray[2];
+  const tweetendArray = user.tweetend.split(" ");
+  const tweetendString = shortenMonth(tweetendArray[0]) + " " + tweetendArray[2];
 
   const data = user.monthlyaverages;
 
@@ -52,17 +73,18 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         speed: 800
       }
     },
+    colors: ["#31a354"],
     stroke: {
       curve: "smooth"
     },
     xaxis: {
       tickAmount: 2,
       position: "top",
-      min: 1,
-      max: 9,
+      min: user.averagesRange[0],
+      max: user.averagesRange[1],
       labels: {
         style: {
-          colors: ["white", "white", "white"],
+          colors: ["white", "white", "white", "white", "white", "white", "white", "white", "white"],
           fontSize: '16px'
         },
       }
@@ -108,7 +130,13 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
       </Box>
       <Box className={classes.chartStyle}>
-      <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
+        <Typography className={classes.dateStartText} variant="subtitle2">
+          {tweetendString}
+        </Typography>
+        <Typography className={classes.dateEndText} variant="subtitle2">
+          {tweetstartString}
+        </Typography>
+        <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
     </div>
   )
