@@ -68,14 +68,12 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
     setOpen(false);
   };
 
-  const celebs = [];
+  var celebs = [];
 
-  user.allcelebrities.map(function(celeb) {
-    celebs.push(
-      <>
-        <ListItem alignItems="flex-start">
+  celebs = user.allcelebrities.map((a) => 
+        <ListItem key={a.username} alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={celeb.pic} />
+            <Avatar alt="Remy Sharp" src={a.pic} />
           </ListItemAvatar>
           <ListItemText
             primary={
@@ -86,7 +84,7 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
                   className={classes.inline}
                   color="textPrimary"
                 >
-                  @{celeb.username}
+                  @{a.username}
                 </Typography>
                 {""}
               </React.Fragment>
@@ -99,17 +97,15 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
                   className={classes.inline}
                   color="textPrimary"
                 >
-                {celeb.score}
+                  {a.score}
                 </Typography>
                 {""}
               </React.Fragment>
             }
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
-      </>
-    );
-  });
+  );
+
 
   return (
     <div>
