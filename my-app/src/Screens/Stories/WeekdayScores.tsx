@@ -1,6 +1,7 @@
 import {
   Box,
-  CircularProgress, Typography
+  CircularProgress, 
+  Typography
 } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import React, { FC } from "react";
@@ -8,6 +9,7 @@ import Chart from "react-apexcharts";
 import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
 import { UserDetail } from "../../Models";
+import { Colorscale } from 'react-colorscales';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   header: {
@@ -48,6 +50,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   chart: {
     margin: "auto",
     maxWidth: 1000
+  },
+  avatarBox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "10px"
+  },
+  neutralText: {
+    marginLeft: "20px"
   }
 }));
 
@@ -62,7 +73,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
 
   const [fade, setFade] = React.useState(false);
 
-  const firstGaugeColor = getGaugeColor(user.highestweekscore.Score);
+  const firstGaugeColor = getGaugeColor(user.highestweekscore.Score, user.tweets.saddest.score, user.tweets.happiest.score);
+  
   const data = [user.weekscores[0].Score,
                 user.weekscores[1].Score,
                 user.weekscores[2].Score,
@@ -75,6 +87,24 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
   const colorArray = ["", "", "", "", "", "", ""];
   for (var i = 0; i < 7; i++) {
     colorArray[data.indexOf(sortedData[i])] = sortedColors[i];
+  };
+
+  function roundHalf(num: Number, upOrDown: string) {
+    if (upOrDown === "down") {
+      var rounded = Math.floor(num*2) / 2;
+      if (num - rounded <= 0.1) {
+        return rounded - 0.5;
+      } else {
+        return rounded;
+      }
+    } else {
+      var rounded = Math.ceil(num*2) / 2;
+      if (rounded - num <= 0.1) {
+        return rounded + 0.5;
+      } else {
+        return rounded;
+      }
+    }
   };
 
   React.useEffect(() => {
@@ -120,16 +150,16 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
       }
     },
     yaxis: {
-      min: user.lowestweekscore.Score - 0.05,
-      max: user.highestweekscore.Score + 0.05,
+      min: roundHalf(user.lowestweekscore.Score, "down"),
+      max: roundHalf(user.highestweekscore.Score, "up"),
       labels: {
         style: {
           colors: "white",
           fontSize: '14px'
         }
+      }
     }
-  }
-};
+  };
 
   const series = [
     {
@@ -137,6 +167,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
       data: data
     }
   ];
+
+  const colorBarData = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
 
   return (
     <div className={classes.page}>
@@ -170,7 +202,12 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           <div className={classes.chart}>
             <Chart options={options} series={series} type="bar" height={350}/>
           </div>
-          
+          <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
+          <Box className={classes.avatarBox}>
+            <Typography variant="subtitle1" component="div">Sad</Typography>
+            <Typography className={classes.neutralText} variant="subtitle1" component="div">Neutral</Typography>
+            <Typography variant="subtitle1" component="div">Happy</Typography>
+          </Box>
         </FadeIn>
       
     </div>

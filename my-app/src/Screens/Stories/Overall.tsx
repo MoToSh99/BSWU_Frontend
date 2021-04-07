@@ -50,7 +50,7 @@ const Overall: FC<OverallProps> = ({user}) => {
     const [progress, setProgress] = React.useState(0.0);
     const [fade, setFade] = React.useState(false);
 
-    const gaugeColor = getGaugeColor(user.overallscore);
+    const gaugeColor = getGaugeColor(user.overallscore, user.tweets.saddest.score, user.tweets.happiest.score);
 
     React.useEffect(() => {
         setProgress(user.overallscore);
