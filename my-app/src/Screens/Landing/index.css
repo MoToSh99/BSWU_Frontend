@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: white;
-    background: #1F2833;
+
+    background-color: #133c55;
+    background-image: linear-gradient(160deg, #133c55 0%, #386fa4 70%);
+
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 

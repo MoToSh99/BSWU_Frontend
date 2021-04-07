@@ -4,29 +4,57 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, TextField, Button, InputAdornment } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
+import MainButton from '../../Components/MainButton';
+import { ReactComponent as Logo } from '../../Images/logo.svg';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
-  textField: {
-      width: '100%',
-      marginLeft: 'auto',
-      marginRight: 'auto',            
-      paddingBottom: 0,
-      marginTop: 0,
-      fontWeight: 500,
-      background: "white",
-      borderRadius: 15,
-      marginBottom: 10,
-  },
   page: {
-    padding: 15,
+    height: "100%",
+    padding: 30,
     display: "flex",
-    flexDirection: "column",
-    justifyItems: "center"
+    flexDirection: "column"
+  },
+  subtext: {
+    marginTop: 145
+  },
+  textField: {
+    width: '100%',     
+    fontWeight: 500,
+    background: "white",
+    borderRadius: 15,
+    marginTop: 20,
+    maxWidth: 750
+  },
+  errorTextHidden: {
+    color: "red",
+    textAlign: "center",
+    visibility: "hidden"
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    visibility: "visible"
   },
   button: {
-      width: "100%",
-      borderRadius: 20,
-      textTransform: "unset"
+    marginTop: 5,
+  },
+  footerContainer: {
+    width: "100%",
+  },
+  inputContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+  },
+  logo: {
+    maxWidth: 750,
   }
 }));
 
@@ -39,7 +67,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const history = useHistory();
     
     const getUserinfo = (usr: string) => {
-        fetch(`https://datascripttwitter.herokuapp.com/userinfo?username=${usr}`)
+        fetch(`http://sharifhome.duckdns.org:5123/userinfo?username=${usr}`)
           .then(res => res.json())
           .then(
             (result) => {
@@ -48,31 +76,36 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
             },
             (error) => {
               console.log(error)
+              setError(true)
             }
           )
     }
 
     const [username, setUsername] = useState("")
+    const [error, setError] = useState(false)
+    
     
     return (
-
           <div className={classes.page}>
-            <div className={classes.titleContainer}>
-              <Typography align="center" variant="h2" component="h2">
-                Happy<br/> 
-                Tweet
-              </Typography>
+            <div className={classes.logoContainer}>
+              <Logo className={classes.logo}></Logo>
             </div>
+          
             <div className={classes.inputContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <Typography className={classes.subtext} align="center" variant="subtitle1" component="h2">
                   Enter your Twitter username:
               </Typography>
               <TextField
+                  error={error}
                   className={classes.textField}
                   id="filled-basic"
+                  color="secondary"
                   label="Twitter Username"
                   variant="filled"
-                  onChange={(e) => {setUsername(e.target.value)}}
+                  onChange={(e) => {
+                    setUsername(e.target.value)
+                    setError(false)
+                  }}
                   InputProps={{
                     disableUnderline: true,
                     endAdornment: (
@@ -82,21 +115,19 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   ),
                 }}
                 />
-    
-  
-              <Button
-                  className={classes.button}
-                  variant="contained"
+              {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
+              <div className={classes.button}>
+                <MainButton
                   color="primary"
-                  size="large"
-                  onClick={() => { getUserinfo(username) }}
-                  >
-                    Start your journey
-              </Button>
-
+                  text="Start your journey ➤"
+                  onClick={() => { 
+                    getUserinfo(username) 
+                  }}
+                />
+              </div>
             </div>
-            <div className={classes.footerContainer}>
-              <Typography align="center" variant="subtitle1" component="h2">
+              <div className={classes.footerContainer}>
+              <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
                   Made with ❤️ by DTM
               </Typography>
             </div>
