@@ -38,14 +38,17 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   dateStartText: {
     position: "absolute",
     marginTop: 50,
-    marginLeft: 30,
+    marginLeft: 25,
     zIndex: 1
   },
   dateEndText: {
     position: "absolute",
-    marginLeft: 30,
+    marginLeft: 25,
     zIndex: 1
-  }
+  },
+	value : {
+		color: "#66FCF1"
+	}
 }));
 
 export type EvolvedHapinessProps = {
@@ -63,8 +66,11 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
 
   const tweetstartArray = user.tweetstart.split(" ");
   const tweetstartString = shortenMonth(tweetstartArray[0]) + " '" + tweetstartArray[2].substring(2, 4);
+  const tweetstartFullString = tweetstartArray[0] + " '" + tweetstartArray[2].substring(2, 4);
   const tweetendArray = user.tweetend.split(" ");
   const tweetendString = shortenMonth(tweetendArray[0]) + " '" + tweetendArray[2].substring(2, 4);
+  const tweetendFullString = tweetendArray[0] + " '" + tweetendArray[2].substring(2, 4);
+
 
   const data = user.monthlyaverages;
 
@@ -84,13 +90,13 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       curve: "smooth"
     },
     xaxis: {
-      tickAmount: 2,
+      tickAmount: 4,
       position: "top",
-      min: user.averagesRange[0],
-      max: user.averagesRange[1],
+      min: 1,
+      max: 9,
       labels: {
         style: {
-          colors: ["white", "white", "white", "white", "white", "white", "white", "white", "white"],
+          colors: "white",
           fontSize: '16px'
         },
       }
@@ -128,8 +134,9 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   return (
     <div className={classes.page}>
       <div className={classes.content}>
-      <Typography align="center" variant="h5" component="h5">
-        The evolution of your happiness
+      <Typography align="center" variant="h5" component="div">
+        The history of your happiness<br></br>
+        from <span className={classes.value}>{tweetstartFullString}</span> to <span className={classes.value}>{tweetendFullString}</span>
       </Typography>
       <Box className={classes.avatarBox}>
         <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_grande.png?v=1571606093" className={classes.avatar}/>
@@ -138,10 +145,10 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       </Box>
       <Box className={classes.chartStyle}>
         <Typography className={classes.dateStartText} variant="subtitle2">
-          {tweetendString}
+          {tweetstartString}
         </Typography>
         <Typography className={classes.dateEndText} variant="subtitle2" style={{marginTop: window.innerHeight - 255}}>
-          {tweetstartString}
+          {tweetendString}
         </Typography>
         <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
       </Box>
