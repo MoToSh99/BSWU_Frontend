@@ -7,6 +7,7 @@ import {
   Theme,
   Typography,
   Grid,
+  Button,
 } from "@material-ui/core";
 import React, { FC } from "react";
 import { UserDetail } from "../Models";
@@ -74,6 +75,14 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   logo: {
     width: "50%",
   },
+  button: {
+    width: 90,
+    height: 90,
+    borderWidth: 5,
+    borderColor: "white",
+    background: "white",
+    borderRadius: 50
+  }
 }));
 
 export type FinishCardProps = {
@@ -119,27 +128,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
             <Box className={classes.gaugeBox}>
               <Box>
-                <CircularProgress
-                  style={{color: gaugeColor}}
-                  variant="determinate"
-                  value={58}
-                  size={90}
-                  thickness={2.5}
-                />
-              </Box>
-              <Box
-                top={4}
-                left={4}
-                bottom={10}
-                right={0}
-                position="absolute"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Typography variant="h6" component="div">
-                  {user.overallscore}
-                </Typography>
+                <Button className={classes.button}>{user.overallscore}</Button>
               </Box>
             </Box>
             <Typography variant="subtitle2" component="div">
