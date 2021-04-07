@@ -73,7 +73,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
 
   const [fade, setFade] = React.useState(false);
 
-  const firstGaugeColor = getGaugeColor(user.highestweekscore.Score);
+  const firstGaugeColor = getGaugeColor(user.highestweekscore.Score, user.tweets.saddest.score, user.tweets.happiest.score);
+  
   const data = [user.weekscores[0].Score,
                 user.weekscores[1].Score,
                 user.weekscores[2].Score,

@@ -62,8 +62,9 @@ const Compare: FC<CompareProps> = ({ user }) => {
 
 	const [fade, setFade] = React.useState(false);
 
-	const gaugeColor = getGaugeColor(user.overallscore);
-	const denmarkGaugeColor = getGaugeColor(user.danishuserscore.danishoverall)
+    const gaugeColor = getGaugeColor(user.overallscore, user.tweets.saddest.score, user.tweets.happiest.score);
+    const denmarkGaugeColor = getGaugeColor(user.danishuserscore.danishoverall, user.tweets.saddest.score, user.tweets.happiest.score);
+
 
 	React.useEffect(() => {
 		setTimeout(function () {

@@ -41,7 +41,7 @@ const Unhappiest: FC<UnhappiestProps> = ({ user }) => {
   const [fade, setFade] = React.useState(false);
   const [display, setDisplay] = React.useState("block");
 
-  const gaugeColor = getGaugeColor(user.tweets.saddest.score);
+  const gaugeColor = getGaugeColor(user.tweets.saddest.score, user.tweets.saddest.score, user.tweets.happiest.score);
 
   const onTweetLoaded = () => {
     setFade(true);
