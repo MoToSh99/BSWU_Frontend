@@ -1,6 +1,6 @@
 export function getGaugeColor(score, minScore, maxScore) {
-    var topRange = minScore + ((maxScore / 100) * 60);
-    var bottomRange = minScore + ((maxScore / 100) * 40);
+    var topRange = maxScore - ((maxScore / 100) * 33);
+    var bottomRange = minScore + ((maxScore / 100) * 33);
     switch (true) {
         case (score <= bottomRange):
             return "#ccece6"
