@@ -14,9 +14,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     flexDirection: "column"
   },
   content: {
-    //display: "flex",
-    //flexDirection: "column",
-    //alignItems: "center",
     margin: "auto",
     maxWidth: 900
   },

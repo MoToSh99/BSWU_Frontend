@@ -1,6 +1,7 @@
 import {
   Box,
-  CircularProgress, Typography
+  CircularProgress, 
+  Typography
 } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import React, { FC } from "react";
@@ -8,6 +9,7 @@ import Chart from "react-apexcharts";
 import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
 import { UserDetail } from "../../Models";
+import { Colorscale } from 'react-colorscales';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   header: {
@@ -48,6 +50,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   chart: {
     margin: "auto",
     maxWidth: 1000
+  },
+  avatarBox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "10px"
+  },
+  neutralText: {
+    marginLeft: "20px"
   }
 }));
 
@@ -145,9 +156,9 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           colors: "white",
           fontSize: '14px'
         }
+      }
     }
-  }
-};
+  };
 
   const series = [
     {
@@ -155,6 +166,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
       data: data
     }
   ];
+
+  const colorBarData = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
 
   return (
     <div className={classes.page}>
@@ -188,7 +201,12 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           <div className={classes.chart}>
             <Chart options={options} series={series} type="bar" height={350}/>
           </div>
-          
+          <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
+          <Box className={classes.avatarBox}>
+            <Typography variant="subtitle1" component="div">Sad</Typography>
+            <Typography className={classes.neutralText} variant="subtitle1" component="div">Neutral</Typography>
+            <Typography variant="subtitle1" component="div">Happy</Typography>
+          </Box>
         </FadeIn>
       
     </div>
