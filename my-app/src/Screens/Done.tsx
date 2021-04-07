@@ -16,7 +16,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
     padding: 30,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    alignItems: "center"
   },
   shareCard: {
     marginTop: 50

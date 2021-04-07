@@ -24,6 +24,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     backgroundColor: "#25335A",
+    maxWidth: 750
   },
   top: {
     display: "flex",
@@ -59,8 +60,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   blueText: {
     color: "#66FCF1",
-    fontSize: 28,
-    marginTop: 5,
+    fontSize: 22,
+    marginTop: 3,
     marginBottom: 5,
   },
   avatar: {
@@ -80,8 +81,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     height: 90,
     borderWidth: 5,
     borderColor: "white",
-    background: "white",
-    borderRadius: 50
+    borderRadius: 50,
+    color: "white",
+    fontSize: 20
   }
 }));
 
@@ -128,7 +130,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
             <Box className={classes.gaugeBox}>
               <Box>
-                <Button className={classes.button}>{user.overallscore}</Button>
+                <Button variant="outlined" className={classes.button} style={{borderColor: getGaugeColor(user.overallscore)}}>{user.overallscore}</Button>
               </Box>
             </Box>
             <Typography variant="subtitle2" component="div">
