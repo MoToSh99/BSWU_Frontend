@@ -119,7 +119,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 								<Typography variant="h4" component="div">{user.danishuserscore.danishoverall}</Typography>
 							</Box>
 						</Box>
-						<Typography variant="h6" component="div">Avg. Denmark</Typography>
+						<Typography variant="h6" component="div">Denmark avg.</Typography>
 					</div>
 				</div>
 			</div>
@@ -136,12 +136,22 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				max={10}
 				icon={<AccessibilityIcon fontSize="inherit" />}
         	/>
-			<div className={classes.infoText}>
-				<Typography variant="subtitle1" component="div">From our dataset of {user.danishuserscore.usersamount}</Typography>
-				<Typography variant="subtitle1" component="div">users from Denmark</Typography>
-				<Typography variant="subtitle1" className={classes.blueText}>{user.danishuserscore.usersless}</Typography>
-				<Typography variant="subtitle1" component="div">have a higher hapiness</Typography>
-				<Typography variant="subtitle1" component="div">score than you</Typography>
+			<div>
+				<Box className={classes.gaugeBox}>
+					<CircularProgress style={{color: denmarkGaugeColor}} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
+					<Box
+						top={0}
+						left={0}
+						bottom={0}
+						right={0}
+						position="absolute"
+						display="flex"
+						alignItems="center"
+						justifyContent="center">
+						<Typography variant="h4" component="div">{10}</Typography>
+					</Box>
+				</Box>
+				<Typography variant="h6" component="div">USA avg.</Typography>
 			</div>
 			</FadeIn>
 		</div>
