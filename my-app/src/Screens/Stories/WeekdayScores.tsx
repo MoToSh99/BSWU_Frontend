@@ -77,6 +77,24 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
     colorArray[data.indexOf(sortedData[i])] = sortedColors[i];
   };
 
+  function roundHalf(num: Number, upOrDown: string) {
+    if (upOrDown === "down") {
+      var rounded = Math.floor(num*2) / 2;
+      if (num - rounded <= 0.1) {
+        return rounded - 0.5;
+      } else {
+        return rounded;
+      }
+    } else {
+      var rounded = Math.ceil(num*2) / 2;
+      if (rounded - num <= 0.1) {
+        return rounded + 0.5;
+      } else {
+        return rounded;
+      }
+    }
+  };
+
   React.useEffect(() => {
 		setFade(true);
 	});
@@ -120,8 +138,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
       }
     },
     yaxis: {
-      min: user.lowestweekscore.Score - 0.05,
-      max: user.highestweekscore.Score + 0.05,
+      min: roundHalf(user.lowestweekscore.Score, "down"),
+      max: roundHalf(user.highestweekscore.Score, "up"),
       labels: {
         style: {
           colors: "white",
