@@ -12,7 +12,7 @@ import {
 import React, { FC } from "react";
 import { UserDetail } from "../Models";
 import dk from "../Images/dk.png";
-import { ReactComponent as Logo } from "../Images/logo.svg";
+import logo from "../Images/logopng.png";
 import { getGaugeColor } from '../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -147,7 +147,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
           </Grid>
         </Grid>
-        <Logo className={classes.logo} />
+        <img className={classes.logo}  src={logo}/>
       </Paper>
     </div>
   );
