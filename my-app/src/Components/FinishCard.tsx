@@ -7,11 +7,12 @@ import {
   Theme,
   Typography,
   Grid,
+  Button,
 } from "@material-ui/core";
 import React, { FC } from "react";
 import { UserDetail } from "../Models";
 import dk from "../Images/dk.png";
-import { ReactComponent as Logo } from "../Images/logo.svg";
+import logo from "../Images/logopng.png";
 import { getGaugeColor } from '../Helpers';
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     backgroundColor: "#25335A",
+    maxWidth: 750
   },
   top: {
     display: "flex",
@@ -58,8 +60,8 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   blueText: {
     color: "#66FCF1",
-    fontSize: 28,
-    marginTop: 5,
+    fontSize: 22,
+    marginTop: 3,
     marginBottom: 5,
   },
   avatar: {
@@ -74,6 +76,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   logo: {
     width: "50%",
   },
+  button: {
+    width: 90,
+    height: 90,
+    borderWidth: 5,
+    borderColor: "white",
+    borderRadius: 50,
+    color: "white",
+    fontSize: 20
+  }
 }));
 
 export type FinishCardProps = {
@@ -119,27 +130,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
             <Box className={classes.gaugeBox}>
               <Box>
-                <CircularProgress
-                  style={{color: gaugeColor}}
-                  variant="determinate"
-                  value={58}
-                  size={90}
-                  thickness={2.5}
-                />
-              </Box>
-              <Box
-                top={4}
-                left={4}
-                bottom={10}
-                right={0}
-                position="absolute"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Typography variant="h6" component="div">
-                  {user.overallscore}
-                </Typography>
+                <Button variant="outlined" className={classes.button} style={{borderColor: getGaugeColor(user.overallscore)}}>{user.overallscore}</Button>
               </Box>
             </Box>
             <Typography variant="subtitle2" component="div">
@@ -156,7 +147,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
           </Grid>
         </Grid>
-        <Logo className={classes.logo} />
+        <img className={classes.logo}  src={logo}/>
       </Paper>
     </div>
   );
