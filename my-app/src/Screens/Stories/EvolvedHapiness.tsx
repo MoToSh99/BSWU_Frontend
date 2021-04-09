@@ -90,7 +90,7 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       fillSeriesColor: true,
       custom: function({series, seriesIndex, dataPointIndex, w}) {
         return '<div style="background-color: #000; height: 20px; width: 100px; text-align: center">' +
-          '<span>' + dataPointIndex + '</span>' +
+          '<span>' + data[dataPointIndex][2] + '</span>' +
           '</div>'
       }
     },

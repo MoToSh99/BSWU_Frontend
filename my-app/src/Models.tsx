@@ -68,4 +68,5 @@ export type WeekScores = {
 export type MonthlyAverage = {
   x: number;
   y: number;
+  date: string;
 }
