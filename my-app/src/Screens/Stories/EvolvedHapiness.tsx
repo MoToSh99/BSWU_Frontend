@@ -87,9 +87,11 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       size: 3
     },
     tooltip: {
-      x: {
-        show: false,
-        formatter: "hey"
+      fillSeriesColor: true,
+      custom: function({series, seriesIndex, dataPointIndex, w}) {
+        return '<div style="background-color: #000; height: 20px; width: 100px; text-align: center">' +
+          '<span>' + dataPointIndex + '</span>' +
+          '</div>'
       }
     },
     colors: ["#31a354"],
