@@ -84,12 +84,12 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       }
     },
     markers: {
-      size: 3
+      size: 4
     },
     tooltip: {
       fillSeriesColor: true,
       custom: function({series, seriesIndex, dataPointIndex, w}) {
-        return '<div style="background-color: #000; height: 20px; width: 100px; text-align: center">' +
+        return '<div style="background-color: #FFF; color: black; height: 20px; width: 100px; text-align: center">' +
           '<span>' + data[dataPointIndex][2] + '</span>' +
           '</div>'
       }

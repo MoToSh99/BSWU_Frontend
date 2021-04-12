@@ -12,7 +12,8 @@ import Overall from "../Screens/Stories/Overall";
 import Happiest from "../Screens/Stories/Happiest";
 import Unhappiest from "../Screens/Stories/Unhappiest";
 import Overlay from "./Overlay";
-
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   page: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
   },
   bar: {
     margin: 20,
-    hidden: "true",
+    hidden: "true"
   },
   hidden: {
     display: "none"
@@ -86,7 +87,13 @@ const stories = [
     {object : <Done user={user} />}
  ];
 
-
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#31a354"
+      },
+    },
+  });
 
   const classes = useStyles();
 
@@ -96,12 +103,14 @@ const stories = [
   return (
     <>
       <div className={classes.page}>
-        <LinearProgress
-          color="secondary"
-          variant="determinate"
-          value={progress}
-          className={hidden ? classes.hidden : classes.bar}
-        />
+        <ThemeProvider theme={theme}>
+          <LinearProgress
+            color="primary"
+            variant="determinate"
+            value={progress}
+            className={hidden ? classes.hidden : classes.bar}
+          />
+        </ThemeProvider>
         {stories[page].object}
       </div>
       <Overlay onProgressChange={onProgressChange}/>

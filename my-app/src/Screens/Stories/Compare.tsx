@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Avatar } from '@material-ui/core';
+import Flag from 'react-world-flags'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StyledRating from '@material-ui/lab/Rating';
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
@@ -36,7 +37,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-evenly",
-		//alignItems: "center",
 		maxWidth:750,
 	},
 	blueText: {
@@ -48,6 +48,28 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	},
 	value : {
 		color: "#66FCF1"
+	},
+	countryAveragesBox: {
+		marginTop: 30,
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center"
+	},
+	countryScores: {
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		width: "70%",
+		marginTop: 10
+	},
+	flagBox: {
+		display: "flex",
+		flexDirection: "row",
+		width: "70%"
+	},
+	flagText: {
+		marginLeft: 15
 	}
 }));
 
@@ -64,7 +86,6 @@ const Compare: FC<CompareProps> = ({ user }) => {
 
     const gaugeColor = getGaugeColor(user.overallscore, user.tweets.saddest.score, user.tweets.happiest.score);
     const denmarkGaugeColor = getGaugeColor(user.danishuserscore.danishoverall, user.tweets.saddest.score, user.tweets.happiest.score);
-
 
 	React.useEffect(() => {
 		setTimeout(function () {
@@ -136,22 +157,43 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				max={10}
 				icon={<AccessibilityIcon fontSize="inherit" />}
         	/>
-			<div>
-				<Box className={classes.gaugeBox}>
-					<CircularProgress style={{color: denmarkGaugeColor}} variant="determinate" value={denmark * 10} size={100} thickness={2.5} />
-					<Box
-						top={0}
-						left={0}
-						bottom={0}
-						right={0}
-						position="absolute"
-						display="flex"
-						alignItems="center"
-						justifyContent="center">
-						<Typography variant="h4" component="div">{10}</Typography>
+			<div className={classes.countryAveragesBox}>
+				<Typography variant="h6" component="div">Other national averages</Typography>
+				<Box className={classes.countryScores}>
+					<Box className={classes.flagBox}>
+						<Flag code="usa" height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">United States</Typography>
 					</Box>
+					<Typography variant="h6">6.1</Typography>
 				</Box>
-				<Typography variant="h6" component="div">USA avg.</Typography>
+				<Box className={classes.countryScores}>
+					<Box className={classes.flagBox}>
+						<Flag code="gb" height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">Great Britain</Typography>
+					</Box>
+					<Typography variant="h6">6.1</Typography>
+				</Box>
+				<Box className={classes.countryScores}>
+					<Box className={classes.flagBox}>
+						<Flag code="de" height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">Germany</Typography>
+					</Box>
+					<Typography variant="h6">6.1</Typography>
+				</Box>
+				<Box className={classes.countryScores}>
+					<Box className={classes.flagBox}>
+						<Flag code="swe" height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">Sweden</Typography>
+					</Box>
+					<Typography variant="h6">6.1</Typography>
+				</Box>
+				<Box className={classes.countryScores}>
+					<Box className={classes.flagBox}>
+						<Flag code="nor" height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">Norway</Typography>
+					</Box>
+					<Typography variant="h6">6.1</Typography>
+				</Box>
 			</div>
 			</FadeIn>
 		</div>
