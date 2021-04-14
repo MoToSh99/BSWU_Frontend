@@ -161,38 +161,38 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				<Typography variant="h6" component="div">Other national averages</Typography>
 				<Box className={classes.countryScores}>
 					<Box className={classes.flagBox}>
-						<Flag code="usa" height="25" width="40" />
-						<Typography className={classes.flagText} variant="subtitle1">United States</Typography>
+						<Flag code={user.nationalAverages[4].countryCode} height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">{user.nationalAverages[4].countryName}</Typography>
 					</Box>
-					<Typography variant="h6">6.1</Typography>
+					<Typography variant="h6">{user.nationalAverages[4].overall}</Typography>
 				</Box>
 				<Box className={classes.countryScores}>
 					<Box className={classes.flagBox}>
-						<Flag code="gb" height="25" width="40" />
-						<Typography className={classes.flagText} variant="subtitle1">Great Britain</Typography>
+						<Flag code={user.nationalAverages[3].countryCode} height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">{user.nationalAverages[3].countryName}</Typography>
 					</Box>
-					<Typography variant="h6">6.1</Typography>
+					<Typography variant="h6">{user.nationalAverages[3].overall}</Typography>
 				</Box>
 				<Box className={classes.countryScores}>
 					<Box className={classes.flagBox}>
-						<Flag code="de" height="25" width="40" />
-						<Typography className={classes.flagText} variant="subtitle1">Germany</Typography>
+						<Flag code={user.nationalAverages[2].countryCode} height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">{user.nationalAverages[2].countryName}</Typography>
 					</Box>
-					<Typography variant="h6">6.1</Typography>
+					<Typography variant="h6">{user.nationalAverages[2].overall}</Typography>
 				</Box>
 				<Box className={classes.countryScores}>
 					<Box className={classes.flagBox}>
-						<Flag code="swe" height="25" width="40" />
-						<Typography className={classes.flagText} variant="subtitle1">Sweden</Typography>
+						<Flag code={user.nationalAverages[1].countryCode} height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">{user.nationalAverages[1].countryName}</Typography>
 					</Box>
-					<Typography variant="h6">6.1</Typography>
+					<Typography variant="h6">{user.nationalAverages[1].overall}</Typography>
 				</Box>
 				<Box className={classes.countryScores}>
 					<Box className={classes.flagBox}>
-						<Flag code="nor" height="25" width="40" />
-						<Typography className={classes.flagText} variant="subtitle1">Norway</Typography>
+						<Flag code={user.nationalAverages[0].countryCode} height="25" width="40" />
+						<Typography className={classes.flagText} variant="subtitle1">{user.nationalAverages[0].countryName}</Typography>
 					</Box>
-					<Typography variant="h6">6.1</Typography>
+					<Typography variant="h6">{user.nationalAverages[0].overall}</Typography>
 				</Box>
 			</div>
 			</FadeIn>
