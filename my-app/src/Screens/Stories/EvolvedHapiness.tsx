@@ -18,7 +18,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     maxWidth: 900
   },
   chartStyle: {
-    zIndex: 0,
+    zIndex: 1,
     position: "relative"
   },
   avatarBox: {
@@ -34,13 +34,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   dateStartText: {
     position: "absolute",
-    marginTop: 50,
-    marginLeft: 25,
+    marginTop: 30,
+    marginLeft: 30,
     zIndex: 1
   },
   dateEndText: {
     position: "absolute",
-    marginLeft: 25,
+    marginLeft: 30,
     zIndex: 1
   },
 	value : {
@@ -68,8 +68,9 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const tweetendString = shortenMonth(tweetendArray[0]) + " '" + tweetendArray[2].substring(2, 4);
   const tweetendFullString = tweetendArray[0] + " '" + tweetendArray[2].substring(2, 4);
 
-
   const data = user.monthlyaverages;
+  const xaxisMin = (user.averagesRange[0] - 0.06) < 0.0 ? 0.0 : (user.averagesRange[0] - 0.06);
+  const xaxisMax = (user.averagesRange[1] + 0.06) > 1.0 ? 1.0 : (user.averagesRange[1] + 0.06);
 
   const options = {
     chart: {
@@ -82,20 +83,34 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         speed: 800
       }
     },
+    markers: {
+      size: 4
+    },
+    tooltip: {
+      fillSeriesColor: true,
+      custom: function({series, seriesIndex, dataPointIndex, w}) {
+        return '<div style="background-color: #FFF; color: black; height: 20px; width: 100px; text-align: center">' +
+          '<span>' + data[dataPointIndex][2] + '</span>' +
+          '</div>'
+      }
+    },
     colors: ["#31a354"],
     stroke: {
       curve: "smooth"
     },
     xaxis: {
-      tickAmount: 4,
+      tickAmount: 3,
       position: "top",
-      min: 1,
-      max: 9,
+      min: xaxisMin,
+      max: xaxisMax,
       labels: {
+        show: true,
         style: {
-          colors: "white",
-          fontSize: '16px'
-        },
+          fontSize: "1px"
+        }
+      },
+      tooltip: {
+        enabled: false
       }
     },
     yaxis: {
@@ -104,7 +119,10 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
       labels: {
         show: false
       },
-      min: 0
+      min: 0,
+      tooltip: {
+        enabled: false
+      }
     },
     grid: {
       borderColor: "white",
