@@ -28,6 +28,7 @@ export type UserDetail = {
   wordsmatched: number;
   danishuserscore: Comparison;
   monthlyaverages: MonthlyAverage[];
+  nationalAverages: NationalAverage[];
   averagesRange: number[];
 }
 
@@ -69,4 +70,9 @@ export type MonthlyAverage = {
   x: number;
   y: number;
   date: string;
+}
+export type NationalAverage = {
+  overall: string;
+  countryCode: string;
+  countryName: string;
 }

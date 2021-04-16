@@ -12,7 +12,8 @@ import Overall from "../Screens/Stories/Overall";
 import Happiest from "../Screens/Stories/Happiest";
 import Unhappiest from "../Screens/Stories/Unhappiest";
 import Overlay from "./Overlay";
-
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   page: {
@@ -20,10 +21,16 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyItems: "center",
+    "& .MuiLinearProgress-colorSecondary": {
+      backgroundColor: "white"
+    },
+    "& .MuiLinearProgress-barColorSecondary": {
+      backgroundColor: "green"
+    }
   },
   bar: {
     margin: 20,
-    hidden: "true",
+    hidden: "true"
   },
   hidden: {
     display: "none"
@@ -47,13 +54,13 @@ const useStyles = makeStyles({
 const Stories = () => {
   const history = useHistory();
   const location = useLocation();
-  const user : UserDetail = location.state.memberDetail
+  const user: UserDetail = location.state.memberDetail
 
   const storiesAmount = 8
 
   const onProgressChange = (up: Boolean) => {
     if (up) {
-      if (page === storiesAmount - 2 ) {
+      if (page === storiesAmount - 2) {
         setHidden(true);
         setPage(page + 1);
       } else if (page === storiesAmount - 1) {
@@ -75,18 +82,16 @@ const Stories = () => {
     }
   };
 
-const stories = [
-    {object : <Overall user={user} />},
-    {object : <EvolvedHapiness user={user}/>},
-    {object : <Happiest user={user} />},
-    {object : <Unhappiest user={user} />},
-    {object : <TopFive user={user} />},
-    {object : <Compare user={user} />},
-    {object : <WeekdayScores user={user} />},
-    {object : <Done user={user} />}
- ];
-
-
+  const stories = [
+    { object: <Overall user={user} /> },
+    { object: <EvolvedHapiness user={user} /> },
+    { object: <Happiest user={user} /> },
+    { object: <Unhappiest user={user} /> },
+    { object: <TopFive user={user} /> },
+    { object: <Compare user={user} /> },
+    { object: <WeekdayScores user={user} /> },
+    { object: <Done user={user} /> }
+  ];
 
   const classes = useStyles();
 
@@ -104,7 +109,7 @@ const stories = [
         />
         {stories[page].object}
       </div>
-      <Overlay onProgressChange={onProgressChange}/>
+      <Overlay onProgressChange={onProgressChange} />
     </>
   );
 };
