@@ -164,7 +164,7 @@ const Loading: FC<LoadingProps> = (props) => {
   const [loading, setLoading] = React.useState(true)
   const [loading2, setLoading2] = React.useState(true)
 
-  const url = "https://datascripttwitter.herokuapp.com/"
+  const url = "https://sharifhome.duckdns.org/"
   //const url = "http://127.0.0.1:5000"
 
   const checkUsername = (usr: string) => {

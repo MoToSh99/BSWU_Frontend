@@ -67,7 +67,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const history = useHistory();
     
     const getUserinfo = (usr: string) => {
-        fetch(`https://datascripttwitter.herokuapp.com/userinfo?username=${usr}`)
+        fetch(`https://sharifhome.duckdns.org//userinfo?username=${usr}`)
           .then(res => res.json())
           .then(
             (result) => {
