@@ -167,49 +167,20 @@ const Loading: FC<LoadingProps> = (props) => {
   const url = "https://sharifhome.duckdns.org"
   //const url = "http://127.0.0.1:5000"
 
-  const checkUsername = (usr: string) => {
-    fetch(`${url}/checkusername?username=${usr}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          (result["Userdata"]) ? getUserinfo(usr) : checkUsername(usr)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
-  }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`${url}/gettwitterdata?username=${usr}&count=500`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result)
-          checkUsername(usr)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
-  }
-
-  const getUserinfo = (usr: string) => {
     fetch(
-      `${url}/getdata?username=${usr}`
+      `${url}/getdata?username=${usr}&count=500`
     )
       .then((res) => res.json())
       .then(
         (result) => {
-          if (result["Error"]) checkUsername(usr)
-          else{
           console.log(result);
 
           history.push({
             pathname: "/story",
             state: { memberDetail: result },
           });
-        }
         },
         (error) => {
           console.log(error);
