@@ -182,7 +182,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`${url}/gettwitterdata?username=${usr}&count=500`)
+    fetch(`${url}/gettwitterdata?username=${usr}&count=3000`)
       .then(res => res.json())
       .then(
         (result) => {
