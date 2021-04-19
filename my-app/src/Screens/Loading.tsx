@@ -228,35 +228,35 @@ const Loading: FC<LoadingProps> = (props) => {
     var items = [
       {
         description: "Your Tweets are getting analyzed and assigned a happiness score between 1 and 9.",
-        image: <Lottie options={analyzeA} height={120} width={120} />
+        image: <Lottie options={analyzeA} height={120} width={120} isClickToPauseDisabled />
       },
       {
         description: "You can press on the left or right side of the screen to move forwards and backwards.",
-        image: <Lottie options={pressA} height={120} width={120} />
+        image: <Lottie options={pressA} height={120} width={120} isClickToPauseDisabled />
       },
       {
         description: "\"Folks are usually about as happy as they make their minds up to be\" \n - Abraham Lincoln.",
-        image: <Lottie options={abrahamA} height={120} width={120} />
+        image: <Lottie options={abrahamA} height={120} width={120} isClickToPauseDisabled />
       },
       {
         description:
           "Wow! You have posted " +
           userinfo.statuses_count +
           " Tweets since you created your account. Are you OK?",
-        image: <Lottie options={twitterbirdA} height={120} width={120} />,
+        image: <Lottie options={twitterbirdA} height={120} width={120} isClickToPauseDisabled />,
       },
       {
         description:
           "You have " +
           userinfo.friends_count +
           " friends on Twitter! Hopefully you have some in real life too.",
-        image: <Lottie options={friendsA} height={120} width={120} />
+        image: <Lottie options={friendsA} height={120} width={120} isClickToPauseDisabled />
       },
       {
         description: userinfo.verified
           ? "Your account is verified! I guess you're a pretty big thing, huh?"
           : "Looks like your account isn't verified. Are you not famous enough?",
-        image: <Lottie options={verifiedA} height={120} width={120} />
+        image: <Lottie options={verifiedA} height={120} width={120} isClickToPauseDisabled />
       },
     ];
 
