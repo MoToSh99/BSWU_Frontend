@@ -80,7 +80,7 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
   };
 
   const sendRating = () => {
-    fetch(`http://127.0.0.1:5000/rating?rating=${ratingValue}&username=${user.userinfo.username}`)
+    fetch(`https://sharifhome.duckdns.org/rating?rating=${ratingValue}&username=${user.userinfo.username}`)
       .then(res => res.json())
       .then(
         (result) => {
