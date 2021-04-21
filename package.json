@@ -8,6 +8,7 @@
     "react-fade-in": "^2.0.1",
     "react-loading": "^2.0.3",
     "react-lottie": "^1.2.3",
+    "react-rating-stars-component": "^2.2.0",
     "react-share-button": "^0.0.4",
     "react-spring": "^8.0.27",
     "styled-components": "^5.2.1"

@@ -42,6 +42,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
     const history = useHistory();
     const location = useLocation();
     const userinfo : User = location.state.memberDetail
+    const sliderValue : Number = location.state.slider
 
     const input = document.getElementById("yesButton");
     document.addEventListener("keyup", function(event) {
@@ -79,7 +80,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
             text="Yes"
             onClick={() => {
               history.push({pathname: "/loading",
-                state: { memberDetail: userinfo}
+                state: { memberDetail: userinfo, slider: sliderValue}
               })
             }}
           />

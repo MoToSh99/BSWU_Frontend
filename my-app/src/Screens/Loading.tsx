@@ -160,13 +160,13 @@ const Loading: FC<LoadingProps> = (props) => {
   const history = useHistory();
   const location = useLocation();
   const userinfo: User = location.state.memberDetail;
+  const sliderValue : Number = location.state.slider;
   const [done, setDone] = React.useState(false);
   const [loading, setLoading] = React.useState(true)
   const [loading2, setLoading2] = React.useState(true)
 
   const url = "https://sharifhome.duckdns.org"
   //const url = "http://127.0.0.1:5000"
-
 
   const checkUsername = (usr: string) => {
     fetch(`${url}/checkusername?username=${usr}`)
@@ -182,7 +182,7 @@ const Loading: FC<LoadingProps> = (props) => {
   }
 
   const gettwitterdata = (usr: string) => {
-    fetch(`${url}/gettwitterdata?username=${usr}&count=3000`)
+    fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
       .then(res => res.json())
       .then(
         (result) => {
