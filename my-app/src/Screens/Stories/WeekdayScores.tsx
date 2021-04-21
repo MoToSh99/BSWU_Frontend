@@ -1,7 +1,8 @@
 import {
   Box,
   CircularProgress, 
-  Typography
+  Typography,
+  Avatar
 } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import React, { FC } from "react";
@@ -57,6 +58,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     justifyContent: "space-between",
     marginTop: "10px"
   },
+  avatar: {
+    width: "25px",
+    height: "25px"
+  },
   neutralText: {
     marginLeft: "20px"
   }
@@ -82,12 +87,14 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 user.weekscores[4].Score,
                 user.weekscores[5].Score,
                 user.weekscores[6].Score];
-  const sortedData = [...data].sort();
-  const sortedColors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
-  const colorArray = ["", "", "", "", "", "", ""];
-  for (var i = 0; i < 7; i++) {
-    colorArray[data.indexOf(sortedData[i])] = sortedColors[i];
-  };
+
+  const colorArray = [getGaugeColor(user.weekscores[0].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[1].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[2].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[3].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[4].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[5].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[6].Score, user.tweets.saddest.score, user.tweets.happiest.score)];
 
   function roundHalf(num: Number, upOrDown: string) {
     if (upOrDown === "down") {
@@ -168,7 +175,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
     }
   ];
 
-  const colorBarData = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
+  const colorBarData = ["#ccece6", "#66c2a4", "#238b45"];
 
   return (
     <div className={classes.page}>
@@ -204,9 +211,9 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           </div>
           <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
           <Box className={classes.avatarBox}>
-            <Typography variant="subtitle1" component="div">Sad</Typography>
-            <Typography className={classes.neutralText} variant="subtitle1" component="div">Neutral</Typography>
-            <Typography variant="subtitle1" component="div">Happy</Typography>
+            <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_grande.png?v=1571606093" className={classes.avatar}/>
+            <Avatar src="https://hverdagstips.dk/wp-content/uploads/2019/09/smiley-emoji-smilende-ansigt-med-sammenknebne-ojne.png" className={classes.avatar}/>
+            <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
           </Box>
         </FadeIn>
       
