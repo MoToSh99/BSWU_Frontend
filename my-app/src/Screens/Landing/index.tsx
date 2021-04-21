@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     height: "100%",
     padding: 30,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   subtext: {
     marginTop: 110
@@ -57,7 +57,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     maxWidth: 750,
   },
   slider: {
-    marginBottom: 50
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: 50,
+    width: "100%",
+    maxWidth: 650,
+    textAlign: "center"
   },
   value : {
     color: "#66FCF1"
@@ -138,20 +144,20 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   }}
                 />
               </div>
-            </div>
-            <div className={classes.slider}>
-              <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
-              <Slider
-                defaultValue={500}
-                aria-labelledby="discrete-slider"
-                step={250}
-                marks
-                min={250}
-                max={3000}
-                onChange={handleSliderChange}
-              />
-              <Typography align="center" variant="subtitle2">Adjust the slider to load more Tweets.</Typography>
-              <Typography align="center" variant="subtitle2">Warning: More Tweets = longer loading time.</Typography>
+              <div className={classes.slider}>
+                <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
+                <Slider
+                  defaultValue={500}
+                  aria-labelledby="discrete-slider"
+                  step={250}
+                  marks
+                  min={250}
+                  max={3000}
+                  onChange={handleSliderChange}
+                />
+                <Typography align="center" variant="subtitle2">Adjust the slider to load more Tweets.</Typography>
+                <Typography align="center" variant="subtitle2">Warning: More Tweets = longer loading time.</Typography>
+              </div>
             </div>
             <div className={classes.footerContainer}>
             <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
