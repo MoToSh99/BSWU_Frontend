@@ -21,6 +21,7 @@ import {
 import html2canvas from "html2canvas";
 import ReactStars from "react-rating-stars-component";
 
+
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
     width: "100%",
@@ -63,8 +64,8 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
   const componentRef = useRef();
   const [rating, setShowrating] = React.useState(true);
   const [buttondisabled, setbuttondisabled] = React.useState(true);
-  const [error, setError] = useState(false);
-  const [ratingValue, setratingValue] = useState(0)
+  const [error, setError] = React.useState(false);
+  const [ratingValue, setratingValue] = React.useState(0)
 
   const ComponentToPrint = React.forwardRef((props, ref) => (
     <div ref={ref}>
@@ -79,12 +80,11 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
   };
 
   const sendRating = () => {
-    fetch(`https://sharifhome.duckdns.org/rating?rating=${ratingValue}`)
+    fetch(`http://127.0.0.1:5000/rating?rating=${ratingValue}&username=${user.userinfo.username}`)
       .then(res => res.json())
       .then(
         (result) => {
-          history.push({pathname: "/confirm",
-            state: { memberDetail: result}})
+          console.log(result)
         },
         (error) => {
           console.log(error)
