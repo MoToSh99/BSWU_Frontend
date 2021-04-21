@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, TextField, Button, InputAdornment } from '@material-ui/core';
+import { Typography, TextField, InputAdornment, Slider } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
 import MainButton from '../../Components/MainButton';
@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     flexDirection: "column"
   },
   subtext: {
-    marginTop: 145
+    marginTop: 110
   },
   textField: {
     width: '100%',     
@@ -55,6 +55,12 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   logo: {
     maxWidth: 750,
+  },
+  slider: {
+    marginBottom: 50
+  },
+  value : {
+    color: "#66FCF1"
   }
 }));
 
@@ -65,14 +71,20 @@ export interface LandingScreenProps {
 const LandingScreen: FC<LandingScreenProps> = (props) => {
     const classes = useStyles({});
     const history = useHistory();
+
+    const [username, setUsername] = useState("")
+    const [error, setError] = useState(false)
+    const [sliderValue, setSliderValue] = useState(500)
     
     const getUserinfo = (usr: string) => {
         fetch(`https://sharifhome.duckdns.org/userinfo?username=${usr}`)
           .then(res => res.json())
           .then(
             (result) => {
-              history.push({pathname: "/confirm",
-                state: { memberDetail: result}})
+              history.push({
+                pathname: "/confirm",
+                state: { memberDetail: result, slider: sliderValue}
+              })
             },
             (error) => {
               console.log(error)
@@ -81,9 +93,9 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
           )
     }
 
-    const [username, setUsername] = useState("")
-    const [error, setError] = useState(false)
-    
+    const handleSliderChange = (event, newValue) => {
+      setSliderValue(newValue);
+    };
     
     return (
           <div className={classes.page}>
@@ -120,17 +132,32 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 <MainButton
                   color="primary"
                   text="Start your journey ➤"
+                  bold={false}
                   onClick={() => { 
                     getUserinfo(username) 
                   }}
                 />
               </div>
             </div>
-              <div className={classes.footerContainer}>
-              <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
-                  Made with ❤️ by DTM
-              </Typography>
+            <div className={classes.slider}>
+              <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
+              <Slider
+                defaultValue={500}
+                aria-labelledby="discrete-slider"
+                step={250}
+                marks
+                min={250}
+                max={3000}
+                onChange={handleSliderChange}
+              />
+              <Typography align="center" variant="subtitle2">Adjust the slider to load more Tweets.</Typography>
+              <Typography align="center" variant="subtitle2">Warning: More Tweets = longer loading time.</Typography>
             </div>
+            <div className={classes.footerContainer}>
+            <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
+                Made with ❤️ by DTM
+            </Typography>
+          </div>
         </div>
     )
 }
