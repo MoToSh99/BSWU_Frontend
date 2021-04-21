@@ -82,12 +82,14 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                 user.weekscores[4].Score,
                 user.weekscores[5].Score,
                 user.weekscores[6].Score];
-  const sortedData = [...data].sort();
-  const sortedColors = ["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#005824"];
-  const colorArray = ["", "", "", "", "", "", ""];
-  for (var i = 0; i < 7; i++) {
-    colorArray[data.indexOf(sortedData[i])] = sortedColors[i];
-  };
+                
+  const colorArray = [getGaugeColor(user.weekscores[0].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[1].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[2].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[3].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[4].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[5].Score, user.tweets.saddest.score, user.tweets.happiest.score),
+                      getGaugeColor(user.weekscores[6].Score, user.tweets.saddest.score, user.tweets.happiest.score)];
 
   function roundHalf(num: Number, upOrDown: string) {
     if (upOrDown === "down") {
