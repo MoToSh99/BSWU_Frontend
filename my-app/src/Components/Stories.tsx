@@ -73,8 +73,7 @@ const Stories = () => {
       if (page === 0) {
         setProgress(progress);
       } else if (page === storiesAmount - 1) {
-        setHidden(false);
-        setPage(page - 1);
+        
       } else {
         setProgress(progress - 100 / (storiesAmount - 1));
         setPage(page - 1);
