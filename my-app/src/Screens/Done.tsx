@@ -63,9 +63,7 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
   const history = useHistory();
   const componentRef = useRef();
   const [rating, setShowrating] = React.useState(true);
-  const [buttondisabled, setbuttondisabled] = React.useState(true);
   const [error, setError] = React.useState(false);
-  const [ratingValue, setratingValue] = React.useState(0)
 
   const ComponentToPrint = React.forwardRef((props, ref) => (
     <div ref={ref}>
@@ -75,12 +73,12 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    setratingValue(newRating)
-    setbuttondisabled(false)
+    setShowrating(false);
+    sendRating(newRating);
   };
 
-  const sendRating = () => {
-    fetch(`https://sharifhome.duckdns.org/rating?rating=${ratingValue}&username=${user.userinfo.username}`)
+  const sendRating = (newRating) => {
+    fetch(`https://sharifhome.duckdns.org/rating?rating=${newRating}&username=${user.userinfo.username}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -149,11 +147,9 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
             <Button
               onClick={() => {
                 setShowrating(false);
-                sendRating();
               }}
-              disabled={buttondisabled}
             >
-              Close
+              Skip
             </Button>
           </DialogActions>
         </DialogContent>
