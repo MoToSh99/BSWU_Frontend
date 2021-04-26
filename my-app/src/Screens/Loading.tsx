@@ -183,23 +183,8 @@ const Loading: FC<LoadingProps> = (props) => {
   const [loading, setLoading] = React.useState(true);
   const [loading2, setLoading2] = React.useState(true);
 
-  const url = "https://sharifhome.duckdns.org";
-  //const url = "http://127.0.0.1:5000"
-
-  const checkUsername = (usr: string) => {
-    setTimeout(() => {
-      fetch(`${url}/checkusername?username=${usr}`)
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            result["Userdata"] ? getUserinfo(usr) : checkUsername(usr);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    }, 3000);
-  };
+  //const url = "https://sharifhome.duckdns.org";
+  const url = "http://127.0.0.1:5000"
 
   const gettwitterdata = (usr: string) => {
     fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
@@ -207,28 +192,11 @@ const Loading: FC<LoadingProps> = (props) => {
       .then(
         (result) => {
           console.log(result);
-          checkUsername(usr);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  };
 
-  const getUserinfo = (usr: string) => {
-    fetch(`${url}/getdata?username=${usr}`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          if (result["Error"]) checkUsername(usr);
-          else {
-            console.log(result);
-
-            history.push({
-              pathname: "/story",
-              state: { memberDetail: result },
-            });
-          }
+          history.push({
+            pathname: "/story",
+            state: { memberDetail: result },
+          });
         },
         (error) => {
           console.log(error);
@@ -246,15 +214,12 @@ const Loading: FC<LoadingProps> = (props) => {
       .then((res) => res.json())
       .then(
         (result) => {
-          if (result["Error"]) checkUsername(usr);
-          else {
-            console.log(result);
+          console.log(result);
 
-            history.push({
-              pathname: "/story",
-              state: { memberDetail: result },
-            });
-          }
+          history.push({
+            pathname: "/story",
+            state: { memberDetail: result },
+          });
         },
         (error) => {
           console.log(error);
