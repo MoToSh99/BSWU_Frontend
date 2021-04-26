@@ -12,7 +12,6 @@ import * as analyze from "../Images/analyze.json";
 import * as press from "../Images/press.json";
 import * as abraham from "../Images/abraham.json";
 import FadeIn from "react-fade-in";
-
 import {
   Typography,
   Paper,
@@ -21,11 +20,13 @@ import {
   Box,
   Button,
   ButtonBase,
+  Avatar
 } from "@material-ui/core";
 import { useLocation, useHistory } from "react-router-dom";
 import { User } from "../Models";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Carousel from "react-material-ui-carousel";
+import { shadows } from '@material-ui/system';
 
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -59,6 +60,26 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     boxShadow: "white"
 
   },
+  avatar: {
+    height: 50,
+    width: 50,
+    boxShadow: "0 0 0 1px #000"
+  },
+  avatarbox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "white",
+    borderRadius: "20px",
+    padding: "10px 0px 10px 0px",
+    width: "70%",
+    margin: "14px"
+  },
+  avatartext: {
+    color: "black",
+    padding: "10px"
+  }
 }));
 
 const defaultOptions = {
@@ -218,6 +239,33 @@ const Loading: FC<LoadingProps> = (props) => {
       );
   };
 
+  const loadBarackObama = () => {
+    fetch('preloaded/BarackObama.json'
+    ,{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          if (result["Error"]) checkUsername(usr)
+          else{
+          console.log(result);
+
+          history.push({
+            pathname: "/story",
+            state: { memberDetail: result },
+          });
+        }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
   useEffect(() => {
     console.log(userinfo);
     gettwitterdata(userinfo.username);
@@ -322,6 +370,19 @@ const Loading: FC<LoadingProps> = (props) => {
               )}
       </div>
 
+      <Typography variant="h6">Choose a preloaded user instead</Typography>
+      <Box onClick={() => loadBarackObama()} className={classes.avatarbox} boxShadow={3}>
+          <Avatar  alt="Remy Sharp" src={"https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg"} className={classes.avatar} />
+          <Typography variant="subtitle1" className={classes.avatartext}>Barack Obama</Typography>
+      </Box>
+      <Box onClick={() => console.log("clicked")} className={classes.avatarbox} boxShadow={3}>
+          <Avatar  alt="Remy Sharp" src={"https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg"} className={classes.avatar} />
+          <Typography variant="subtitle1" className={classes.avatartext}>Remy Sharp</Typography>
+      </Box>
+      <Box onClick={() => console.log("clicked")} className={classes.avatarbox} boxShadow={3}>
+          <Avatar  alt="Remy Sharp" src={"https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg"} className={classes.avatar} />
+          <Typography variant="subtitle1" className={classes.avatartext}>Remy Sharp</Typography>
+      </Box>
     </div>
   );
 };
