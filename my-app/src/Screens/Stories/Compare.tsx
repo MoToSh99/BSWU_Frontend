@@ -60,7 +60,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		width: "70%",
+		width: "80%",
 		marginTop: 10
 	},
 	flagBox: {
