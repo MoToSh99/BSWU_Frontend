@@ -27,6 +27,8 @@ import { User } from "../Models";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Carousel from "react-material-ui-carousel";
 import { shadows } from "@material-ui/system";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -42,7 +44,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   center: {
     margin: "auto",
   },
-  slideshow: {},
+  slideshow: {
+    marginBottom: "30px",
+  },
   header: {
     marginBottom: "30px",
   },
@@ -76,6 +80,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   avatartext: {
     color: "black",
     padding: "10px",
+  },
+  progress: {
+    margin: "30",
+    color: "white",
+  },
+  symbol: {
+    color: "white",
   },
 }));
 
@@ -181,10 +192,28 @@ const Loading: FC<LoadingProps> = (props) => {
   const sliderValue: Number = location.state.slider;
   const [done, setDone] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
-  const [loading2, setLoading2] = React.useState(true);
+  const [percent, setPercent] = React.useState(0);
+  const [status, setStatus] = React.useState("active");
 
-  const url = "https://sharifhome.duckdns.org";
-  //const url = "http://127.0.0.1:5000"
+  //const url = "https://sharifhome.duckdns.org";
+  const url = "http://127.0.0.1:5000";
+
+  const getstatus = (usr: string) => {
+    fetch(`${url}/getstatus?username=${usr}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+          setStatus(result.status);
+          setPercent(result.percent);
+
+          if (status !== "success") statusMethod();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
 
   const gettwitterdata = (usr: string) => {
     fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
@@ -192,11 +221,10 @@ const Loading: FC<LoadingProps> = (props) => {
       .then(
         (result) => {
           console.log(result);
-
-          history.push({
-            pathname: "/story",
-            state: { memberDetail: result },
-          });
+            history.push({
+              pathname: "/story",
+              state: { memberDetail: result },
+            });
         },
         (error) => {
           console.log(error);
@@ -227,9 +255,16 @@ const Loading: FC<LoadingProps> = (props) => {
       );
   };
 
+  const statusMethod = () => {
+    setTimeout(() => {
+      getstatus(userinfo.username);
+    }, 2000);
+  };
+
   useEffect(() => {
     console.log(userinfo);
     gettwitterdata(userinfo.username);
+    statusMethod();
   });
 
   function Slideshow(props) {
@@ -371,11 +406,13 @@ const Loading: FC<LoadingProps> = (props) => {
         <div className={classes.slideshow}>
           <Slideshow />
         </div>
-        {loading ? (
-          <Lottie options={defaultOptions} height={120} width={120} />
-        ) : (
-          <Lottie options={defaultOptions2} height={120} width={120} />
-        )}
+
+        <Progress
+          className={classes.progress}
+          percent={percent}
+          status={status}
+          symbolClassName={classes.symbol}
+        />
       </div>
 
       <Typography variant="h6">Choose a preloaded user instead</Typography>
