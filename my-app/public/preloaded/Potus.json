@@ -338,86 +338,233 @@
   ],
   "alltweets": [
     {
-      "created": "2021-04-24 16:01:32",
-      "id": 1385987279177531405,
-      "score": 6.4109090909
+      "created": "2021-04-25 23:28:00",
+      "id": 1386462023849025536,
+      "score": 6.44
     },
     {
-      "created": "2021-04-22 15:15:01",
-      "id": 1385250797949181955,
-      "score": 5.9328571429
+      "created": "2021-04-25 22:30:00",
+      "id": 1386447427935293444,
+      "score": 6.04
     },
     {
-      "created": "2021-04-20 21:55:41",
-      "id": 1384626851511951360,
-      "score": 6.2923076923
+      "created": "2021-04-25 19:29:17",
+      "id": 1386401947729633280,
+      "score": 5.03
     },
     {
-      "created": "2021-04-20 15:40:26",
-      "id": 1384532417353064450,
-      "score": 6.682
+      "created": "2021-04-25 18:00:01",
+      "id": 1386379482861379585,
+      "score": 6.2233333333
     },
     {
-      "created": "2021-04-20 14:01:02",
-      "id": 1384507401827725313,
-      "score": 6.4969230769
+      "created": "2021-04-25 16:21:32",
+      "id": 1386354702351220739,
+      "score": 5.2866666667
     },
     {
-      "created": "2021-04-20 02:09:21",
-      "id": 1384328303239106568,
-      "score": 6.36
+      "created": "2021-04-24 21:54:28",
+      "id": 1386076099130580995,
+      "score": 6.415
     },
     {
-      "created": "2021-04-18 23:32:49",
-      "id": 1383926520377270276,
-      "score": 6.06
+      "created": "2021-04-24 19:00:00",
+      "id": 1386032194020429827,
+      "score": 5.5916666667
     },
     {
-      "created": "2021-04-14 18:50:34",
-      "id": 1382405939697958912,
-      "score": 6.4585714286
+      "created": "2021-04-24 14:00:55",
+      "id": 1385956924768804871,
+      "score": 5.8133333333
     },
     {
-      "created": "2021-04-14 14:30:02",
-      "id": 1382340372119105537,
-      "score": 6.51
+      "created": "2021-04-23 23:30:54",
+      "id": 1385737978308435968,
+      "score": 5.135
     },
     {
-      "created": "2021-04-13 14:33:03",
-      "id": 1381978746157203456,
-      "score": 6.18
+      "created": "2021-04-23 21:30:00",
+      "id": 1385707553460350977,
+      "score": 6.3453333333
+    },
+    {
+      "created": "2021-04-23 19:41:41",
+      "id": 1385680296046116864,
+      "score": 4.3966666667
+    },
+    {
+      "created": "2021-04-23 14:05:55",
+      "id": 1385595796662460416,
+      "score": 5.764
+    },
+    {
+      "created": "2021-04-23 00:44:00",
+      "id": 1385393986001588229,
+      "score": 5.315
+    },
+    {
+      "created": "2021-04-23 00:04:00",
+      "id": 1385383920338866177,
+      "score": 6.43
+    },
+    {
+      "created": "2021-04-22 23:02:08",
+      "id": 1385368353196347395,
+      "score": 5.9314285714
+    },
+    {
+      "created": "2021-04-22 21:23:27",
+      "id": 1385343517359288323,
+      "score": 5.02
+    },
+    {
+      "created": "2021-04-22 19:47:31",
+      "id": 1385319373276172288,
+      "score": 6.1329411765
+    },
+    {
+      "created": "2021-04-22 16:29:00",
+      "id": 1385269414564597764,
+      "score": 6.11
+    },
+    {
+      "created": "2021-04-22 15:45:00",
+      "id": 1385258342373892103,
+      "score": 5.1933333333
+    },
+    {
+      "created": "2021-04-22 15:00:06",
+      "id": 1385247045376749569,
+      "score": 5.0533333333
+    },
+    {
+      "created": "2021-04-22 14:45:00",
+      "id": 1385243242359312386,
+      "score": 5.672
+    },
+    {
+      "created": "2021-04-22 14:01:00",
+      "id": 1385232169468055561,
+      "score": 7.09
+    },
+    {
+      "created": "2021-04-22 12:01:47",
+      "id": 1385202170513997829,
+      "score": 6.2783333333
+    },
+    {
+      "created": "2021-04-22 00:20:00",
+      "id": 1385025558766047234,
+      "score": 5.706
+    },
+    {
+      "created": "2021-04-21 23:45:00",
+      "id": 1385016750417268737,
+      "score": 6.505
+    },
+    {
+      "created": "2021-04-21 23:02:31",
+      "id": 1385006061678120962,
+      "score": 3.66
+    },
+    {
+      "created": "2021-04-21 22:10:09",
+      "id": 1384992882285756416,
+      "score": 6.02
+    },
+    {
+      "created": "2021-04-21 20:39:42",
+      "id": 1384970119131041793,
+      "score": 6.5261538462
+    },
+    {
+      "created": "2021-04-21 19:15:00",
+      "id": 1384948805020303360,
+      "score": 6.585
+    },
+    {
+      "created": "2021-04-21 18:15:16",
+      "id": 1384933772014067718,
+      "score": 6.126
+    },
+    {
+      "created": "2021-04-21 17:44:00",
+      "id": 1384925903243948032,
+      "score": 6.455
+    },
+    {
+      "created": "2021-04-21 14:00:25",
+      "id": 1384869637628772352,
+      "score": 4.662
+    },
+    {
+      "created": "2021-04-21 13:09:41",
+      "id": 1384856867478855682,
+      "score": 5.8275
+    },
+    {
+      "created": "2021-04-21 00:07:40",
+      "id": 1384660069133033474,
+      "score": 6.32
+    },
+    {
+      "created": "2021-04-20 23:34:00",
+      "id": 1384651594235580422,
+      "score": 6.82
+    },
+    {
+      "created": "2021-04-20 23:23:00",
+      "id": 1384648826544349185,
+      "score": 4.0428571429
+    },
+    {
+      "created": "2021-04-20 23:19:40",
+      "id": 1384647989776486401,
+      "score": 6.0133333333
+    },
+    {
+      "created": "2021-04-20 23:17:26",
+      "id": 1384647427525726213,
+      "score": 5.8977777778
+    },
+    {
+      "created": "2021-04-20 23:14:33",
+      "id": 1384646702360113152,
+      "score": 5.3366666667
     }
   ],
-  "averagesRange": [0.6666666666666666, 1.0],
+  "averagesRange": [0.5625000000000003, 0.9687500000000004],
   "celebrityscore": [
     {
-      "pic": "https://pbs.twimg.com/profile_images/1321163587679784960/0ZxKlEKB.jpg",
-      "score": 6.33,
-      "username": "NASA"
+      "pic": "https://pbs.twimg.com/profile_images/1351885832320380928/qAXFKHx5.jpg",
+      "score": 5.8,
+      "username": "GretaThunberg"
     },
     {
-      "pic": "https://pbs.twimg.com/profile_images/1322677766383411201/ctlls_pu.jpg",
-      "score": 6.34,
-      "username": "SteveMartinToGo"
+      "pic": "https://pbs.twimg.com/profile_images/378800000836981162/b683f7509ec792c3e481ead332940cdc.jpeg",
+      "score": 5.82,
+      "username": "StephenKing"
     },
     {
-      "pic": "https://pbs.twimg.com/profile_images/1123359369570148353/Mh-Rf4Sk.jpg",
-      "score": 6.36,
-      "username": "Oprah"
+      "pic": "https://pbs.twimg.com/profile_images/659040352507039744/1tw770Qo.jpg",
+      "score": 5.82,
+      "username": "amyschumer"
     }
   ],
   "danishuserscore": {
     "danishoverall": 6.26,
-    "percent": 50,
+    "percent": 84,
     "usersamount": 777,
-    "usersless": 393
+    "usersless": 655
   },
-  "highestweekscore": { "Day": "Wednesday", "Score": 6.48 },
+  "highestweekscore": { "Day": "Saturday", "Score": 5.94 },
   "lowestweekscore": { "Day": "Monday", "Score": 0.0 },
   "monthlyaverages": [
-    [1.0, 1, "13/4/2021"],
-    [1.0, 2, "18/4/2021"],
-    [0.6666666666666666, 3, "22/4/2021"]
+    [0.937500000000001, 1, "20/4/2021"],
+    [0.9687500000000004, 2, "21/4/2021"],
+    [0.6458333333333336, 3, "22/4/2021"],
+    [0.5625000000000003, 4, "23/4/2021"],
+    [0.6375000000000004, 5, "24/4/2021"]
   ],
   "nationalAverages": [
     { "countryCode": "de", "countryName": "Germany", "overall": 5.69 },
@@ -426,38 +573,38 @@
     { "countryCode": "swe", "countryName": "Sweden", "overall": 6.23 },
     { "countryCode": "gb", "countryName": "United Kingdom", "overall": 6.41 }
   ],
-  "overallscore": 6.34,
+  "overallscore": 5.77,
   "topfivewords": {
-    "bottom": ["pandemic", "threat", "denied", "fight", "miss"],
-    "top": ["friends", "family", "achievement", "extraordinary", "hope"]
+    "bottom": ["death", "pandemic", "die", "violence", "pain"],
+    "top": ["celebrating", "family", "achievement", "extraordinary", "internet"]
   },
-  "tweetend": "April 22nd 2021",
+  "tweetend": "April 24th 2021",
   "tweets": {
-    "happiest": { "id": "1384532417353064450", "score": 6.68 },
-    "saddest": { "id": "1385250797949181955", "score": 5.93 }
+    "happiest": { "id": "1385232169468055561", "score": 7.09 },
+    "saddest": { "id": "1385006061678120962", "score": 3.66 }
   },
-  "tweetsamount": 10,
-  "tweetstart": "April 13th 2021",
+  "tweetsamount": 39,
+  "tweetstart": "April 20th 2021",
   "userinfo": {
-    "followers_count": 130280616,
-    "friends_count": 592731,
+    "followers_count": 10308710,
+    "friends_count": 12,
     "geo_enabled": false,
-    "location": "Washington, DC",
-    "name": "Barack Obama",
-    "profile_image_url": "https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV.jpg",
+    "location": "",
+    "name": "President Biden",
+    "profile_image_url": "https://pbs.twimg.com/profile_images/1380530524779859970/TfwVAbyX.jpg",
     "profile_location": "None",
-    "statuses_count": 16168,
-    "username": "BarackObama",
+    "statuses_count": 586,
+    "username": "POTUS",
     "verified": true
   },
   "weekscores": {
     "0": { "Day": "Monday", "Score": 0.0 },
-    "1": { "Day": "Tuesday", "Score": 6.4 },
-    "2": { "Day": "Wednesday", "Score": 6.48 },
-    "3": { "Day": "Thursday", "Score": 5.93 },
-    "4": { "Day": "Friday", "Score": 0.0 },
-    "5": { "Day": "Saturday", "Score": 6.41 },
-    "6": { "Day": "Sunday", "Score": 6.06 }
+    "1": { "Day": "Tuesday", "Score": 5.62 },
+    "2": { "Day": "Wednesday", "Score": 5.87 },
+    "3": { "Day": "Thursday", "Score": 5.82 },
+    "4": { "Day": "Friday", "Score": 5.56 },
+    "5": { "Day": "Saturday", "Score": 5.94 },
+    "6": { "Day": "Sunday", "Score": 5.8 }
   },
-  "wordsmatched": 76
+  "wordsmatched": 177
 }
