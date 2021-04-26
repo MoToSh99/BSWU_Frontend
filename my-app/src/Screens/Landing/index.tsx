@@ -147,12 +147,12 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               <div className={classes.slider}>
                 <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
                 <Slider
-                  defaultValue={500}
+                  defaultValue={600}
                   aria-labelledby="discrete-slider"
-                  step={250}
+                  step={200}
                   marks
-                  min={250}
-                  max={3000}
+                  min={200}
+                  max={3200}
                   onChange={handleSliderChange}
                 />
                 <Typography align="center" variant="subtitle2">Adjust the slider to load more Tweets.</Typography>
