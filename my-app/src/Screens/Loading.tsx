@@ -3,18 +3,11 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import FadeIn from "react-fade-in";
 import {
   Typography,
-  Paper,
-  Container,
-  Grid,
   Box,
-  Button,
-  ButtonBase,
   Avatar,
 } from "@material-ui/core";
 import { useLocation, useHistory } from "react-router-dom";
 import { User } from "../Models";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { shadows } from "@material-ui/system";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import Slideshow from "../Components/Slideshow";
@@ -81,9 +74,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 
 export interface LoadingProps {}
 
-const sleep = (milliseconds: number) => {
-  return new Promise((resolve) => setTimeout(resolve, milliseconds));
-};
 
 const Loading: FC<LoadingProps> = (props) => {
   const classes = useStyles({});
@@ -104,11 +94,16 @@ const Loading: FC<LoadingProps> = (props) => {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           setStatus(result.status);
           setPercent(result.percent);
+          
+          if (result.percent === 100) {
+            console.log("Done")
+          } 
+          else {
+           statusMethod();
+          }
 
-          if (status !== "success") statusMethod();
         },
         (error) => {
           console.log(error);
@@ -118,10 +113,12 @@ const Loading: FC<LoadingProps> = (props) => {
 
 
   const gettwitterdata = (usr: string) => {
+    statusMethod();
     fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
       .then((res) => res.json())
       .then(
         (result) => {
+          setLoading(false)
           console.log(result);
             history.push({
               pathname: "/story",
@@ -163,11 +160,11 @@ const Loading: FC<LoadingProps> = (props) => {
     }, 2000);
   };
 
+
   useEffect(() => {
     console.log(userinfo);
     gettwitterdata(userinfo.username);
-    statusMethod();
-  });
+  }, []);
 
 
 
