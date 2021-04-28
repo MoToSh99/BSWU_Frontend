@@ -6,7 +6,6 @@ import Fade from "@material-ui/core/Fade";
 import { UserDetail } from "../Models";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
@@ -27,9 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: window.innerHeight / 2,
       overflow: "auto",
       width: window.innerWidth - 100,
-      "&:focus":{
+      "&:focus": {
         outline: "none"
-       }
+      }
     },
     button: {
       background: "#45425a",
@@ -71,40 +70,40 @@ const ModalCeleb: FC<ModalCelebProps> = ({ user }) => {
     setOpen(false);
   };
 
-  const celebs = user.allcelebrities.map((a) => 
-        <ListItem key={a.username} alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={a.pic} />
-          </ListItemAvatar>
-          <ListItemText
-            primary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body1"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  @{a.username}
-                </Typography>
-                {""}
-              </React.Fragment>
-            }
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  variant="body2"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  {a.score}
-                </Typography>
-                {""}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
+  const celebs = user.allcelebrities.map((a) =>
+    <ListItem key={a.username} alignItems="flex-start">
+      <ListItemAvatar>
+        <Avatar alt="Remy Sharp" src={a.pic} />
+      </ListItemAvatar>
+      <ListItemText
+        primary={
+          <React.Fragment>
+            <Typography
+              component="span"
+              variant="body1"
+              className={classes.inline}
+              color="textPrimary"
+            >
+              @{a.username}
+            </Typography>
+            {""}
+          </React.Fragment>
+        }
+        secondary={
+          <React.Fragment>
+            <Typography
+              component="span"
+              variant="body2"
+              className={classes.inline}
+              color="textPrimary"
+            >
+              {a.score}
+            </Typography>
+            {""}
+          </React.Fragment>
+        }
+      />
+    </ListItem>
   );
 
   return (

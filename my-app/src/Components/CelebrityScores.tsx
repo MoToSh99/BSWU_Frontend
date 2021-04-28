@@ -1,6 +1,5 @@
 import { Box, Avatar, Typography, makeStyles, Theme, Tooltip } from "@material-ui/core"
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 import React, { FC } from "react"
 import { UserDetail } from '../Models';
 
