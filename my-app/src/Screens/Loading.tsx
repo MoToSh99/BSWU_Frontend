@@ -8,9 +8,10 @@ import {
 } from "@material-ui/core";
 import { useLocation, useHistory } from "react-router-dom";
 import { User } from "../Models";
-import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import Slideshow from "../Components/Slideshow";
+import * as legoData from "../Images/legoloading.json";
+import Lottie from "react-lottie";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -83,53 +84,38 @@ const Loading: FC<LoadingProps> = (props) => {
   const sliderValue: Number = location.state.slider;
   const [done, setDone] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
-  const [percent, setPercent] = React.useState(0);
-  const [status, setStatus] = React.useState("active");
 
   const url = "https://sharifhome.duckdns.org";
   //const url = "http://127.0.0.1:5000";
 
-  const getstatus = (usr: string) => {
-    fetch(`${url}/getstatus?username=${usr}`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setStatus(result.status);
-          setPercent(result.percent);
-
-          if (result.percent === 100) {
-            console.log("Done")
-          } 
-          else {
-           statusMethod();
-          }
-
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: legoData.default,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
+  
 
 
   const gettwitterdata = (usr: string) => {
-    statusMethod();
     fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setLoading(false)
           console.log(result);
-            history.push({
-              pathname: "/story",
-              state: { memberDetail: result },
-            });
+          history.push({
+            pathname: "/story",
+            state: { memberDetail: result },
+          });
         },
         (error) => {
           console.log(error);
         }
       );
   };
+
 
   const loadpreloaded = (usr: string) => {
     fetch(`preloaded/${usr}.json`, {
@@ -154,11 +140,6 @@ const Loading: FC<LoadingProps> = (props) => {
       );
   };
 
-  const statusMethod = () => {
-    setTimeout(() => {
-      getstatus(userinfo.username);
-    }, 2000);
-  };
 
 
   useEffect(() => {
@@ -188,12 +169,11 @@ const Loading: FC<LoadingProps> = (props) => {
           <Slideshow userinfo={userinfo} />
         </div>
 
-        <Progress
-          className={classes.progress}
-          percent={percent}
-          status={status}
-          symbolClassName={classes.symbol}
-        />
+        {loading ? (
+                <Lottie options={defaultOptions} height={120} width={120} />
+              ) : (
+                <Lottie options={defaultOptions2} height={120} width={120} />
+              )}
 
       </div>
 

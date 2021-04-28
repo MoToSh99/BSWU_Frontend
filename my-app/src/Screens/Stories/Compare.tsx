@@ -85,12 +85,12 @@ const Compare: FC<CompareProps> = ({ user }) => {
 	const [fade, setFade] = React.useState(false);
 
     const gaugeColor = getGaugeColor(user.overallscore, user.tweets.saddest.score, user.tweets.happiest.score);
-    const denmarkGaugeColor = getGaugeColor(user.danishuserscore.danishoverall, user.tweets.saddest.score, user.tweets.happiest.score);
+    const denmarkGaugeColor = getGaugeColor(user.danishuserscore[0].danishoverall, user.tweets.saddest.score, user.tweets.happiest.score);
 
 	React.useEffect(() => {
 		setTimeout(function () {
 			setProgress(user.overallscore);
-			setDenmark(user.danishuserscore.danishoverall);
+			setDenmark(user.danishuserscore[0].danishoverall);
 		}, 100);
 		setFade(true);
 	});
@@ -137,7 +137,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 								display="flex"
 								alignItems="center"
 								justifyContent="center">
-								<Typography variant="h4" component="div">{user.danishuserscore.danishoverall}</Typography>
+								<Typography variant="h4" component="div">{user.danishuserscore[0].danishoverall}</Typography>
 							</Box>
 						</Box>
 						<Typography variant="h6" component="div">Denmark avg.</Typography>
@@ -145,13 +145,13 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="subtitle1" component="div"><span className={classes.value}>{(user.danishuserscore.percent / 10)}</span> out of 10 Danes are happier than you</Typography>
+				<Typography variant="subtitle1" component="div"><span className={classes.value}>{(user.danishuserscore[0].percent / 10)}</span> out of 10 Danes are happier than you</Typography>
 			</div>
 			<StyledRating
 				name="hover-feedback"
 				readOnly={true}
 				className={classes.rating}
-				defaultValue={10 - ((100 - user.danishuserscore.percent) / 10)}
+				defaultValue={10 - ((100 - user.danishuserscore[0].percent) / 10)}
 				precision={0.2}
 				size="large"
 				max={10}
