@@ -10,9 +10,9 @@ Application running at [happytweet.toheed.dk/](https://happytweet.toheed.dk/). U
 
 <img src="https://i.imgur.com/BhulqhW.jpg" alt="Front page" width="200"/>
 
-![Overall score page](https://i.imgur.com/G2ous63.jpg "Overall score page")
+<img src="https://i.imgur.com/G2ous63.jpg" alt="Overall score page" width="200"/>
 
-![National comparison page](https://i.imgur.com/SpF2IgU.jpg "National comparison page")
+<img src="https://i.imgur.com/SpF2IgU.jpg" alt="National comparison page" width="200"/>
 
 ## Installation and Setup Instructions
 
