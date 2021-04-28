@@ -8,7 +8,7 @@ Application running at [happytweet.toheed.dk/](https://happytweet.toheed.dk/). U
 
 ## Project Screen Shots
 
-![Front page](https://i.imgur.com/BhulqhW.jpg =250x250)
+<img src="https://i.imgur.com/BhulqhW.jpg" alt="Front page" width="200"/>
 
 ![Overall score page](https://i.imgur.com/G2ous63.jpg "Overall score page")
 
