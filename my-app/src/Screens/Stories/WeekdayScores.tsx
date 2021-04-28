@@ -175,7 +175,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
     }
   ];
 
-  const colorBarData = ["#ccece6", "#66c2a4", "#238b45"];
+  const colorBarData = ["#e5f5e0", "#a1d99b", "#31a354"];
 
   return (
     <div className={classes.page}>
