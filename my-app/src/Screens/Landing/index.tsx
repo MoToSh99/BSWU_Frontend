@@ -80,7 +80,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
 
     const [username, setUsername] = useState("")
     const [error, setError] = useState(false)
-    const [sliderValue, setSliderValue] = useState(500)
+    const [sliderValue, setSliderValue] = useState(3200)
     
     const getUserinfo = (usr: string) => {
         fetch(`https://sharifhome.duckdns.org/userinfo?username=${usr}`)
@@ -147,7 +147,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
               <div className={classes.slider}>
                 <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
                 <Slider
-                  defaultValue={600}
+                  defaultValue={3200}
                   aria-labelledby="discrete-slider"
                   step={200}
                   marks
@@ -155,8 +155,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   max={3200}
                   onChange={handleSliderChange}
                 />
-                <Typography align="center" variant="subtitle2">Adjust the slider to load more Tweets.</Typography>
-                <Typography align="center" variant="subtitle2">Warning: More Tweets = longer loading time.</Typography>
+                <Typography align="center" variant="subtitle2">Adjust the slider to load fewer Tweets.</Typography>
               </div>
             </div>
             <div className={classes.footerContainer}>

@@ -86,14 +86,16 @@ const Loading: FC<LoadingProps> = (props) => {
   const [percent, setPercent] = React.useState(0);
   const [status, setStatus] = React.useState("active");
 
-  const url = "https://sharifhome.duckdns.org";
-  //const url = "http://127.0.0.1:5000";
+  //const url = "https://sharifhome.duckdns.org";
+  const url = "http://127.0.0.1:5000";
+  
 
   const getstatus = (usr: string) => {
     fetch(`${url}/getstatus?username=${usr}`)
       .then((res) => res.json())
       .then(
         (result) => {
+          console.log(result)
           setStatus(result.status);
           setPercent(result.percent);
 
@@ -157,7 +159,7 @@ const Loading: FC<LoadingProps> = (props) => {
   const statusMethod = () => {
     setTimeout(() => {
       getstatus(userinfo.username);
-    }, 2000);
+    }, 1000);
   };
 
 
