@@ -25,10 +25,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     height: "100vh",
   },
   center: {
-    margin: "auto",
   },
   slideshow: {
-    marginBottom: "30px",
+    marginBottom: "10px",
   },
   header: {
     marginBottom: "30px",
@@ -56,9 +55,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     alignItems: "center",
     background: "white",
     borderRadius: "20px",
-    padding: "10px 10px 10px 10px",
+    padding: "3px 10px 3px 10px",
     width: "70%",
-    margin: "10px",
+    margin: "4px",
   },
   avatartext: {
     color: "black",
