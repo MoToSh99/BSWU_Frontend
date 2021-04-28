@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  CircularProgress,
   makeStyles,
   Paper,
   Theme,
@@ -94,8 +93,6 @@ export type FinishCardProps = {
 const FinishCard: FC<FinishCardProps> = ({ user }) => {
   const classes = useStyles({});
 
-  const gaugeColor = getGaugeColor(user.overallscore);
-
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
@@ -147,7 +144,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
             </Typography>
           </Grid>
         </Grid>
-        <img className={classes.logo}  src={logo}/>
+        <img className={classes.logo} alt="Remy Sharp" src={logo}/>
       </Paper>
     </div>
   );
