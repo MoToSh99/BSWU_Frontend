@@ -86,8 +86,8 @@ const Loading: FC<LoadingProps> = (props) => {
   const [percent, setPercent] = React.useState(0);
   const [status, setStatus] = React.useState("active");
 
-  const url = "https://sharifhome.duckdns.org";
-  //const url = "http://127.0.0.1:5000";
+  //const url = "https://sharifhome.duckdns.org";
+  const url = "http://127.0.0.1:5000";
   
 
   const getstatus = (usr: string) => {
@@ -99,8 +99,9 @@ const Loading: FC<LoadingProps> = (props) => {
           setStatus(result.status);
           setPercent(result.percent);
 
-          if (result.percent === 100) {
+          if (result.percent === 110) {
             console.log("Done")
+            getdata(usr)
           } 
           else {
            statusMethod();
@@ -115,12 +116,26 @@ const Loading: FC<LoadingProps> = (props) => {
 
 
   const gettwitterdata = (usr: string) => {
-    statusMethod();
+    setTimeout(() => {
+      getstatus(userinfo.username);
+    }, 3000);
     fetch(`${url}/gettwitterdata?username=${usr}&count=${sliderValue}`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setLoading(false)
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  const getdata = (usr: string) => {
+    fetch(`${url}/getdata?username=${usr}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
           console.log(result);
             history.push({
               pathname: "/story",
