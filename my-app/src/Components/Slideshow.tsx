@@ -6,7 +6,6 @@ import * as friends from "../Images/friends.json";
 import * as verified from "../Images/verified.json";
 import * as geolocalization from "../Images/geolocalization.json";
 import * as development from "../Images/web-development.json";
-import * as legoData from "../Images/legoloading.json";
 import * as doneData from "../Images/doneloading.json";
 import * as analyze from "../Images/analyze.json";
 import * as press from "../Images/press.json";
@@ -57,14 +56,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
   }));
   
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: legoData.default,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+
   const defaultOptions2 = {
     loop: false,
     autoplay: true,

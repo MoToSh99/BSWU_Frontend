@@ -149,7 +149,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 <Slider
                   defaultValue={3200}
                   aria-labelledby="discrete-slider"
-                  step={200}
+                  step={600}
                   marks
                   min={200}
                   max={3200}
