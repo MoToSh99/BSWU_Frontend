@@ -6,6 +6,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
 import MainButton from '../../Components/MainButton';
 import logo from "../../Images/logopng.png";
+import useIsIOS from "../../Components/useIsIOS";
+import {InstallPWA} from "../../Components/InstallPWA";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -81,6 +83,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const [username, setUsername] = useState("")
     const [error, setError] = useState(false)
     const [sliderValue, setSliderValue] = useState(3200)
+    const { prompt } = useIsIOS();
     
     const getUserinfo = (usr: string) => {
         fetch(`https://sharifhome.duckdns.org/userinfo?username=${usr}`)
@@ -104,6 +107,8 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     };
     
     return (
+      <>
+      <InstallPWA />
           <div className={classes.page}>
             <div className={classes.logoContainer}>
               <img className={classes.logo}  src={logo}/>
@@ -164,6 +169,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
             </Typography>
           </div>
         </div>
+        </>
     )
 }
 
