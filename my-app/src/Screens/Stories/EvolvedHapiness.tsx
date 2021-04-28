@@ -162,10 +162,10 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         <Typography className={classes.dateStartText} variant="subtitle2">
           {tweetstartString}
         </Typography>
-        <Typography className={classes.dateEndText} variant="subtitle2" style={{marginTop: window.innerHeight - 255}}>
+        <Typography className={classes.dateEndText} variant="subtitle2" style={{marginTop: window.innerHeight - 290}}>
           {tweetendString}
         </Typography>
-        <Chart options={options} series={series} type="line" height={window.innerHeight - 205}/>
+        <Chart options={options} series={series} type="line" height={window.innerHeight - 240}/>
       </Box>
       </div>
     </div>
