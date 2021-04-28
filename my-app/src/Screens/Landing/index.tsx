@@ -5,7 +5,7 @@ import { Typography, TextField, InputAdornment, Slider } from '@material-ui/core
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
 import MainButton from '../../Components/MainButton';
-import { ReactComponent as Logo } from '../../Images/logo.svg';
+import logo from "../../Images/logopng.png";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginTop: "20px",
   },
   logo: {
-    maxWidth: 750,
+    maxWidth: "80%",
   },
   slider: {
     display: "flex",
@@ -106,7 +106,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     return (
           <div className={classes.page}>
             <div className={classes.logoContainer}>
-              <Logo className={classes.logo}></Logo>
+              <img className={classes.logo}  src={logo}/>
             </div>
           
             <div className={classes.inputContainer}>

@@ -117,7 +117,7 @@ const FinishCard: FC<FinishCardProps> = ({ user }) => {
               You are among the
             </Typography>
             <Typography className={classes.blueText}>
-              {user.danishuserscore.percent}%
+              {user.danishuserscore[0].percent}%
             </Typography>
             <Typography variant="subtitle2" component="div">
               happiest people in
