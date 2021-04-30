@@ -20,7 +20,8 @@ import {
 } from "react-component-export-image";
 import html2canvas from "html2canvas";
 import ReactStars from "react-rating-stars-component";
-
+import { TwitterShareButton} from "react-share";
+import { TwitterIcon} from "react-share";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
@@ -51,7 +52,15 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
+  button: {
+		width: "100%",
+		height: 50,
+		borderRadius: 40,
+		textTransform: "unset",
+		fontWeight: "bold",
+		marginBottom: 15
+	},
 }));
 
 export interface DoneScreenProps {
@@ -105,14 +114,21 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
         <ComponentToPrint ref={componentRef} />
       </div>
       <div className={classes.buttonContainer}>
-        <MainButton
-          onClick={() =>
-            exportComponentAsPNG(componentRef, { fileName: "HappyTweet" })
-          }
-          color="primary"
-          bold={true}
-          text="Share"
-        />
+        
+        <TwitterShareButton
+        url={"http://happytweet.toheed.dk/"}
+        title={"HappyTweet"}
+        hashtags={["hello", "it"]}
+        className={classes.button}>
+        <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        endIcon={<TwitterIcon size={32} round={true}> </TwitterIcon>}
+      >
+        Share on Twitter
+      </Button>
+      </TwitterShareButton>
         <MainButton
           color="secondary"
           bold={false}
