@@ -28,7 +28,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     margin: "auto",
   },
   slideshow: {
-    marginBottom: "30px",
+    marginBottom: "10px",
   },
   header: {
     marginBottom: "30px",
@@ -56,9 +56,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     alignItems: "center",
     background: "white",
     borderRadius: "20px",
-    padding: "10px 10px 10px 10px",
+    padding: "3px 10px 3px 10px",
     width: "70%",
-    margin: "10px",
+    margin: "4px",
   },
   avatartext: {
     color: "black",
@@ -176,7 +176,7 @@ const Loading: FC<LoadingProps> = (props) => {
               )}
 
       </div>
-
+{/*
       <Typography variant="h6">Choose a preloaded user instead</Typography>
       <Box
         onClick={() => loadpreloaded("TimCook")}
@@ -194,7 +194,7 @@ const Loading: FC<LoadingProps> = (props) => {
           Tim Cook
         </Typography>
       </Box>
-      <Box
+       <Box
         onClick={() => loadpreloaded("BillGates")}
         className={classes.avatarbox}
         boxShadow={3}
@@ -225,7 +225,7 @@ const Loading: FC<LoadingProps> = (props) => {
         <Typography variant="subtitle1" className={classes.avatartext}>
           President Biden
         </Typography>
-      </Box>
+      </Box>  */}
     </div>
   );
 };

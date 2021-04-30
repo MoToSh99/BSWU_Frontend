@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, TextField, InputAdornment, Slider } from '@material-ui/core';
+import { Typography, TextField, InputAdornment, Slider, CircularProgress } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import './index.css';
 import MainButton from '../../Components/MainButton';
-import { ReactComponent as Logo } from '../../Images/logo.svg';
+import logo from "../../Images/logopng.png";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     marginTop: "20px",
   },
   logo: {
-    maxWidth: 750,
+    maxWidth: "80%",
   },
   slider: {
     display: "flex",
@@ -67,6 +67,9 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   value : {
     color: "#66FCF1"
+  },
+  loadingSpinner: {
+    marginBottom: 30
   }
 }));
 
@@ -81,18 +84,22 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     const [username, setUsername] = useState("")
     const [error, setError] = useState(false)
     const [sliderValue, setSliderValue] = useState(3200)
+    const [loading, setLoading] = useState(false)
     
     const getUserinfo = (usr: string) => {
+        setLoading(true)
         fetch(`https://sharifhome.duckdns.org/userinfo?username=${usr}`)
           .then(res => res.json())
           .then(
             (result) => {
+              setLoading(false)
               history.push({
                 pathname: "/confirm",
                 state: { memberDetail: result, slider: sliderValue}
               })
             },
             (error) => {
+              setLoading(false)
               console.log(error)
               setError(true)
             }
@@ -106,7 +113,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
     return (
           <div className={classes.page}>
             <div className={classes.logoContainer}>
-              <Logo className={classes.logo}></Logo>
+              <img className={classes.logo}  src={logo}/>
             </div>
           
             <div className={classes.inputContainer}>
@@ -135,6 +142,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                 />
               {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
               <div className={classes.button}>
+                {loading ? (<CircularProgress className={classes.loadingSpinner} size={30}/>) : (
                 <MainButton
                   color="primary"
                   text="Start your journey ➤"
@@ -142,7 +150,7 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
                   onClick={() => { 
                     getUserinfo(username) 
                   }}
-                />
+                />)}
               </div>
               <div className={classes.slider}>
                 <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>

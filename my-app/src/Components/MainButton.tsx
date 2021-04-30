@@ -2,22 +2,22 @@ import { Button, makeStyles, Theme } from "@material-ui/core"
 import React, { FC } from "react"
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
-  buttonBold: {
-	width: "100%",
-	height: 50,
-    borderRadius: 40,
-    textTransform: "unset",
-	fontWeight: "bold",
-	marginBottom: 15
-  },
-  button: {
-	width: "100%",
-	maxWidth: 750,
-	height: 50,
-    borderRadius: 40,
-    textTransform: "unset",
-	marginBottom: 15
-  },
+	buttonBold: {
+		width: "100%",
+		height: 50,
+		borderRadius: 40,
+		textTransform: "unset",
+		fontWeight: "bold",
+		marginBottom: 15
+	},
+	button: {
+		width: "100%",
+		maxWidth: 750,
+		height: 50,
+		borderRadius: 40,
+		textTransform: "unset",
+		marginBottom: 15
+	},
 }));
 
 export type MainButtonProps = {
