@@ -26,14 +26,23 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   scores: {
     marginTop: 16
   },
+  middleScore: {
+    marginTop: 16,
+    marginLeft: 60,
+    marginRight: 61
+  },
   box: {
     display: "flex",
     flexGrow: 1,
     flexDirection: "row",
     justifyContent: "center",
+  },
+  scoresBox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    position: "relative"
   }
-
-
 }));
 
 export type CelebrityScoresProps = {
@@ -81,7 +90,6 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({ user }) => {
               <Avatar onClick={() => handleTooltipOpen(1)} alt="Remy Sharp" src={user.celebrityscore[0].pic} className={classes.avatar} />
             </Tooltip>
           </ClickAwayListener>
-          <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
         </Box>
 
         <Box>
@@ -100,7 +108,6 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({ user }) => {
               <Avatar onClick={() => handleTooltipOpen(2)} alt="Remy Sharp" src={user.celebrityscore[1].pic} className={classes.middleAvatar} />
             </Tooltip>
           </ClickAwayListener>
-          <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[1].score}</Typography>
         </Box>
 
         <Box>
@@ -119,8 +126,12 @@ const CelebrityScores: FC<CelebrityScoresProps> = ({ user }) => {
               <Avatar onClick={() => handleTooltipOpen(3)} alt="Remy Sharp" src={user.celebrityscore[2].pic} className={classes.avatar} />
             </Tooltip>
           </ClickAwayListener>
-          <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
         </Box>
+      </Box>
+      <Box className={classes.scoresBox}>
+        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[0].score}</Typography>
+        <Typography variant="subtitle1" className={classes.middleScore}>{user.celebrityscore[1].score}</Typography>
+        <Typography variant="subtitle1" className={classes.scores}>{user.celebrityscore[2].score}</Typography>
       </Box>
     </>
   )
