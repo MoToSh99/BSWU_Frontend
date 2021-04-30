@@ -116,9 +116,9 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
       <div className={classes.buttonContainer}>
         
         <TwitterShareButton
+        title={"On a scale from 1️⃣ to 9️⃣, my Twitter happiness score is " + user.overallscore + "😜\nCheck out your own score on:"}
+        hashtags={["HappyTweet"]}
         url={"http://happytweet.toheed.dk/"}
-        title={"HappyTweet"}
-        hashtags={["hello", "it"]}
         className={classes.button}>
         <Button
         variant="contained"
