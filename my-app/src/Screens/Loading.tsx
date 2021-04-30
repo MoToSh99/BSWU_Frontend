@@ -144,7 +144,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   useEffect(() => {
     console.log(userinfo);
-    //gettwitterdata(userinfo.username);
+    gettwitterdata(userinfo.username);
   }, []);
 
 
