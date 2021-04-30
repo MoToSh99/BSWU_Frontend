@@ -25,6 +25,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     height: "100vh",
   },
   center: {
+    margin: "auto",
   },
   slideshow: {
     marginBottom: "10px",
@@ -143,7 +144,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   useEffect(() => {
     console.log(userinfo);
-    gettwitterdata(userinfo.username);
+    //gettwitterdata(userinfo.username);
   }, []);
 
 
@@ -175,7 +176,7 @@ const Loading: FC<LoadingProps> = (props) => {
               )}
 
       </div>
-
+{/*
       <Typography variant="h6">Choose a preloaded user instead</Typography>
       <Box
         onClick={() => loadpreloaded("TimCook")}
@@ -193,7 +194,7 @@ const Loading: FC<LoadingProps> = (props) => {
           Tim Cook
         </Typography>
       </Box>
-      <Box
+       <Box
         onClick={() => loadpreloaded("BillGates")}
         className={classes.avatarbox}
         boxShadow={3}
@@ -224,7 +225,7 @@ const Loading: FC<LoadingProps> = (props) => {
         <Typography variant="subtitle1" className={classes.avatartext}>
           President Biden
         </Typography>
-      </Box>
+      </Box>  */}
     </div>
   );
 };
