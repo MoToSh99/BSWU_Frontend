@@ -202,7 +202,7 @@ const LandingScreen: FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => { setShowDialog(false) }} color="secondary">
-            Close
+            Close modal
           </Button>
         </DialogActions>
       </Dialog>
