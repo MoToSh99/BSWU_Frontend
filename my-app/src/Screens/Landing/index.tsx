@@ -121,7 +121,7 @@ const LandingScreen: FC = () => {
                   className={classes.textField}
                   id="filled-basic"
                   color="secondary"
-                  label="Twitter Username"
+                  label="Example: billgates"
                   variant="filled"
                   onChange={(e) => {
                     setUsername(e.target.value)
