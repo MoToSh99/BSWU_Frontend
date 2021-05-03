@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box, Avatar } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import Flag from 'react-world-flags'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StyledRating from '@material-ui/lab/Rating';

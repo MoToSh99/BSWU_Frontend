@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense } from 'react';
+import React, { FC, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { LinearProgress } from '@material-ui/core';
 import Page404 from '../Screens/Page404';
@@ -8,9 +8,7 @@ import lazyImport from '../lazy-import';
 import Done from '../Screens/Done';
 import Stories from '../Components/Stories';
 
-
 const Landing = lazyImport('../Screens/Landing');
-
 
 const Appnavigation: FC = () => {
     return (
@@ -25,7 +23,6 @@ const Appnavigation: FC = () => {
                     <Route path='/*' exact component={Page404} />
                 </Switch>
             </Suspense>
-
         </>
     )
 }
