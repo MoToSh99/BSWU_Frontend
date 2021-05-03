@@ -13,8 +13,8 @@ import FinishCard from "../Components/FinishCard";
 import { UserDetail } from "../Models";
 import MainButton from "../Components/MainButton";
 import ReactStars from "react-rating-stars-component";
-import { TwitterShareButton} from "react-share";
-import { TwitterIcon} from "react-share";
+import { TwitterShareButton } from "react-share";
+import { TwitterIcon } from "react-share";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   titleContainer: {
@@ -47,13 +47,13 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     alignItems: "center",
   },
   button: {
-		width: "100%",
-		height: 50,
-		borderRadius: 40,
-		textTransform: "unset",
-		fontWeight: "bold",
-		marginBottom: 15
-	},
+    width: "100%",
+    height: 50,
+    borderRadius: 40,
+    textTransform: "unset",
+    fontWeight: "bold",
+    marginBottom: 15
+  },
 }));
 
 export interface DoneScreenProps {
@@ -65,7 +65,6 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
   const history = useHistory();
   const componentRef = useRef();
   const [rating, setShowrating] = React.useState(true);
-  const [error, setError] = React.useState(false);
 
   const ComponentToPrint = React.forwardRef((props, ref) => (
     <div ref={ref}>
@@ -73,25 +72,20 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
     </div>
   ));
 
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
+  const ratingChanged = (newRating: number) => {
     setShowrating(false);
     sendRating(newRating);
   };
 
-  const sendRating = (newRating) => {
+  const sendRating = (newRating: number) => {
     fetch(`https://sharifhome.duckdns.org/rating?rating=${newRating}&username=${user.userinfo.username}`)
       .then(res => res.json())
       .then(
-        (result) => {
-          console.log(result)
-        },
         (error) => {
           console.log(error)
-          setError(true)
         }
       )
-}
+  }
 
   return (
     <div className={classes.page}>
@@ -107,21 +101,20 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
         <ComponentToPrint ref={componentRef} />
       </div>
       <div className={classes.buttonContainer}>
-        
         <TwitterShareButton
-        title={"On a scale from 1️⃣ to 9️⃣, my Twitter happiness score is " + user.overallscore + "😜\nCheck out your own score on:"}
-        hashtags={["HappyTweet"]}
-        url={"http://happytweet.toheed.dk/"}
-        className={classes.button}>
-        <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<TwitterIcon size={32} round={true}> </TwitterIcon>}
-      >
-        Share on Twitter
+          title={"On a scale from 1️⃣ to 9️⃣, my Twitter happiness score is " + user.overallscore + "😜\nCheck out your own score on:"}
+          hashtags={["HappyTweet"]}
+          url={"http://happytweet.toheed.dk/"}
+          className={classes.button}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            endIcon={<TwitterIcon size={32} round={true}> </TwitterIcon>}
+          >
+            Share on Twitter
       </Button>
-      </TwitterShareButton>
+        </TwitterShareButton>
         <MainButton
           color="secondary"
           bold={false}
@@ -129,7 +122,6 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
           onClick={() => history.push("/")}
         />
       </div>
-
       <Dialog
         className={classes.dialog}
         disableBackdropClick={true}
@@ -140,7 +132,7 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
       >
         <DialogContent className={classes.dialog}>
           <DialogContentText>
-          How likely are you to recommend this app?
+            How likely are you to recommend this app?
           </DialogContentText>
           <ReactStars
             count={5}
