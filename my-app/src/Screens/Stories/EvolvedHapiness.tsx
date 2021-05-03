@@ -3,8 +3,8 @@ import { Box, Avatar, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { UserDetail} from '../../Models';
 import Chart from "react-apexcharts";
-import sad_emoji from "../../Images/sad_emoji.webp";
 import happy_emoji from "../../Images/happy_emoji.png";
+import happier_emoji from "../../Images/happier_emoji.webp";
 import very_happy_emoji from "../../Images/very_happy_emoji.webp";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -154,8 +154,8 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         from <span className={classes.value}>{tweetstartFullString}</span> to <span className={classes.value}>{tweetendFullString}</span>
       </Typography>
       <Box className={classes.avatarBox}>
-        <Avatar src={sad_emoji} className={classes.avatar}/>
         <Avatar src={happy_emoji} className={classes.avatar}/>
+        <Avatar src={happier_emoji} className={classes.avatar}/>
         <Avatar src={very_happy_emoji} className={classes.avatar}/>
       </Box>
       <Box className={classes.chartStyle}>
