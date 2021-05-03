@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box, Modal, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
+import { Typography, Box, Dialog, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserDetail} from '../../Models';
 import CelebrityScores from '../../Components/CelebrityScores';
-import styled, { keyframes } from 'styled-components';
 import FadeIn from 'react-fade-in';
-import Overlay from '../../Components/Overlay';
 import Tada from 'react-reveal/Tada';
 import { getGaugeColor } from '../../Helpers';
 import ModalCeleb from '../../Components/ModalCeleb';

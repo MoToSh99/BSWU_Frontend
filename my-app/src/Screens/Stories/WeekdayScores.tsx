@@ -11,6 +11,9 @@ import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
 import { UserDetail } from "../../Models";
 import { Colorscale } from 'react-colorscales';
+import happy_emoji from "../../Images/happy_emoji.png";
+import happier_emoji from "../../Images/happier_emoji.webp";
+import very_happy_emoji from "../../Images/very_happy_emoji.webp";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   header: {
@@ -67,8 +70,6 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   }
 }));
 
-
-
 export interface WeekdayScoresProps {
   user: UserDetail;
 }
@@ -96,16 +97,17 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
                       getGaugeColor(user.weekscores[5].Score, user.tweets.saddest.score, user.tweets.happiest.score),
                       getGaugeColor(user.weekscores[6].Score, user.tweets.saddest.score, user.tweets.happiest.score)];
 
-  function roundHalf(num: Number, upOrDown: string) {
+  function roundHalf(num: number, upOrDown: string) {
+    var rounded;
     if (upOrDown === "down") {
-      var rounded = Math.floor(num*2) / 2;
+      rounded = Math.floor(num*2) / 2;
       if (num - rounded <= 0.1) {
         return rounded - 0.5;
       } else {
         return rounded;
       }
     } else {
-      var rounded = Math.ceil(num*2) / 2;
+      rounded = Math.ceil(num*2) / 2;
       if (rounded - num <= 0.1) {
         return rounded + 0.5;
       } else {
@@ -116,7 +118,7 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
 
   React.useEffect(() => {
 		setFade(true);
-	});
+	}, []);
 
   const options = {
     chart: {
@@ -211,9 +213,9 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           </div>
           <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
           <Box className={classes.avatarBox}>
-            <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_grande.png?v=1571606093" className={classes.avatar}/>
-            <Avatar src="https://hverdagstips.dk/wp-content/uploads/2019/09/smiley-emoji-smilende-ansigt-med-sammenknebne-ojne.png" className={classes.avatar}/>
-            <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
+            <Avatar src={happy_emoji} className={classes.avatar}/>
+            <Avatar src={happier_emoji} className={classes.avatar}/>
+            <Avatar src={very_happy_emoji} className={classes.avatar}/>
           </Box>
         </FadeIn>
       

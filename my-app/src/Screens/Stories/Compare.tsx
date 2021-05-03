@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Typography, Box, Avatar } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import Flag from 'react-world-flags'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StyledRating from '@material-ui/lab/Rating';
@@ -145,7 +145,7 @@ const Compare: FC<CompareProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={classes.infoText}>
-				<Typography variant="subtitle1" component="div"><span className={classes.value}>{(user.danishuserscore[0].percent / 10)}</span> out of 10 Danes are happier than you</Typography>
+				<Typography variant="subtitle1" component="div">You are happier than <span className={classes.value}>{(10 - user.danishuserscore[0].percent / 10)}</span> out of 10 Danes</Typography>
 			</div>
 			<StyledRating
 				name="hover-feedback"

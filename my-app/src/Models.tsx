@@ -26,7 +26,7 @@ export type UserDetail = {
   lowestweekscore: WeekScores;
   weekscores: WeekScores[];
   wordsmatched: number;
-  danishuserscore: Comparison;
+  danishuserscore: Comparison[];
   monthlyaverages: MonthlyAverage[];
   nationalAverages: NationalAverage[];
   averagesRange: number[];
@@ -50,27 +50,33 @@ export type Celebrityscore = {
   score: number;
   username: string;
 }
+
 export type Topfivewords = {
   bottom: string[];
   top: string[];
 }
+
 export type Tweets = {
   happiest: HappiestOrSaddest;
   saddest: HappiestOrSaddest;
 }
+
 export type HappiestOrSaddest = {
   id: string;
   score: number;
 }
+
 export type WeekScores = {
   Day: string;
   Score: number;
 }
+
 export type MonthlyAverage = {
   x: number;
   y: number;
   date: string;
 }
+
 export type NationalAverage = {
   overall: string;
   countryCode: string;

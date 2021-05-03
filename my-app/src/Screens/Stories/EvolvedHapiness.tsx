@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { Box, Avatar, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useLocation, useHistory } from "react-router-dom";
 import { UserDetail} from '../../Models';
 import Chart from "react-apexcharts";
+import happy_emoji from "../../Images/happy_emoji.png";
+import happier_emoji from "../../Images/happier_emoji.webp";
+import very_happy_emoji from "../../Images/very_happy_emoji.webp";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -54,8 +56,6 @@ export type EvolvedHapinessProps = {
 
 const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
   const classes = useStyles({});
-  const history = useHistory();
-  const location = useLocation();
 
   const shortenMonth = (month: string) => {
     return month.length > 3 ? month.substring(0, 3) + "." : month
@@ -154,9 +154,9 @@ const EvolvedHapiness: FC<EvolvedHapinessProps> = ({user}) => {
         from <span className={classes.value}>{tweetstartFullString}</span> to <span className={classes.value}>{tweetendFullString}</span>
       </Typography>
       <Box className={classes.avatarBox}>
-        <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Sad_Emoji_grande.png?v=1571606093" className={classes.avatar}/>
-        <Avatar src="https://hverdagstips.dk/wp-content/uploads/2019/09/smiley-emoji-smilende-ansigt-med-sammenknebne-ojne.png" className={classes.avatar}/>
-        <Avatar src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_grande.png?v=1571606090" className={classes.avatar}/>
+        <Avatar src={happy_emoji} className={classes.avatar}/>
+        <Avatar src={happier_emoji} className={classes.avatar}/>
+        <Avatar src={very_happy_emoji} className={classes.avatar}/>
       </Box>
       <Box className={classes.chartStyle}>
         <Typography className={classes.dateStartText} variant="subtitle2">

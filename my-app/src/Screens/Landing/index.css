@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-
   body {
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -13,4 +12,3 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
-
