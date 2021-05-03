@@ -127,60 +127,57 @@ const LandingScreen: FC = () => {
         <Typography className={classes.subtext} align="center" variant="subtitle1" component="h2">
           Enter your Twitter username:
               </Typography>
-        <TextField
-          error={error}
-          className={classes.textField}
-          id="filled-basic"
-          color="secondary"
-          label="Twitter Username"
-          variant="filled"
-          onChange={(e) => {
-            setUsername(e.target.value)
-            setError(false)
-          }}
-          InputProps={{
-            disableUnderline: true,
-            endAdornment: (
-              <InputAdornment position="end">
-                <TwitterIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-        {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
-        <div className={classes.button}>
-          {loading ? (<CircularProgress className={classes.loadingSpinner} size={30} />) : (
-            <MainButton
-              color="primary"
-              text="Start your journey ➤"
-              bold={false}
-              onClick={() => {
-                getUserinfo(username)
-              }}
-            />)}
-        </div>
-        <div className={classes.slider}>
-          <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
-          <Slider
-            defaultValue={3200}
-            aria-labelledby="discrete-slider"
-            step={600}
-            marks
-            min={200}
-            max={3200}
-            onChange={handleSliderChange}
-          />
-          <Typography align="center" variant="subtitle2">Adjust the slider to load fewer Tweets.</Typography>
-        </div>
-      </div>
-      <div className={classes.aboutContainer}>
-        <Button variant="contained" color={"secondary"} onClick={() => { setShowDialog(true) }}>About</Button>
-      </div>
-      <div className={classes.footerContainer}>
-        <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
-          Made with ❤️ by DTM
+              <TextField
+                  error={error}
+                  className={classes.textField}
+                  id="filled-basic"
+                  color="secondary"
+                  label="Example: BillGates"
+                  variant="filled"
+                  onChange={(e) => {
+                    setUsername(e.target.value)
+                    setError(false)
+                  }}
+                  InputProps={{
+                    disableUnderline: true,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <TwitterIcon />
+                      </InputAdornment>
+                  ),
+                }}
+                />
+              {error ? (<Typography className={classes.errorText} variant="subtitle1">Error: User not found.</Typography>) : (<Typography className={classes.errorTextHidden} variant="subtitle1">Error: User not found.</Typography>)}
+              <div className={classes.button}>
+                {loading ? (<CircularProgress className={classes.loadingSpinner} size={30}/>) : (
+                <MainButton
+                  color="primary"
+                  text="Start your journey ➤"
+                  bold={false}
+                  onClick={() => { 
+                    getUserinfo(username) 
+                  }}
+                />)}
+              </div>
+              <div className={classes.slider}>
+                <Typography align="center" variant="subtitle1">Number of Tweets to load: <span className={classes.value}>{sliderValue}</span></Typography>
+                <Slider
+                  defaultValue={3200}
+                  aria-labelledby="discrete-slider"
+                  step={600}
+                  marks
+                  min={200}
+                  max={3200}
+                  onChange={handleSliderChange}
+                />
+                <Typography align="center" variant="subtitle2">Adjust the slider to load fewer Tweets.</Typography>
+              </div>
+            </div>
+            <div className={classes.footerContainer}>
+            <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
+                Made with ❤️ by DTM
             </Typography>
-      </div>
+          </div>
       <Dialog
         className={classes.dialog}
         open={showDialog}
