@@ -176,7 +176,7 @@ export type SlideshowProps = {
         description:
           "Wow! You have posted " +
           userinfo.statuses_count +
-          " Tweets since you created your account. Are you OK?",
+          " Tweets since you created your account!",
         image: (
           <Lottie
             options={twitterbirdA}
@@ -188,9 +188,9 @@ export type SlideshowProps = {
       },
       {
         description:
-          "You have " +
+          "You follow " +
           userinfo.friends_count +
-          " friends on Twitter! Hopefully you have some in real life too.",
+          " users on Twitter!",
         image: (
           <Lottie
             options={friendsA}
@@ -202,8 +202,8 @@ export type SlideshowProps = {
       },
       {
         description: userinfo.verified
-          ? "Your account is verified! I guess you're a pretty big thing, huh?"
-          : "Looks like your account isn't verified. Are you not famous enough?",
+          ? "Your account is verified - that's pretty cool!"
+          : "Looks like your account isn't verified. Don't worry, it's not necessary at all!",
         image: (
           <Lottie
             options={verifiedA}
