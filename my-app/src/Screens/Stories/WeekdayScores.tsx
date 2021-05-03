@@ -11,8 +11,8 @@ import FadeIn from 'react-fade-in';
 import { getGaugeColor } from '../../Helpers';
 import { UserDetail } from "../../Models";
 import { Colorscale } from 'react-colorscales';
-import sad_emoji from "../../Images/sad_emoji.webp";
 import happy_emoji from "../../Images/happy_emoji.png";
+import happier_emoji from "../../Images/happier_emoji.webp";
 import very_happy_emoji from "../../Images/very_happy_emoji.webp";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -213,8 +213,8 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           </div>
           <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
           <Box className={classes.avatarBox}>
-            <Avatar src={sad_emoji} className={classes.avatar}/>
             <Avatar src={happy_emoji} className={classes.avatar}/>
+            <Avatar src={happier_emoji} className={classes.avatar}/>
             <Avatar src={very_happy_emoji} className={classes.avatar}/>
           </Box>
         </FadeIn>
