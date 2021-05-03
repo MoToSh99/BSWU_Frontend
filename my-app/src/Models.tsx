@@ -26,7 +26,7 @@ export type UserDetail = {
   lowestweekscore: WeekScores;
   weekscores: WeekScores[];
   wordsmatched: number;
-  danishuserscore: Comparison;
+  danishuserscore: Comparison[];
   monthlyaverages: MonthlyAverage[];
   nationalAverages: NationalAverage[];
   averagesRange: number[];

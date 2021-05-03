@@ -1,10 +1,9 @@
 import React, { FC, useRef } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import {
   Typography,
   Dialog,
-  DialogTitle,
   DialogContent,
   DialogContentText,
   DialogActions,
@@ -13,12 +12,6 @@ import {
 import FinishCard from "../Components/FinishCard";
 import { UserDetail } from "../Models";
 import MainButton from "../Components/MainButton";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
-import html2canvas from "html2canvas";
 import ReactStars from "react-rating-stars-component";
 import { TwitterShareButton} from "react-share";
 import { TwitterIcon} from "react-share";
@@ -149,7 +142,6 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
           <DialogContentText>
           How likely are you to recommend this app?
           </DialogContentText>
-
           <ReactStars
             count={5}
             onChange={ratingChanged}
@@ -157,8 +149,6 @@ const Done: FC<DoneScreenProps> = ({ user }) => {
             activeColor="#ffd700"
             className={classes.rating}
           />
-
-
           <DialogActions>
             <Button
               onClick={() => {

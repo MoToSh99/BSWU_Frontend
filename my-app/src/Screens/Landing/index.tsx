@@ -73,11 +73,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   }
 }));
 
-export interface LandingScreenProps {
-
-}
-
-const LandingScreen: FC<LandingScreenProps> = (props) => {
+const LandingScreen: FC = () => {
     const classes = useStyles({});
     const history = useHistory();
 
@@ -106,14 +102,14 @@ const LandingScreen: FC<LandingScreenProps> = (props) => {
           )
     }
 
-    const handleSliderChange = (event, newValue) => {
+    const handleSliderChange = (event, newValue : number) => {
       setSliderValue(newValue);
     };
     
     return (
           <div className={classes.page}>
             <div className={classes.logoContainer}>
-              <img className={classes.logo}  src={logo}/>
+              <img alt="HappyTweet logo" className={classes.logo}  src={logo}/>
             </div>
           
             <div className={classes.inputContainer}>

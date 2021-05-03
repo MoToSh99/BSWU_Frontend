@@ -4,24 +4,16 @@ import Carousel from "react-material-ui-carousel";
 import * as twitterbird from "../Images/Twitter.json";
 import * as friends from "../Images/friends.json";
 import * as verified from "../Images/verified.json";
-import * as geolocalization from "../Images/geolocalization.json";
-import * as development from "../Images/web-development.json";
-import * as doneData from "../Images/doneloading.json";
 import * as analyze from "../Images/analyze.json";
 import * as press from "../Images/press.json";
 import * as abraham from "../Images/abraham.json";
 import {
     Typography,
     Paper,
-    Container,
-    Grid,
-    Box,
-    Button,
-    ButtonBase,
-    Avatar,
+    Grid
   } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-
+import { User } from "../Models";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
     page: {
@@ -56,29 +48,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     },
   }));
   
-
-  const defaultOptions2 = {
-    loop: false,
-    autoplay: true,
-    animationData: doneData.default,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-  
   const twitterbirdA = {
     loop: false,
     autoplay: true,
     animationData: twitterbird.default,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-  
-  const geolocalizationA = {
-    loop: true,
-    autoplay: true,
-    animationData: geolocalization.default,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -128,22 +101,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  
-  const developmentA = {
-    loop: true,
-    autoplay: true,
-    animationData: development.default,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
 export type SlideshowProps = {
-    userinfo: UserDetail
+    userinfo: User
   }
   
-
-
   const Slideshow: FC<SlideshowProps> = ({ userinfo }) => {
 
     const classes = useStyles({});
@@ -258,7 +220,7 @@ export type SlideshowProps = {
         navButtonsAlwaysInvisible={true}
         indicators={false}
         animation="fade"
-        interval={8000}
+        interval={6000}
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />
@@ -266,6 +228,5 @@ export type SlideshowProps = {
       </Carousel>
     );
   }
-
 
 export default Slideshow
