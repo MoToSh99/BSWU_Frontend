@@ -121,7 +121,7 @@ const Confirm: FC<ConfirmProps> = (props) => {
           </Typography>
           <Typography align="center" variant="h6" component="h6" className={classes.errorText}>
             Your account does not have enough tweets to use this app.
-            Please try again when you have more tweets.
+            Please try again when you have more than 5 tweets.
           </Typography>
         </div>
           <div className={classes.buttons}>
