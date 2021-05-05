@@ -1,15 +1,14 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import FadeIn from "react-fade-in";
-import {
-  Typography,
-} from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { useLocation, useHistory } from "react-router-dom";
 import { User } from "../Models";
 import "react-sweet-progress/lib/style.css";
 import Slideshow from "../Components/Slideshow";
 import * as legoData from "../Images/legoloading.json";
 import Lottie from "react-lottie";
+import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
   page: {
@@ -69,10 +68,17 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   symbol: {
     color: "white",
   },
+  errorTextHidden: {
+    textAlign: "center",
+    visibility: "hidden",
+  },
+  errorText: {
+    textAlign: "center",
+    visibility: "visible",
+  },
 }));
 
-export interface LoadingProps { }
-
+export interface LoadingProps {}
 
 const Loading: FC<LoadingProps> = (props) => {
   const classes = useStyles({});
@@ -80,6 +86,8 @@ const Loading: FC<LoadingProps> = (props) => {
   const location = useLocation();
   const userinfo: User = location.state.memberDetail;
   const sliderValue: Number = location.state.slider;
+  const [errorLoading, setError] = useState(0);
+  const [errorLoading2, setError2] = useState(false);
 
   const url = "https://sharifhome.duckdns.org";
   //const url = "http://127.0.0.1:5000";
@@ -110,10 +118,85 @@ const Loading: FC<LoadingProps> = (props) => {
       );
   };
 
+  const goHome = () => {
+    history.push({
+      pathname: "/",
+    });
+  }
+
+  async function fetchWithTimeout(resource, options) {
+    const { timeout = 8000 } = options;
+
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+
+    const response = await fetch(resource, {
+      ...options,
+      signal: controller.signal,
+    });
+    clearTimeout(id);
+
+    return response;
+  }
+
+  async function loadData(usr: string, errorNew = false) {
+    try {
+      const response = await fetchWithTimeout(
+        `${url}/gettwitterdata?username=${usr}&count=${sliderValue}`,
+        {
+          timeout: 45000,
+        }
+      );
+      const result = await response.json();
+      history.push({
+        pathname: "/story",
+        state: { memberDetail: result },
+      });
+    } catch (error) {
+      const errortrue = error.name === "AbortError";
+      if (errorNew) {
+        setError(2);
+        setError2(true);
+      } else {
+        setError(1);
+        loadData(usr, true);
+      }
+    }
+  }
+
   useEffect(() => {
-    console.log(userinfo);
-    gettwitterdata(userinfo.username);
+    setError(0);
+    loadData(userinfo.username);
   }, []);
+
+  let customAlert;
+  if (errorLoading === 0) {
+
+  }
+  if (errorLoading === 1) {
+    customAlert = (
+        <FadeIn>
+          <Alert severity="info">Loading data taking longer than usual</Alert>
+        </FadeIn>
+    )
+  }
+  if (errorLoading === 2) {
+    customAlert = (
+      <FadeIn>
+        <Alert
+          action={
+            <Button color="inherit" size="small" onClick={goHome}>
+              Try again
+            </Button>
+          }
+          severity="error"
+        >
+          {" "}
+          Problem loading the Twitter data
+        </Alert>
+      </FadeIn>
+    )
+  }
 
   return (
     <div className={classes.page}>
@@ -123,7 +206,7 @@ const Loading: FC<LoadingProps> = (props) => {
             <div className="d-flex justify-content-center align-items-center">
               <Typography align="center" variant="h5" component="h5">
                 Fetching Twitter data
-                </Typography>
+              </Typography>
             </div>
           </FadeIn>
         </div>
@@ -131,6 +214,7 @@ const Loading: FC<LoadingProps> = (props) => {
           <Slideshow userinfo={userinfo} />
         </div>
         <Lottie options={defaultOptions} height={120} width={120} />
+        {customAlert}
       </div>
     </div>
   );

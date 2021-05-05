@@ -33,6 +33,9 @@ const useStyles = makeStyles({
   hidden: {
     display: "none"
   },
+  show: {
+    
+  },
   button: {
     width: window.innerWidth / 2,
     height: window.innerHeight,
@@ -105,7 +108,9 @@ const Stories = () => {
         />
         {stories[page].object}
       </div>
+      <div className={hidden ? classes.hidden : classes.show }>
       <Overlay onProgressChange={onProgressChange} />
+      </div>
     </>
   );
 };
