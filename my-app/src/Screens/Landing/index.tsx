@@ -38,6 +38,17 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   button: {
     marginTop: 5,
   },
+  buttonAbout: {
+    background: "#45425a",
+    border: "none",
+    marginTop: 5,
+    marginBottom: 5,
+    padding: 10,
+    cursor: "pointer",
+    color: "white",
+    borderRadius: 60,
+    textTransform: 'none'
+  },
   footerContainer: {
     width: "100%",
   },
@@ -174,7 +185,7 @@ const LandingScreen: FC = () => {
         </div>
       </div>
       <div className={classes.aboutContainer}>
-        <Button variant="contained" color={"secondary"} onClick={() => { setShowDialog(true) }}>About</Button>
+        <Button className={classes.buttonAbout} variant="contained" color={"secondary"} onClick={() => { setShowDialog(true) }}>About our method</Button>
       </div>
       <div className={classes.footerContainer}>
         <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
@@ -202,7 +213,7 @@ const LandingScreen: FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => { setShowDialog(false) }} color="secondary">
-            Close modal
+            Close
           </Button>
         </DialogActions>
       </Dialog>
