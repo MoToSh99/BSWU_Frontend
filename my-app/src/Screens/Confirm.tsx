@@ -31,7 +31,12 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
       flexDirection: "column",
       alignItems: "center",
       marginTop: 36
-    }
+    },
+    errorText: {
+      color: "red",
+      textAlign: "center",
+      visibility: "visible"
+    },
 }));
     
 export interface ConfirmProps {
@@ -53,7 +58,10 @@ const Confirm: FC<ConfirmProps> = (props) => {
     });
     
     return (
+     
       <div className={classes.page}>
+      {(userinfo.statuses_count > 10) ? 
+        (<>
         <div className={classes.titleContainer}>
           <Typography align="center" variant="h5" component="h5">
             Is this the right user?
@@ -96,6 +104,40 @@ const Confirm: FC<ConfirmProps> = (props) => {
             }}
           />
         </div>
+</>)        :
+        (<>
+          <div className={classes.titleContainer}>
+          <Typography align="center" variant="h5" component="h5">
+            Not enough data
+          </Typography>
+        </div>
+        <Avatar alt="Remy Sharp" src={userinfo.profile_image_url} className={classes.avatar}/>
+        <div className={classes.infoText}>
+          <Typography align="center" variant="h6" component="h6">
+              {userinfo.name}
+          </Typography>
+          <Typography align="center" variant="h6" component="h6">
+              @{userinfo.username}
+          </Typography>
+          <Typography align="center" variant="h6" component="h6" className={classes.errorText}>
+            Your account does not have enough tweets to use this app.
+            Please try again when you have more than 5 tweets.
+          </Typography>
+        </div>
+          <div className={classes.buttons}>
+          <MainButton
+            color="primary"
+            bold={false}
+            text="Go back"
+            onClick={() => {
+              history.push({pathname: "/"
+              })
+            }}
+          />
+          </div>
+
+      </>
+        )}
       </div>
       )
 }

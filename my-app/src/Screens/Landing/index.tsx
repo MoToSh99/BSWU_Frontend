@@ -185,7 +185,7 @@ const LandingScreen: FC = () => {
         </div>
       </div>
       <div className={classes.aboutContainer}>
-        <Button className={classes.buttonAbout} variant="contained" color={"secondary"} onClick={() => { setShowDialog(true) }}>About our method</Button>
+        <Button className={classes.buttonAbout} variant="contained" color={"secondary"} onClick={() => { setShowDialog(true) }}>About our methods</Button>
       </div>
       <div className={classes.footerContainer}>
         <Typography className={classes.madeByText} align="center" variant="subtitle1" component="h2">
