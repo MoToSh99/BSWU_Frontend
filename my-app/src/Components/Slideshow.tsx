@@ -150,7 +150,7 @@ export type SlideshowProps = {
       },
       {
         description:
-          "You can press on the left or right side of the screen to move forwards and backwards.",
+          "After your Tweets have loaded, you can press on the left or right side of the screen to move forwards and backwards.",
         image: (
           <Lottie
             options={pressA}

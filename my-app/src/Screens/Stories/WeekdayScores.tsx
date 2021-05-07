@@ -59,7 +59,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: "10px"
+    marginTop: "10px",
   },
   avatar: {
     width: "25px",
@@ -67,6 +67,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
   },
   neutralText: {
     marginLeft: "20px"
+  },
+  scale : {
+    maxWidth : 900,
+    margin: "auto"
   }
 }));
 
@@ -211,12 +215,14 @@ const WeekdayScores: FC<WeekdayScoresProps> = ({ user }) => {
           <div className={classes.chart}>
             <Chart options={options} series={series} type="bar" height={350}/>
           </div>
+          <div className={classes.scale}>
           <Colorscale className={classes.colorScale} colorscale={colorBarData}/>
           <Box className={classes.avatarBox}>
             <Avatar src={happy_emoji} className={classes.avatar}/>
             <Avatar src={happier_emoji} className={classes.avatar}/>
             <Avatar src={very_happy_emoji} className={classes.avatar}/>
           </Box>
+          </div>
         </FadeIn>
       
     </div>
