@@ -52,8 +52,11 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
 	countryAveragesBox: {
 		marginTop: 30,
 		display: "flex",
+		justifyContent: "center",
 		flexDirection: "column",
-		alignItems: "center"
+		alignItems: "center",
+		maxWidth:400,
+		margin: "auto"
 	},
 	countryScores: {
 		display: "flex",
